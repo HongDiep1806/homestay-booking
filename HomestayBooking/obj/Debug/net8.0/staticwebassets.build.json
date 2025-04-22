@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3uwJTyT+T75JvULjenS60oNkUFGfmA3/717OBvz9aZs=",
+  "Hash": "PaJDsE257q5V9m0kjTHHekVssPSHVFfJjb+PcsEuvHo=",
   "Source": "HomestayBooking",
   "BasePath": "_content/HomestayBooking",
   "Mode": "Default",
@@ -1627,8 +1627,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "81mwp4fpic",
-      "Integrity": "jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y=",
+      "Fingerprint": "mxcfnamd88",
+      "Integrity": "xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe+kqsk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\client\\custom.js"
@@ -9422,51 +9422,6 @@
       ]
     },
     {
-      "Route": "js/client/custom.81mwp4fpic.js",
-      "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "19617"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 22 Apr 2025 05:31:48 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "81mwp4fpic"
-        },
-        {
-          "Name": "label",
-          "Value": "js/client/custom.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y="
-        }
-      ]
-    },
-    {
       "Route": "js/client/custom.js",
       "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
       "Selectors": [],
@@ -9477,7 +9432,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "19617"
+          "Value": "19624"
         },
         {
           "Name": "Content-Type",
@@ -9485,11 +9440,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y=\""
+          "Value": "\"xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe+kqsk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 22 Apr 2025 05:31:48 GMT"
+          "Value": "Tue, 22 Apr 2025 08:55:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9499,7 +9454,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y="
+          "Value": "sha256-xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe+kqsk="
+        }
+      ]
+    },
+    {
+      "Route": "js/client/custom.mxcfnamd88.js",
+      "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19624"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe+kqsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 22 Apr 2025 08:55:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mxcfnamd88"
+        },
+        {
+          "Name": "label",
+          "Value": "js/client/custom.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe+kqsk="
         }
       ]
     },
