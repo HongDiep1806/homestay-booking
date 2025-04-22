@@ -3,16 +3,48 @@
   "WorkspaceRootPath": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\wwwroot\\js\\client\\imagesloaded.pkgd.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:wwwroot\\js\\client\\imagesloaded.pkgd.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\wwwroot\\js\\client\\datepicker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:wwwroot\\js\\client\\datepicker.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\wwwroot\\js\\client\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:wwwroot\\js\\client\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\wwwroot\\css\\client\\plugins\\flaticon.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:wwwroot\\css\\client\\plugins\\flaticon.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\wwwroot\\css\\client\\plugins\\flaticon.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:wwwroot\\css\\client\\plugins\\flaticon.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\views\\home\\post2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\home\\post2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\views\\home\\blog2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\home\\blog2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\models\\dal\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:models\\dal\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\migrations\\20250416085801_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:migrations\\20250416085801_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|e:\\cse443\\homestay booking management\\homestay-booking\\homestaybooking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +106,107 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "imagesloaded.pkgd.min.js",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\imagesloaded.pkgd.min.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\client\\imagesloaded.pkgd.min.js",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\imagesloaded.pkgd.min.js",
+              "RelativeToolTip": "wwwroot\\js\\client\\imagesloaded.pkgd.min.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-22T06:07:52.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "datepicker.js",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\datepicker.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\client\\datepicker.js",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\datepicker.js",
+              "RelativeToolTip": "wwwroot\\js\\client\\datepicker.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-22T06:07:52.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "custom.js",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\client\\custom.js",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
+              "RelativeToolTip": "wwwroot\\js\\client\\custom.js",
+              "ViewState": "AgIAACMAAAAAAAAAAAAYwDUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-22T05:20:01.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Flaticon.html",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\Flaticon.html",
+              "RelativeDocumentMoniker": "wwwroot\\css\\client\\plugins\\Flaticon.html",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\Flaticon.html",
+              "RelativeToolTip": "wwwroot\\css\\client\\plugins\\Flaticon.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-04-21T11:40:11.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "flaticon.css",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\flaticon.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\client\\plugins\\flaticon.css",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\flaticon.css",
+              "RelativeToolTip": "wwwroot\\css\\client\\plugins\\flaticon.css",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAuwMUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-21T11:40:02.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T10:49:03.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "post2.cshtml",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\post2.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\post2.cshtml",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\post2.cshtml",
+              "RelativeToolTip": "Views\\Home\\post2.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T10:44:10.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "blog2.cshtml",
+              "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\blog2.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\blog2.cshtml",
+              "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Views\\Home\\blog2.cshtml",
+              "RelativeToolTip": "Views\\Home\\blog2.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T10:39:39.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "20250416085801_initial.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Migrations\\20250416085801_initial.cs",
               "RelativeDocumentMoniker": "Migrations\\20250416085801_initial.cs",
@@ -82,38 +214,35 @@
               "RelativeToolTip": "Migrations\\20250416085801_initial.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:58:02.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:58:02.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:56:21.15Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:56:21.15Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\DAL\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Models\\DAL\\AppDbContext.cs",
               "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\DAL\\AppDbContext.cs",
               "RelativeToolTip": "Models\\DAL\\AppDbContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:29:46.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:29:46.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Staff.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Staff.cs",
               "RelativeDocumentMoniker": "Models\\Staff.cs",
@@ -121,12 +250,11 @@
               "RelativeToolTip": "Models\\Staff.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwAsAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T07:57:24.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T07:57:24.896Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 17,
               "Title": "Booking_Room.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Booking_Room.cs",
               "RelativeDocumentMoniker": "Models\\Booking_Room.cs",
@@ -134,12 +262,11 @@
               "RelativeToolTip": "Models\\Booking_Room.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:06:05.601Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:06:05.601Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "Customer.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Models\\Customer.cs",
@@ -147,12 +274,11 @@
               "RelativeToolTip": "Models\\Customer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T07:54:01.414Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T07:54:01.414Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "Role.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Role.cs",
               "RelativeDocumentMoniker": "Models\\Role.cs",
@@ -160,12 +286,11 @@
               "RelativeToolTip": "Models\\Role.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T07:59:48.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T07:59:48.867Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "Room.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Room.cs",
               "RelativeDocumentMoniker": "Models\\Room.cs",
@@ -173,12 +298,11 @@
               "RelativeToolTip": "Models\\Room.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:01:37.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:01:37.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "RoomType.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\RoomType.cs",
               "RelativeDocumentMoniker": "Models\\RoomType.cs",
@@ -186,25 +310,23 @@
               "RelativeToolTip": "Models\\RoomType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:00:16.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:00:16.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAMAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:41:19.741Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:41:19.741Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "Booking.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\Booking.cs",
               "RelativeDocumentMoniker": "Models\\Booking.cs",
@@ -212,12 +334,11 @@
               "RelativeToolTip": "Models\\Booking.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:04:24.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:04:24.935Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -225,12 +346,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-16T08:28:16.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T08:28:16.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -238,8 +358,7 @@
               "RelativeToolTip": "Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T07:51:09.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T07:51:09.412Z"
             }
           ]
         }

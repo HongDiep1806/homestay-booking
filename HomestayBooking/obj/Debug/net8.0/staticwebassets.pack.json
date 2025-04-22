@@ -1,20 +1,380 @@
 {
   "Files": [
     {
-      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\HomestayBooking.bundle.scp.css",
-      "PackagePath": "staticwebassets\\HomestayBooking.pjhhr51hmh.bundle.scp.css"
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins.css"
     },
     {
-      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\Flaticon.html",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\Flaticon.html"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\YouTubePopUp.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\YouTubePopUp.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\animate.min.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\animate.min.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\close.png",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\close.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\datepicker.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\datepicker.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\flaticon.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\flaticon.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\magnific-popup.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\owl.carousel.min.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\owl.video.play.html",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\owl.video.play.html"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\select2.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\select2.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\themify-icons.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\themify-icons.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\plugins\\vegas.slider.min.css",
+      "PackagePath": "staticwebassets\\css\\client\\plugins\\vegas.slider.min.css"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\css\\client\\style.css",
+      "PackagePath": "staticwebassets\\css\\client\\style.css"
     },
     {
       "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticon.eot",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticon.eot"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticon.svg",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticon.svg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticon.ttf",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticon.ttf"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticon.woff",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticon.woff"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticon.woff2",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticon.woff2"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\Flaticond41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\client\\Flaticond41d.eot"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\themify.eot",
+      "PackagePath": "staticwebassets\\fonts\\client\\themify.eot"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\themify.svg",
+      "PackagePath": "staticwebassets\\fonts\\client\\themify.svg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\themify.ttf",
+      "PackagePath": "staticwebassets\\fonts\\client\\themify.ttf"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\themify.woff",
+      "PackagePath": "staticwebassets\\fonts\\client\\themify.woff"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\fonts\\client\\themifyd41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\client\\themifyd41d.eot"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\1.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\1.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\2.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\2.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\3.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\3.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\4.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\4.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\5.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\5.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\clients\\6.png",
+      "PackagePath": "staticwebassets\\img\\client\\clients\\6.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\favicon.png",
+      "PackagePath": "staticwebassets\\img\\client\\favicon.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo.png",
+      "PackagePath": "staticwebassets\\img\\client\\logo.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\4.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\5.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\5.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\news\\6.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\pricing\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\pricing\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\pricing\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\pricing\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\pricing\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\pricing\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\pricing\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\pricing\\4.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\quot.png",
+      "PackagePath": "staticwebassets\\img\\client\\quot.png"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\restaurant\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\restaurant\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\restaurant\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\restaurant\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\restaurant\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\restaurant\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\10.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\10.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\4.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\5.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\5.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\6.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\7.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\7.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\8.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\8.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\rooms\\9.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\rooms\\9.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\4.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\5.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\5.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\slider\\7.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\slider\\7.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\spa\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\spa\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\spa\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\spa\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\spa\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\spa\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\1.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\2.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\3.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\4.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\5.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\5.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\team\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\client\\team\\6.jpg"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\YouTubePopUp.js",
+      "PackagePath": "staticwebassets\\js\\client\\YouTubePopUp.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
+      "PackagePath": "staticwebassets\\js\\client\\custom.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\datepicker.js",
+      "PackagePath": "staticwebassets\\js\\client\\datepicker.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\imagesloaded.pkgd.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\imagesloaded.pkgd.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery-3.6.3.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery-3.6.3.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery-migrate-3.0.0.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery-migrate-3.0.0.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery.isotope.v3.0.2.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery.isotope.v3.0.2.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery.magnific-popup.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery.magnific-popup.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery.stellar.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery.stellar.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\jquery.waypoints.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\jquery.waypoints.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\modernizr-2.6.2.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\modernizr-2.6.2.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\owl.carousel.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\pace.js",
+      "PackagePath": "staticwebassets\\js\\client\\pace.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\popper.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\scrollIt.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\scrollIt.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\select2.js",
+      "PackagePath": "staticwebassets\\js\\client\\select2.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\smooth-scroll.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\smooth-scroll.min.js"
+    },
+    {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\vegas.slider.min.js",
+      "PackagePath": "staticwebassets\\js\\client\\vegas.slider.min.js"
     },
     {
       "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\lib\\bootstrap\\LICENSE",

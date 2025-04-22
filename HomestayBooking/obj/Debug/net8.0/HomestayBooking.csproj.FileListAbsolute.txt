@@ -15,9 +15,7 @@ E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\HomestayBooking.RazorAssemblyInfo.cache
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\HomestayBooking.RazorAssemblyInfo.cs
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\HomestayBooking.sourcelink.json
-E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\scopedcss\bundle\HomestayBooking.styles.css
-E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\scopedcss\projectbundle\HomestayBooking.bundle.scp.css
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\staticwebassets.build.json
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\staticwebassets.development.json
 E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\obj\Debug\net8.0\staticwebassets.build.endpoints.json
