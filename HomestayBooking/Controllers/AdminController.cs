@@ -23,5 +23,35 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+
+        public IActionResult AllCustomer()
+        {
+            return View();
+        }
+
+        public IActionResult AddCustomer()
+        {
+            return View();
+        }
+
+        public IActionResult EditCustomer()
+        {
+            return View();
+        }
+
+        public IActionResult AllRoom()
+        {
+            return View();
+        }
+
+        public IActionResult AddRoom()
+        {
+            return View();
+        }
+
+        public IActionResult EditRoom()
+        {
+            return View();
+        }
     }
 }
