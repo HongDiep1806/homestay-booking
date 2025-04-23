@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomestayBooking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1155843f0465ab7193b862950aea85075048900")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7e01ebfa846a906a54288db20c9f6ea0b85394c")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomestayBooking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomestayBooking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
