@@ -912,17 +912,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"oe8tasf3f9"},{"Name":"integrity","Value":"sha256-0LlOdH3AgScjqJprvgCjpuQL7YaNv1KWatvzqN30Vjo="},{"Name":"label","Value":"_content/HomestayBooking/js/client/bootstrap.min.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"79741"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00220LlOdH3AgScjqJprvgCjpuQL7YaNv1KWatvzqN30Vjo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 07 Jan 2024 00:24:12 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/HomestayBooking/js/client/custom.81mwp4fpic.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\client\custom.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"81mwp4fpic"},{"Name":"integrity","Value":"sha256-jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y="},{"Name":"label","Value":"_content/HomestayBooking/js/client/custom.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"19617"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 05:31:48 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HomestayBooking/js/client/custom.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\client\custom.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"19617"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022jLCKdYRVjzkuBDhFnLUku4oDlZsO9XUzcvFEycwW73Y=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 05:31:48 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe\u002Bkqsk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"19624"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe\u002Bkqsk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 08:55:39 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/HomestayBooking/js/client/custom.mxcfnamd88.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\client\custom.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mxcfnamd88"},{"Name":"integrity","Value":"sha256-xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe\u002Bkqsk="},{"Name":"label","Value":"_content/HomestayBooking/js/client/custom.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"19624"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022xpFgRYtLDIGd88kRFouDH4znioYWXflFJGWGNe\u002Bkqsk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 08:55:39 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HomestayBooking/js/client/datepicker.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\client\datepicker.js'))</AssetFile>
