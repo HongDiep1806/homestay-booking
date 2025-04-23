@@ -8,5 +8,20 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+
+        public IActionResult AllBooking()
+        {
+            return View();
+        }
+
+        public IActionResult AddBooking()
+        {
+            return View();
+        }
+
+        public IActionResult EditBooking()
+        {
+            return View();
+        }
     }
 }
