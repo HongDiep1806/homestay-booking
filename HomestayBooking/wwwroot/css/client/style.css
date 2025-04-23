@@ -4782,17 +4782,17 @@ button.mfp-arrow {
 
 
 /* ====== Coming Soon ======= */
-.comming{
-	min-height: 100vh;
-	height: auto;
-	position: relative;
-	background-blend-mode: overlay;
-	background: rgba(0,0,0,.4);
-	background-image: url("../img/slider/1.jpg");
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
-	color: #fff;
+.comming {
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    background-blend-mode: overlay;
+    background: rgba(0,0,0,.4);
+    background-image: url("../../../img/client/slider/1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
 }
 @media (max-width: 767px){
 	.comming{

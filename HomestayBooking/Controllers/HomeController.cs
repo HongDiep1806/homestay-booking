@@ -30,7 +30,20 @@ namespace HomestayBooking.Controllers
         }
         public IActionResult About()
         {
-            return View();  
+            return View();
         }
+        public IActionResult NotFound404()
+        {
+            return View();
+        }
+        public IActionResult Rooms()
+        {
+            return View();
+        }
+        public IActionResult Restaurant()
+        {
+            return View();
+        }
+
     }
 }

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\404.cshtml" />
     <Content Remove="Views\Home\blog2.cshtml" />
     <Content Remove="Views\Home\careers.cshtml" />
     <Content Remove="Views\Home\coming-soon.cshtml" />
@@ -19,7 +18,6 @@
     <Content Remove="Views\Home\post.cshtml" />
     <Content Remove="Views\Home\post2.cshtml" />
     <Content Remove="Views\Home\pricing.cshtml" />
-    <Content Remove="Views\Home\restaurant.cshtml" />
     <Content Remove="Views\Home\room-details.cshtml" />
     <Content Remove="Views\Home\rooms3.cshtml" />
     <Content Remove="Views\Home\services.cshtml" />
@@ -51,7 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\404.cshtml" />
     <None Include="Views\Home\blog2.cshtml" />
     <None Include="Views\Home\careers.cshtml" />
     <None Include="Views\Home\coming-soon.cshtml" />
@@ -63,7 +60,6 @@
     <None Include="Views\Home\post.cshtml" />
     <None Include="Views\Home\post2.cshtml" />
     <None Include="Views\Home\pricing.cshtml" />
-    <None Include="Views\Home\restaurant.cshtml" />
     <None Include="Views\Home\room-details.cshtml" />
     <None Include="Views\Home\rooms3.cshtml" />
     <None Include="Views\Home\services.cshtml" />
