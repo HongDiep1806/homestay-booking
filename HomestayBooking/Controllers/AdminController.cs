@@ -53,5 +53,35 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+
+        public IActionResult AllStaff()
+        {
+            return View();
+        }
+
+        public IActionResult AddStaff()
+        {
+            return View();
+        }
+
+        public IActionResult EditStaff()
+        {
+            return View();
+        }
+
+        public IActionResult Invoice()
+        {
+            return View();
+        }
+
+        public IActionResult CreateInvoice()
+        {
+            return View();
+        }
+
+        public IActionResult InvoiceReport()
+        {
+            return View();
+        }
     }
 }

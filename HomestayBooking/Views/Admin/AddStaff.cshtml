@@ -17,8 +17,8 @@
 	<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
 
 	<!-- Fontawesome CSS -->
-	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
 
 	<!-- Feathericon CSS -->
 	<link rel="stylesheet" href="~/assets/css/feathericon.min.css">
@@ -241,7 +241,7 @@
 							</a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="/Admin/AllRoom">All Rooms </a></li>
-								<li><a class="active" href="/Admin/EditRoom"> Edit Rooms </a></li>
+								<li><a href="/Admin/EditRoom"> Edit Rooms </a></li>
 								<li><a href="/Admin/AddRoom"> Add Rooms </a></li>
 							</ul>
 						</li>
@@ -252,7 +252,7 @@
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="/Admin/AllStaff">All Staff </a></li>
 								<li><a href="/Admin/EditStaff"> Edit Staff </a></li>
-								<li><a href="/Admin/AddStaff"> Add Staff </a></li>
+								<li><a class="active" href="/Admin/AddStaff"> Add Staff </a></li>
 							</ul>
 						</li>
 
@@ -291,7 +291,7 @@
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title mt-5">Edit Room</h3>
+							<h3 class="page-title mt-5">Add Staff</h3>
 						</div>
 					</div>
 				</div>
@@ -302,133 +302,101 @@
 							<div class="row formtype">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Room Number</label>
+										<label>First Name</label>
 										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Room Type</label>
-										<select class="form-control" id="sel1" name="sellist1">
-											<option>Select</option>
-											<option>Single</option>
-											<option>Double</option>
-											<option>Quad</option>
-											<option>King</option>
-											<option>Suite</option>
-											<option>Villa</option>
-										</select>
+										<label>Last Name</label>
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>AC/NON-AC</label>
-										<select class="form-control" id="sel2" name="sellist1">
-											<option>Select</option>
-											<option>AC</option>
-											<option>NON-AC</option>
-										</select>
+										<label>User Name</label>
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Food</label>
-										<select class="form-control" id="sel3" name="sellist1">
-											<option>Select</option>
-											<option>Free Breakfast</option>
-											<option>Free Lunch</option>
-											<option>Free Dinner</option>
-											<option>Free Breakfast & Dinner</option>
-											<option>Free Welcome Drink</option>
-											<option>No Free Food</option>
-										</select>
+										<label>Email ID</label>
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Bed Count</label>
-										<select class="form-control" id="sel4" name="sellist1">
-											<option>Select</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-										</select>
+										<label>Password</label>
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Charges For cancellation</label>
-										<select class="form-control" id="sel5" name="sellist1">
-											<option>Select</option>
-											<option>Free</option>
-											<option>5% Before 24Hours</option>
-											<option>No Cancellation Allow</option>
-										</select>
+										<label>Confirm Password</label>
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Rent</label>
-										<input type="text" class="form-control" id="usr">
+										<label>Staff ID</label>
+										<input class="form-control" type="text" value="BKG-0001">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Joining Date</label>
+										<div class="cal-icon">
+											<input type="text" class="form-control datetimepicker">
+										</div>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label>Phone Number</label>
-										<input type="text" class="form-control" id="usr1">
+										<input class="form-control" type="text" value="BKG-0001">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>File Upload</label>
-
-
-
-										<div class="custom-file mb-3">
-											<input type="file" class="custom-file-input" id="customFile"
-												   name="filename">
-											<label class="custom-file-label" for="customFile">Choose file</label>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Message</label>
-										<textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-
+										<label>Role</label>
+										<select class="form-control" id="sel1" name="sellist1">
+											<option>Select</option>
+											<option>Admin</option>
+											<option>Manager</option>
+											<option>Staff</option>
+											<option>Room Cleaners</option>
+											<option>Servants</option>
+											<option>Accountant</option>
+											<option>Receiptionalist</option>
+										</select>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
-				<button type="button" class="btn btn-primary buttonedit ml-2">Save</button>
-				<button type="button" class="btn btn-primary buttonedit">Cancel</button>
+				<button type="button" class="btn btn-primary buttonedit ml-2">Add Staff</button>
 			</div>
 		</div>
 		<!-- /Page Wrapper -->
 	</div>
 	<!-- /Main Wrapper -->
 	<!-- jQuery -->
-	<script src="~/assets/js/jquery-3.6.0.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
+	<script src="~/assets/js/jquery-3.6.0.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
 	<!-- Bootstrap Core JS -->
-	<script src="~/assets/js/popper.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
-	<script src="~/assets/js/bootstrap.bundle.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
-	<script src="~/assets/js/moment.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
-	<script src="~/assets/js/select2.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
+	<script src="~/assets/js/popper.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
+	<script src="~/assets/js/bootstrap.bundle.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
+	<script src="~/assets/js/moment.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
+	<script src="~/assets/js/select2.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
 	<!-- Slimscroll JS -->
-	<script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
-	<script src="~/assets/plugins/raphael/raphael.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
+	<script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
+	<script src="~/assets/plugins/raphael/raphael.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
 	<!-- <script src="~/assets/plugins/morris/morris.min.js"></script>
 		<script src="~/assets/js/chart.morris.js"></script> -->
-	<script src="~/assets/js/bootstrap-datetimepicker.min.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
+	<script src="~/assets/js/bootstrap-datetimepicker.min.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
 	<!-- Custom JS -->
-	<script src="~/assets/js/script.js" type="247155ec6d83a84a0e18e3f2-text/javascript"></script>
-	<script type="247155ec6d83a84a0e18e3f2-text/javascript">
+	<script src="~/assets/js/script.js" type="4b52775173223ea1b4a98306-text/javascript"></script>
+	<script type="4b52775173223ea1b4a98306-text/javascript">
 		$(function () {
 			$('#datetimepicker3').datetimepicker({
 				format: 'LT'
@@ -436,8 +404,8 @@
 			});
 		});
 	</script>
-	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="247155ec6d83a84a0e18e3f2-|49" defer></script>
-	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"93030720d89a0663","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4b52775173223ea1b4a98306-|49" defer></script>
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"930307272fe10663","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
 </body>
 
 
