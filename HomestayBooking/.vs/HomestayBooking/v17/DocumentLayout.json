@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\CSE443\\homestay-booking\\HomestayBooking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|d:\\cse443\\homestay-booking\\homestaybooking\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|d:\\cse443\\homestay-booking\\homestaybooking\\views\\admin\\blogdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\admin\\blogdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|d:\\cse443\\homestay-booking\\homestaybooking\\views\\admin\\invoicereport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\admin\\invoicereport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|d:\\cse443\\homestay-booking\\homestaybooking\\views\\admin\\editblog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:views\\admin\\editblog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|d:\\cse443\\homestay-booking\\homestaybooking\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38A9FDC1-87F7-4EA9-A60C-93F13C8F68BA}|HomestayBooking.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,26 +38,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InvoiceReport.cshtml",
-              "DocumentMoniker": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\InvoiceReport.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\InvoiceReport.cshtml",
-              "ToolTip": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\InvoiceReport.cshtml",
-              "RelativeToolTip": "Views\\Admin\\InvoiceReport.cshtml",
-              "ViewState": "AgIAAAMBAAAAAAAAAAAAABgBAAAZAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BlogDetail.cshtml",
+              "DocumentMoniker": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\BlogDetail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\BlogDetail.cshtml",
+              "ToolTip": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\BlogDetail.cshtml",
+              "RelativeToolTip": "Views\\Admin\\BlogDetail.cshtml",
+              "ViewState": "AgIAALoAAAAAAAAAAAAAAPwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-25T04:28:04.486Z",
+              "WhenOpened": "2025-04-26T03:38:27.188Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "EditBlog.cshtml",
+              "DocumentMoniker": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\EditBlog.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\EditBlog.cshtml",
+              "ToolTip": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Views\\Admin\\EditBlog.cshtml",
+              "RelativeToolTip": "Views\\Admin\\EditBlog.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T03:36:55.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
               "ToolTip": "D:\\CSE443\\homestay-booking\\HomestayBooking\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAmwFMAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAcwGcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T06:32:30.024Z",
               "EditorCaption": ""
