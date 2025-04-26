@@ -9,113 +9,161 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HomestayBooking
 build_property.RootNamespace = HomestayBooking
-build_property.ProjectDir = E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\
+build_property.ProjectDir = D:\CSE443\homestay-booking\HomestayBooking\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking
+build_property.MSBuildProjectDirectory = D:\CSE443\homestay-booking\HomestayBooking
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AddBooking.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AddBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AddBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQm9va2luZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AddCustomer.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AddCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ3VzdG9tZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AddRoom.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AddRoom.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkUm9vbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AddStaff.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AddStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU3RhZmYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AllBooking.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AllBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AllBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsQm9va2luZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AllCustomer.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AllCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsQ3VzdG9tZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AllRoom.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AllRoom.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsUm9vbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/AllStaff.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/AllStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsU3RhZmYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/CreateInvoice.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/BlogDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmxvZ0RldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/CreateInvoice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlSW52b2ljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/EditBooking.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditBlog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJsb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJvb2tpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/EditCustomer.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEN1c3RvbWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/EditRoom.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditRoom.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFJvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/EditStaff.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/EditStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0YWZmLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/Index.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Error404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRXJyb3I0MDQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Error500.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRXJyb3I1MDAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/Invoice.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Invoice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52b2ljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Admin/InvoiceReport.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/InvoiceDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52b2ljZURldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/InvoiceReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52b2ljZVJlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/About.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Contact.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Admin/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Index.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/about.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/News.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/News.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/NotFound404.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/NotFound404.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RGb3VuZDQwNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Restaurant.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN0YXVyYW50LmNzaHRtbA==
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/restaurant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxyZXN0YXVyYW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Rooms.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/Rooms.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSb29tcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Service.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/Service.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CSE443/Homestay Booking Management/homestay-booking/HomestayBooking/Views/Home/Spa.cshtml]
+[D:/CSE443/homestay-booking/HomestayBooking/Views/Home/Spa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTcGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
