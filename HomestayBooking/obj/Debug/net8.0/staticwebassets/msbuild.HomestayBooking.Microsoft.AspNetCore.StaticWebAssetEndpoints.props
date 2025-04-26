@@ -5500,13 +5500,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cdn-cgi\scripts\7d0fa10a\cloudflare-static\rocket-loader.min.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g35k264986"},{"Name":"integrity","Value":"sha256-zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI="},{"Name":"label","Value":"_content/HomestayBooking/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12332"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:11:22 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12332"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 06:59:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HomestayBooking/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cdn-cgi\scripts\7d0fa10a\cloudflare-static\rocket-loader.min.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12332"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:11:22 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12332"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zPANGSOwExoQ4MbSb5Xl3ubr\u002BGIaJ\u002Bg8Wi9oouAJMUI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 06:59:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/HomestayBooking/cdn.oesmith.co.uk/morris-0.5.1.5ipweew5fc.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cdn.oesmith.co.uk\morris-0.5.1.css'))</AssetFile>
