@@ -83,5 +83,25 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+
+        public IActionResult AllBlog()
+        {
+            return View();
+        }
+
+        public IActionResult AddBlog()
+        {
+            return View();
+        }
+
+        public IActionResult EditBlog()
+        {
+            return View();
+        }
+
+        public IActionResult BlogDetail()
+        {
+            return View();
+        }
     }
 }
