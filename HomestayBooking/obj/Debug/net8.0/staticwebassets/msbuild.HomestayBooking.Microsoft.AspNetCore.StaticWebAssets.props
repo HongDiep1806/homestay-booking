@@ -8964,6 +8964,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\client\logo.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\client\logo-dark.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>HomestayBooking</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HomestayBooking</BasePath>
+      <RelativePath>img/client/logo-dark.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8t3x0jh194</Fingerprint>
+      <Integrity>jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\client\logo-dark.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\client\news\1.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>HomestayBooking</SourceId>
@@ -9696,8 +9714,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>8df3dwx5j1</Fingerprint>
-      <Integrity>dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM=</Integrity>
+      <Fingerprint>12jdb7tt95</Fingerprint>
+      <Integrity>uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\client\custom.js'))</OriginalItemSpec>

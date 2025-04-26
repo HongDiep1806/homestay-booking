@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>The Cappa Luxury Hotel</title>
-    <link rel="shortcut icon" href="@Url.Content("~/~/img/client/favicon.png")" />
+    <link rel="shortcut icon" href="@Url.Content("~/img/client/favicon.png")" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="@Url.Content("~/css/client/plugins.css")" />
     <link rel="stylesheet" href="@Url.Content("~/css/client/style.css")" />
@@ -47,10 +47,10 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/Home/Rooms">Rooms</a>           
+                        <a class="nav-link" href="/Home/Rooms">Rooms & Suites</a>           
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="/Home/Restaurant">Restaurant</a></li>
-                    <li class="nav-item"><a class="nav-link" href="spa-wellness.html">Spa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
                         <ul class="dropdown-menu">
@@ -71,14 +71,10 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">News <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="news.html" class="dropdown-item"><span>News 1</span></a></li>
-                            <li><a href="news2.html" class="dropdown-item"><span>News 2</span></a></li>
-                            <li><a href="post.html" class="dropdown-item"><span>Post Page</span></a></li>
-                        </ul>
+                        <a class="nav-link" href="/Home/News">News </a>
+
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -87,9 +83,9 @@
     <header class="header slider">
         <div class="owl-carousel owl-theme">
             <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-            <div class="text-center item bg-img" data-overlay-dark="3" data-background="~/img/client/restaurant/1.jpg"></div>
-            <div class="text-center item bg-img" data-overlay-dark="3" data-background="~/img/client/restaurant/2.jpg"></div>
-            <div class="text-center item bg-img" data-overlay-dark="3" data-background="~/img/client/restaurant/3.jpg"></div>
+            <div class="text-center item bg-img" data-overlay-dark="3" data-background="@Url.Content("~/img/client/restaurant/1.jpg")"></div>
+            <div class="text-center item bg-img" data-overlay-dark="3" data-background="@Url.Content("~/img/client/restaurant/2.jpg")"></div>
+            <div class="text-center item bg-img" data-overlay-dark="3" data-background="@Url.Content("~/img/client/restaurant/3.jpg")"></div>
         </div>
         <!-- arrow down -->
         <div class="arrow bounce text-center">
@@ -382,58 +378,6 @@
         </div>
     </section>
     <!-- Testiominals -->
-    <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding pb-0" data-background="~/img/client/slider/2.jpg" data-overlay-dark="3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="testimonials-box">
-                            <div class="head-box">
-                                <h6>Testimonials</h6>
-                                <h4>What Client's Say?</h4>
-                                <div class="line"></div>
-                            </div>
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <span class="quote"><img src="~/img/client/quot.png" alt=""></span>
-                                    <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="~/img/client/team/4.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                            <h6>Emily Brown</h6> <span>Guest review</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <span class="quote"><img src="~/img/client/quot.png" alt=""></span>
-                                    <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="~/img/client/team/1.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                            <h6>Nolan White</h6> <span>Guest review</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <span class="quote"><img src="~/img/client/quot.png" alt=""></span>
-                                    <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="~/img/client/team/5.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                            <h6>Olivia Martin</h6> <span>Guest review</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-top">

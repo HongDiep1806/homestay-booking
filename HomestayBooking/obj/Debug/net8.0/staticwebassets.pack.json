@@ -1989,6 +1989,10 @@
       "PackagePath": "staticwebassets\\img\\client\\favicon.png"
     },
     {
+      "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo-dark.png",
+      "PackagePath": "staticwebassets\\img\\client\\logo-dark.png"
+    },
+    {
       "Id": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo.png",
       "PackagePath": "staticwebassets\\img\\client\\logo.png"
     },

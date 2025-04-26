@@ -496,6 +496,7 @@ wwwroot\img\client\clients\5.png
 wwwroot\img\client\clients\6.png
 wwwroot\img\client\favicon.png
 wwwroot\img\client\logo.png
+wwwroot\img\client\logo-dark.png
 wwwroot\img\client\news\1.jpg
 wwwroot\img\client\news\2.jpg
 wwwroot\img\client\news\3.jpg

@@ -51,15 +51,17 @@ $(function () {
         var bodyScroll = wind.scrollTop(),
             navbar = $(".navbar"),
             logo = $(".navbar .logo> img");
+
         if (bodyScroll > 100) {
             navbar.addClass("nav-scroll");
-            logo.attr('src', '~/img/client/logo-dark.png');
+            logo.attr('src', '/img/client/logo-dark.png');
         } else {
             navbar.removeClass("nav-scroll");
-            logo.attr('src', '~/img/client/logo.png');
+            logo.attr('src', '/img/client/logo.png'); 
         }
     });
-    
+
+
     
     // Close navbar-collapse when a  clicked
     $(".navbar-nav .dropdown-item a").on('click', function () {

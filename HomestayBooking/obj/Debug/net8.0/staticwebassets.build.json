@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WvRr87WojiXOGduuXpKO5uwZk/BqzFVE9f1AHfm20DU=",
+  "Hash": "ei2vLs39jHUiFdFPb65FQ+EThdoIKehnyqBefu3cK0I=",
   "Source": "HomestayBooking",
   "BasePath": "_content/HomestayBooking",
   "Mode": "Default",
@@ -10475,6 +10475,27 @@
       "OriginalItemSpec": "wwwroot\\img\\client\\logo.png"
     },
     {
+      "Identity": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo-dark.png",
+      "SourceId": "HomestayBooking",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\",
+      "BasePath": "_content/HomestayBooking",
+      "RelativePath": "img/client/logo-dark#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8t3x0jh194",
+      "Integrity": "jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\client\\logo-dark.png"
+    },
+    {
       "Identity": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\1.jpg",
       "SourceId": "HomestayBooking",
       "SourceType": "Discovered",
@@ -11329,8 +11350,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8df3dwx5j1",
-      "Integrity": "dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM=",
+      "Fingerprint": "12jdb7tt95",
+      "Integrity": "uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\client\\custom.js"
@@ -53749,6 +53770,88 @@
       ]
     },
     {
+      "Route": "img/client/logo-dark.8t3x0jh194.png",
+      "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo-dark.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6786"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 24 Apr 2025 02:11:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8t3x0jh194"
+        },
+        {
+          "Name": "label",
+          "Value": "img/client/logo-dark.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A="
+        }
+      ]
+    },
+    {
+      "Route": "img/client/logo-dark.png",
+      "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\logo-dark.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6786"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 24 Apr 2025 02:11:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jA2Jz1A1E9pQ3UOuHaq4RlDFRxoFIn7nMrlDRSHdv7A="
+        }
+      ]
+    },
+    {
       "Route": "img/client/news/1.jpg",
       "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\img\\client\\news\\1.jpg",
       "Selectors": [],
@@ -57029,7 +57132,7 @@
       ]
     },
     {
-      "Route": "js/client/custom.8df3dwx5j1.js",
+      "Route": "js/client/custom.12jdb7tt95.js",
       "AssetFile": "E:\\CSE443\\Homestay Booking Management\\homestay-booking\\HomestayBooking\\wwwroot\\js\\client\\custom.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -57039,7 +57142,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20277"
+          "Value": "20276"
         },
         {
           "Name": "Content-Type",
@@ -57047,11 +57150,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM=\""
+          "Value": "\"uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 06:22:12 GMT"
+          "Value": "Thu, 24 Apr 2025 02:08:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -57061,7 +57164,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8df3dwx5j1"
+          "Value": "12jdb7tt95"
         },
         {
           "Name": "label",
@@ -57069,7 +57172,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM="
+          "Value": "sha256-uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY="
         }
       ]
     },
@@ -57084,7 +57187,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20277"
+          "Value": "20276"
         },
         {
           "Name": "Content-Type",
@@ -57092,11 +57195,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM=\""
+          "Value": "\"uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 23 Apr 2025 06:22:12 GMT"
+          "Value": "Thu, 24 Apr 2025 02:08:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -57106,7 +57209,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dJI8C3inmEGkPWb8Khh92UK0lLZb45hATZBWOaPnLvM="
+          "Value": "sha256-uRhNTXUH4hI7l1prWyx3sZHEk0ZLVwKvSC/g3RUJabY="
         }
       ]
     },

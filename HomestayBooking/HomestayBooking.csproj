@@ -10,7 +10,6 @@
     <Content Remove="Views\Home\blog2.cshtml" />
     <Content Remove="Views\Home\careers.cshtml" />
     <Content Remove="Views\Home\coming-soon.cshtml" />
-    <Content Remove="Views\Home\contact.cshtml" />
     <Content Remove="Views\Home\facilities.cshtml" />
     <Content Remove="Views\Home\faq.cshtml" />
     <Content Remove="Views\Home\gallery.cshtml" />
@@ -52,7 +51,6 @@
     <None Include="Views\Home\blog2.cshtml" />
     <None Include="Views\Home\careers.cshtml" />
     <None Include="Views\Home\coming-soon.cshtml" />
-    <None Include="Views\Home\contact.cshtml" />
     <None Include="Views\Home\facilities.cshtml" />
     <None Include="Views\Home\faq.cshtml" />
     <None Include="Views\Home\gallery.cshtml" />

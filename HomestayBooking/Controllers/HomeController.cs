@@ -44,6 +44,22 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+        public IActionResult Spa()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult News()
+        {
+            return View();
+        }
+        public IActionResult Service()
+        {
+            return View();
+        }
 
     }
 }
