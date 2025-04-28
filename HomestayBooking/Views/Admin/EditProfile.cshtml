@@ -1,0 +1,529 @@
+﻿
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Hotel Dashboard Template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="~/assets/css/feathericon.min.css">
+
+	<link rel="stylesheet" href="~/assets/plugins/morris/morris.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap-datetimepicker.min.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="~/assets/css/style.css">
+
+	<!--[if lt IE 9]>
+			<script src="~/assets/js/html5shiv.min.js"></script>
+			<script src="~/assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+		<!-- Header -->
+		<div class="header">
+
+			<!-- Logo -->
+			<div class="header-left">
+				<a href="/Admin/Index" class="logo">
+					<img src="~/assets/img/hotel_logo.png" width="50" height="70" alt="logo">
+					<span class="logoclass">HOTEL</span>
+				</a>
+				<a href="/Admin/Index" class="logo logo-small">
+					<img src="~/assets/img/hotel_logo.png" alt="Logo" width="30" height="30">
+				</a>
+			</div>
+			<!-- /Logo -->
+			<a href="javascript:void(0);" id="toggle_btn">
+				<i class="fe fe-text-align-left"></i>
+			</a>
+
+
+
+
+			<!-- Mobile Menu Toggle -->
+			<a class="mobile_btn" id="mobile_btn">
+				<i class="fas fa-bars"></i>
+			</a>
+			<!-- /Mobile Menu Toggle -->
+			<!-- Header Right Menu -->
+			<ul class="nav user-menu">
+
+				<!-- Notifications -->
+				<li class="nav-item dropdown noti-dropdown">
+					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						<i class="fe fe-bell"></i> <span class="badge badge-pill">3</span>
+					</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span>
+							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message">
+									<a href="#">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt="User Image"
+													 src="~/assets/img/profiles/avatar-02.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Carlson Tech</span> has
+													approved <span class="noti-title">your estimate</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">4 mins ago</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="notification-message">
+									<a href="#">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt="User Image"
+													 src="~/assets/img/profiles/avatar-11.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">
+														International Software
+														Inc
+													</span> has sent you a invoice in the amount of <span class="noti-title">$218</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">6 mins ago</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="notification-message">
+									<a href="#">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt="User Image"
+													 src="~/assets/img/profiles/avatar-17.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">John Hendry</span> sent
+													a cancellation request <span class="noti-title">
+														Apple iPhone
+														XR
+													</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">8 mins ago</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="notification-message">
+									<a href="#">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt="User Image"
+													 src="~/assets/img/profiles/avatar-13.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">
+														Mercury Software
+														Inc
+													</span> added a new product <span class="noti-title">
+														Apple
+														MacBook Pro
+													</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">12 mins ago</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="#">View all Notifications</a>
+						</div>
+					</div>
+				</li>
+				<!-- /Notifications -->
+				<!-- User Menu -->
+				<li class="nav-item dropdown has-arrow">
+					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						<span class="user-img">
+							<img class="rounded-circle" src="~/assets/img/profiles/avatar-01.jpg"
+								 width="31" alt="Dexter Smith">
+						</span>
+					</a>
+					<div class="dropdown-menu">
+						<div class="user-header">
+							<div class="avatar avatar-sm">
+								<img src="~/assets/img/profiles/avatar-01.jpg" alt="User Image"
+									 class="avatar-img rounded-circle">
+							</div>
+							<div class="user-text">
+								<h6>Dexter Smith</h6>
+								<p class="text-muted mb-0">Administrator</p>
+							</div>
+						</div>
+						<a class="dropdown-item" href="/Admin/Profile">My Profile</a>
+						<a class="dropdown-item" href="/Admin/Login">Logout</a>
+					</div>
+				</li>
+				<!-- /User Menu -->
+
+			</ul>
+			<!-- /Header Right Menu -->
+
+		</div>
+		<!-- /Header -->
+		<!-- Sidebar -->
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+
+						<li class="active">
+							<a href="/Admin/Index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+						</li>
+						<li class="list-divider"></li>
+
+
+						<li class="submenu">
+							<a href="#">
+								<i class="fas fa-suitcase"></i> <span> Booking </span> <span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="/Admin/AllBooking"> All Booking </a></li>
+								<li><a href="/Admin/EditBooking"> Edit Booking </a></li>
+								<li><a href="/Admin/AddBooking"> Add Booking </a></li>
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#">
+								<i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="/Admin/AllCustomer"> All customers </a></li>
+								<li><a href="/Admin/EditCustomer"> Edit Customer </a></li>
+								<li><a href="/Admin/AddCustomer"> Add Customer </a></li>
+							</ul>
+						</li>
+
+
+						<li class="submenu">
+							<a href="#">
+								<i class="fas fa-key"></i> <span> Rooms </span> <span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="/Admin/AllRoom">All Rooms </a></li>
+								<li><a href="/Admin/EditRoom"> Edit Rooms </a></li>
+								<li><a href="/Admin/AddRoom"> Add Rooms </a></li>
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#">
+								<i class="fas fa-user"></i> <span> Staff </span> <span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="/Admin/AllStaff">All Staff </a></li>
+								<li><a href="/Admin/EditStaff"> Edit Staff </a></li>
+								<li><a href="/Admin/AddStaff"> Add Staff </a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="/Admin/Invoice"><i class="fas fa-money-bill-alt"></i> <span>Invoices</span></a>
+						</li>
+
+						<li>
+							<a href="/Admin/Calendar"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a>
+						</li>
+						<li class="submenu">
+							<a href="#">
+								<i class="fe fe-table"></i> <span> Blog </span> <span class="menu-arrow"></span>
+							</a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="/Admin/AllBlog">Blog </a></li>
+								<li><a href="/Admin/BlogDetail">Blog View </a></li>
+								<li><a href="/Admin/AddBlog">Add Blog </a></li>
+								<li><a href="/Admin/EditBlog">Edit Blog </a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="/Admin/InvoiceReport"><i class="fas fa-table"></i> <span>Reports</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Sidebar -->
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<h3 class="page-title mt-5">Edit Profile</h3>
+						</div>
+					</div>
+				</div>
+				<div class="box inform_css">
+					<p class="card-title title_menu">Basic Informations</p>
+					<div class="row">
+						<div class="col-lg-12">
+							<form>
+								<div class="row formtype">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>First Name</label>
+											<input class="form-control" type="text" value="Cristina ">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Last Name</label>
+											<input class="form-control" type="text" value="Groves">
+										</div>
+									</div>
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Birth Date</label>
+											<div class="cal-icon">
+												<input type="text" class="form-control datetimepicker">
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Gender</label>
+											<select class="form-control" id="sel1" name="sellist1">
+												<option>Male</option>
+												<option>Female</option>
+
+											</select>
+										</div>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="box inform_css mt-3">
+					<p class="card-title title_menu">Contact Informations</p>
+					<div class="row">
+						<div class="col-lg-12">
+							<form>
+								<div class="row formtype">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Address</label>
+											<input type="text" class="form-control" value="4487 Snowbird Lane">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>State</label>
+											<input class="form-control" type="text" value="New York">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Country</label>
+											<input class="form-control" type="text" value="united States">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Pincode</label>
+											<input class="form-control" type="text" value="10523">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Phone Number</label>
+											<input class="form-control" type="text" value="631-889-3206">
+										</div>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="box inform_css mt-3">
+					<p class="card-title title_menu">Educational Informations</p>
+					<div class="row">
+						<div class="col-lg-12">
+							<form>
+								<div class="row formtype">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Institution</label>
+											<input class="form-control" type="text" value="Oxford university">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Subject</label>
+											<input class="form-control" type="text" value="Computer Science">
+										</div>
+									</div>
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Starting Date</label>
+											<div class="cal-icon">
+												<input type="text" class="form-control datetimepicker">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Complete Date</label>
+											<div class="cal-icon">
+												<input type="text" class="form-control datetimepicker">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Degree</label>
+											<input class="form-control" type="text" value="BE Computer Science">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Grade</label>
+											<input class="form-control" type="text" value="Grade A">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Gender</label>
+											<select class="form-control" id="sel2" name="sellist1">
+												<option>Male</option>
+												<option>Female</option>
+
+											</select>
+										</div>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="box inform_css mt-3">
+					<p class="card-title title_menu">Experience Informations</p>
+					<div class="row">
+						<div class="col-lg-12">
+							<form>
+								<div class="row formtype">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Company Name</label>
+											<input class="form-control" type="text" value="Digital Devlopment Inc">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Location</label>
+											<input class="form-control" type="text" value="United States">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Job Position</label>
+											<input class="form-control" type="text" value="Web Developer">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Period From</label>
+											<div class="cal-icon">
+												<input type="text" class="form-control datetimepicker">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Period To</label>
+											<div class="cal-icon">
+												<input type="text" class="form-control datetimepicker">
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary buttonedit mt-3">Save</button>
+			</div>
+		</div>
+		<!-- /Page Wrapper -->
+	</div>
+	<!-- /Main Wrapper -->
+	<!-- jQuery -->
+	<script src="~/assets/js/jquery-3.6.0.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<!-- Bootstrap Core JS -->
+	<script src="~/assets/js/popper.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<script src="~/assets/js/bootstrap.bundle.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<script src="~/assets/js/moment.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<!-- Slimscroll JS -->
+	<script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<!-- <script src="~/assets/plugins/raphael/raphael.min.js"></script>     -->
+	<!-- <script src="~/assets/plugins/morris/morris.min.js"></script>
+		<script src="~/assets/js/chart.morris.js"></script> -->
+	<script src="~/assets/js/bootstrap-datetimepicker.min.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<!-- Custom JS -->
+	<script src="~/assets/js/script.js" type="9d6f472029aed4a5c9ff9482-text/javascript"></script>
+	<script type="9d6f472029aed4a5c9ff9482-text/javascript">
+		$(function () {
+			$('#datetimepicker3').datetimepicker({
+				format: 'LT'
+
+			});
+		});
+	</script>
+	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9d6f472029aed4a5c9ff9482-|49" defer></script>
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"930308826daa0663","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
