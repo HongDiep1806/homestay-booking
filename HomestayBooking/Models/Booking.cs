@@ -7,9 +7,9 @@
         public DateTime BookingDate { get; set; }
         public string Status { get; set; }
         public double TotalPrice { get; set; }
-        public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
-        public int StaffID { get; set; }
-        public Staff Staff { get; set; }
+        public string CustomerId { get; set; }  
+        public AppUser Customer { get; set; }   
+        public string? StaffId { get; set; }     
+        public AppUser? Staff { get; set; }
     }
 }

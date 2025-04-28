@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\blog2.cshtml" />
-    <Content Remove="Views\Home\careers.cshtml" />
-    <Content Remove="Views\Home\coming-soon.cshtml" />
     <Content Remove="Views\Home\facilities.cshtml" />
     <Content Remove="Views\Home\faq.cshtml" />
     <Content Remove="Views\Home\gallery.cshtml" />
@@ -20,11 +18,11 @@
     <Content Remove="Views\Home\room-details.cshtml" />
     <Content Remove="Views\Home\rooms3.cshtml" />
     <Content Remove="Views\Home\services.cshtml" />
-    <Content Remove="Views\Home\spa-wellness.cshtml" />
     <Content Remove="Views\Home\team.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.15">
@@ -49,8 +47,6 @@
 
   <ItemGroup>
     <None Include="Views\Home\blog2.cshtml" />
-    <None Include="Views\Home\careers.cshtml" />
-    <None Include="Views\Home\coming-soon.cshtml" />
     <None Include="Views\Home\facilities.cshtml" />
     <None Include="Views\Home\faq.cshtml" />
     <None Include="Views\Home\gallery.cshtml" />
@@ -61,7 +57,6 @@
     <None Include="Views\Home\room-details.cshtml" />
     <None Include="Views\Home\rooms3.cshtml" />
     <None Include="Views\Home\services.cshtml" />
-    <None Include="Views\Home\spa-wellness.cshtml" />
     <None Include="Views\Home\team.cshtml" />
   </ItemGroup>
 
