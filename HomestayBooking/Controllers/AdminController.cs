@@ -103,5 +103,40 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
+
+        public IActionResult Error404()
+        {
+            return View();
+        }
+
+        public IActionResult Error500()
+        {
+            return View();
+        }
     }
 }
