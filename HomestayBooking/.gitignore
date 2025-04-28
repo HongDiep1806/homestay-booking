@@ -1,0 +1,53 @@
+# ASP.NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+
+# Entity Framework
+Migrations/
+
+# Visual Studio files
+.vscode/
+.vs/
+*.code-workspace
+
+# Rider
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# User Secrets
+secrets.json
+
+# Publish folder
+publish/
+
+# npm
+node_modules/
+
+# Others
+*.swp
+*.bak
+*.tmp
+*.temp
+
+# Optional: Ignore local settings
+appsettings.Development.json
