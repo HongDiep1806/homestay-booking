@@ -301,3 +301,10 @@ D:\CSE443\homestay-booking\HomestayBooking\obj\Debug\net8.0\staticwebassets.upTo
 D:\CSE443\homestay-booking\HomestayBooking\obj\Debug\net8.0\Homestay.2FC69F55.Up2Date
 D:\CSE443\homestay-booking\HomestayBooking\obj\Debug\net8.0\HomestayBooking.genruntimeconfig.cache
 D:\CSE443\homestay-booking\HomestayBooking\obj\Debug\net8.0\ref\HomestayBooking.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\Microsoft.Extensions.WebEncoders.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
+E:\CSE443\Homestay Booking Management\homestay-booking\HomestayBooking\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
