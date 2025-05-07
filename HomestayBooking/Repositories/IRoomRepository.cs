@@ -1,6 +1,8 @@
-﻿namespace HomestayBooking.Repositories
+﻿using HomestayBooking.Models;
+
+namespace HomestayBooking.Repositories
 {
-    public class IRoomRepository
+    public interface IRoomRepository : IBaseRepository<Room>
     {
     }
 }
