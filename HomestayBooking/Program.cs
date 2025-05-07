@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using HomestayBooking.Models.DAL;
+using HomestayBooking.Repositories;
+using HomestayBooking.Service;
 
 namespace HomestayBooking
 {
@@ -20,6 +22,11 @@ namespace HomestayBooking
             builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+            //DI
+            builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+            builder.Services.AddScoped<IRoomService, RoomService>();
+            //
+
 
             var app = builder.Build();
 
