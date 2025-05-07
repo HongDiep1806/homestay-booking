@@ -1,6 +1,10 @@
-﻿namespace HomestayBooking.Service
+﻿using HomestayBooking.DTOs.RoomDto;
+using HomestayBooking.Repositories;
+
+namespace HomestayBooking.Service
 {
-    public class IRoomService
+    public interface IRoomService
     {
+        Task<List<RoomDto>> GetAll();   
     }
 }
