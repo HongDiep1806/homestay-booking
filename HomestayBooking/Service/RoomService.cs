@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HomestayBooking.DTOs.RoomDto;
+using HomestayBooking.Models;
 using HomestayBooking.Repositories;
 
 namespace HomestayBooking.Service
@@ -14,6 +15,22 @@ namespace HomestayBooking.Service
         {
             _roomRepository = roomRepository;
         }
+
+        public async Task<bool> Create(Room room)
+        {
+            try
+            {
+                await _roomRepository.Create(room);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Error in RoomService.Create: " + ex.Message);
+                return false;
+            }
+        }
+
+
         public async Task<List<RoomDto>> GetAll()
         {
             return _mapper.Map<List<RoomDto>>(await _roomRepository.GetAll());
