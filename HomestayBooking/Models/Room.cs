@@ -7,7 +7,6 @@
         public bool RoomStatus { get; set; }
         public int RoomTypeID { get; set; }
         public RoomType RoomType { get; set; }
-        
         public string RoomImg { get; set; }
     }
 }
