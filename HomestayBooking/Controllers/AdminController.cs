@@ -50,10 +50,11 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-
-        public IActionResult AllRoom()
+        [HttpGet]
+        public async Task<IActionResult> AllRoom()
         {
-            return View();
+            var rooms = await _roomService.GetAll();
+            return View(rooms);
         }
 
         [HttpGet]
@@ -105,9 +106,46 @@ namespace HomestayBooking.Controllers
         }
 
 
-        public IActionResult EditRoom()
+        [HttpGet]
+        public async Task<IActionResult> EditRoom(int id)
         {
-            return View();
+            var room = await _roomService.GetById(id);
+            if (room == null)
+                return NotFound();
+            var roomTypes = await _roomTypeService.GetAll();
+            ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name", room.RoomTypeID);
+            return View(room);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditRoom(Room room, IFormFile? RoomImageFile)
+        {
+            var errors = new List<string>();
+            if (string.IsNullOrWhiteSpace(room.RoomCode))
+                errors.Add("Room code is required.");
+            if (room.RoomTypeID <= 0)
+                errors.Add("Room type must be selected.");
+            if (errors.Any())
+            {
+                ViewBag.Errors = errors;
+                ViewBag.RoomTypes = await _roomTypeService.GetAll();
+                return View(room);
+            }
+            if (RoomImageFile != null && RoomImageFile.Length > 0)
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(RoomImageFile.FileName);
+                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img");
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+                var filePath = Path.Combine(folderPath, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await RoomImageFile.CopyToAsync(stream);
+                }
+                room.RoomImg = "/img/" + fileName;
+            }
+            await _roomService.Update(room.RoomID, room);
+            return RedirectToAction("AllRoom");
         }
 
         public IActionResult AllStaff()

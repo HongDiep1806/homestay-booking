@@ -1,5 +1,6 @@
 ﻿using HomestayBooking.Models;
 using HomestayBooking.Models.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomestayBooking.Repositories
 {
@@ -9,5 +10,11 @@ namespace HomestayBooking.Repositories
         {
         }
 
+        public async Task<List<Room>> GetAllWithRoomType()
+        {
+            return await _appDbContext.Rooms
+                .Include(r => r.RoomType)
+                .ToListAsync();
+        }
     }
 }

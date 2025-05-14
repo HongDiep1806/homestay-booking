@@ -8,5 +8,8 @@ namespace HomestayBooking.Service
     {
         Task<List<RoomDto>> GetAll();
         Task<bool> Create(Room room);
+        Task<bool> Update(int id, Room room);
+        Task<bool> Delete(int id);
+        Task<Room> GetById(int id);
     }
 }

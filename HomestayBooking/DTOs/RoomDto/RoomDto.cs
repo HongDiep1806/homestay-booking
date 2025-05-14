@@ -9,5 +9,6 @@ namespace HomestayBooking.DTOs.RoomDto
         public bool RoomStatus { get; set; }
         public int RoomTypeID { get; set; }
         public string RoomType { get; set; }
+        public string RoomImg { get; set; }
     }
 }

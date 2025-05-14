@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using HomestayBooking.Models;
 using HomestayBooking.Models.DAL;
 using HomestayBooking.Repositories;
 using HomestayBooking.Service;
-using HomestayBooking.Mappings;
 
 namespace HomestayBooking
 {
@@ -21,7 +20,7 @@ namespace HomestayBooking
 
             // 🔌 Database context
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // 🔐 Identity Configuration (AppUser + IdentityRole)
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -49,13 +48,18 @@ namespace HomestayBooking
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
+            builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
+            //
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
 
-            // 🌐 Middleware Pipeline
+            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
