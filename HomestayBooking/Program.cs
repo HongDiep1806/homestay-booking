@@ -28,7 +28,7 @@ namespace HomestayBooking
             builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
             builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
             //
-
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
 
