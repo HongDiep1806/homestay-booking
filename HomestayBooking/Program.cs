@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using HomestayBooking.Models;
 using HomestayBooking.Models.DAL;
 using HomestayBooking.Repositories;
 using HomestayBooking.Service;
+using HomestayBooking.Mappings;
 
 namespace HomestayBooking
 {
@@ -13,28 +14,48 @@ namespace HomestayBooking
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<AppDbContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            // 🗂 AutoMapper
+            builder.Services.AddAutoMapper(typeof(RoomProfile));
+            builder.Services.AddAutoMapper(typeof(UserProfile));
 
-            // Add Identity services
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
-            //DI
+
+            // 🔌 Database context
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // 🔐 Identity Configuration (AppUser + IdentityRole)
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+            })
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
+            // 🍪 Cookie lifespan for RememberMe (optional)
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                options.SlidingExpiration = true;
+            });
+
+            // 💉 Dependency Injection
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
             builder.Services.AddScoped<IRoomService, RoomService>();
-            //
 
+            // 🧱 MVC & Blazor (if used)
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+            builder.Services.AddServerSideBlazor();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // 🌐 Middleware Pipeline
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -43,8 +64,10 @@ namespace HomestayBooking
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
+            // 🔁 Route config
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
