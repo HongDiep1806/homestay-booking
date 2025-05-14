@@ -1,5 +1,10 @@
 ﻿@{
 }
+@using HomestayBooking.Models
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -16,6 +21,18 @@
     <link rel="stylesheet" href="@Url.Content("~/css/client/style.css")" />
 
 </head>
+    <style >
+    .navbar .nav-link {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .navbar .dropdown-menu {
+        font-family: 'Barlow', sans-serif;
+    }
+</style>
+
 <body>
     <!-- Preloader -->
     <div class="preloader-bg"></div>
@@ -43,6 +60,8 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
+                    
+
                     <li class="nav-item dropdown">
                         <a class="nav-link active" href="/Home/Index">Home</a>
 
@@ -69,7 +88,40 @@
 
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+                    
+
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    var user = await UserManager.GetUserAsync(User);
+                    <div class="d-flex align-items-center ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti-user"></i>
+                                <span style="color:#fff">@user.FullName</span>
+                                <i class="ti-angle-down small"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center ms-auto">
+                        <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        @* <a class="nav-link" href="/Auth/Register"><i class="ti-pencil-alt me-1"></i> Register</a> *@
+                    </div>
+                }
+                </ul>
+
             </div>
         </div>
     </nav>

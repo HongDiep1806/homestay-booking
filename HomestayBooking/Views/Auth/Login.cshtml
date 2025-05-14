@@ -1,0 +1,118 @@
+﻿
+	@model HomestayBooking.DTOs.AuthDto.LoginDto
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Hotel Dashboard Template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="~/assets/css/feathericon.min.css">
+
+	<link rel="stylesheet" href="~/assets/plugins/morris/morris.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="~/assets/css/style.css">
+
+	<!--[if lt IE 9]>
+			<script src="~/assets/js/html5shiv.min.js"></script>
+			<script src="~/assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper login-body">
+		<div class="login-wrapper">
+			<div class="container">
+				<div class="loginbox">
+					<div class="login-left">
+						<img class="img-fluid" src="~/assets/img/logo.png" alt="Logo">
+					</div>
+					<div class="login-right">
+						<div class="login-right-wrap">
+							<h1>Login</h1>
+							<p class="account-subtitle">Access to our dashboard</p>
+
+							<!-- Form -->
+							<form asp-action="Login" asp-controller="Auth" method="post">
+								<div class="form-group">
+									<input asp-for="Email" class="form-control" placeholder="Email" />
+									<span asp-validation-for="Email" class="text-danger"></span>
+								</div>
+
+								<div class="form-group">
+									<input asp-for="Password" class="form-control" placeholder="Password" />
+									<span asp-validation-for="Password" class="text-danger"></span>
+								</div>
+								<div class="form-group form-check">
+									<input asp-for="RememberMe" class="form-check-input" />
+									<label asp-for="RememberMe" class="form-check-label">Remember me</label>
+								</div>
+								<div class="form-group">
+									<button class="btn btn-primary btn-block" type="submit">Login</button>
+								</div>
+							</form>
+							<!-- /Form -->
+
+							<div class="text-center forgotpass">
+								<a href="/Admin/ForgotPassword">Forgot Password?</a>
+							</div>
+							<div class="login-or">
+								<span class="or-line"></span>
+								<span class="span-or">or</span>
+							</div>
+
+							<!-- Social Login -->
+							@* <div class="social-login"> *@
+							@* 	<span>Login with</span> *@
+							@* 	<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a><a href="#" *@
+							@* 																		 class="google"><i class="fab fa-google"></i></a> *@
+							@* </div> *@
+							<!-- /Social Login -->
+
+							<div class="text-center dont-have">
+								Don’t have an account? <a href="/Auth/Register">Register</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Main Wrapper -->
+	<!-- jQuery -->
+	<script src="~/assets/js/jquery-3.6.0.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
+	<!-- Bootstrap Core JS -->
+	<script src="~/assets/js/popper.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+	<script src="~/assets/js/bootstrap.bundle.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
+	<!-- Slimscroll JS -->
+	<script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
+	<!-- Custom JS -->
+	<script src="~/assets/js/script.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
+	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="546b1a996ad6c1389e6258f7-|49" defer></script>
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"930307142be50663","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
