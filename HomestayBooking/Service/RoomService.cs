@@ -11,9 +11,10 @@ namespace HomestayBooking.Service
         private readonly IRoomRepository _roomRepository;
         private readonly IMapper _mapper;
 
-        public RoomService(IRoomRepository roomRepository)
+        public RoomService(IRoomRepository roomRepository, IMapper mapper)
         {
             _roomRepository = roomRepository;
+            _mapper = mapper;
         }
 
         public async Task<bool> Create(Room room)
@@ -25,15 +26,50 @@ namespace HomestayBooking.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("❌ Error in RoomService.Create: " + ex.Message);
+                Console.WriteLine("Error in RoomService.Create: " + ex.Message);
                 return false;
             }
         }
 
+        public Task<bool> Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<List<RoomDto>> GetAll()
         {
-            return _mapper.Map<List<RoomDto>>(await _roomRepository.GetAll());
+            return _mapper.Map<List<RoomDto>>(await _roomRepository.GetAllWithRoomType());
+        }
+
+        public async Task<Room> GetById(int id)
+        {
+            var room = await _roomRepository.GetById(id);
+            return room;
+        }
+        public async Task<bool> Update(int id, Room room)
+        {
+            var existingRoom = await _roomRepository.GetById(id);
+            if (existingRoom == null)
+            {
+                return false;
+            }
+            existingRoom.RoomCode = room.RoomCode;
+            existingRoom.RoomStatus = room.RoomStatus;
+            existingRoom.RoomTypeID = room.RoomTypeID;
+            if (room.RoomImg != null && room.RoomImg.Length > 0)
+            {
+                existingRoom.RoomImg = room.RoomImg;
+            }
+            try
+            {
+                await _roomRepository.Update(id, existingRoom);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error in RoomService.Update: " + ex.Message);
+                return false;
+            }
         }
     }
 }
