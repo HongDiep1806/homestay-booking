@@ -8,8 +8,8 @@ namespace HomestayBooking.Mappings
     {
         public RoomProfile()
         {
-            CreateMap<Room, RoomDto>();
-            
+            CreateMap<Room, RoomDto>()
+                .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType.Name));
         }
     }
 }
