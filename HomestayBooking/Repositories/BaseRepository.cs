@@ -1,15 +1,16 @@
 ﻿
+using HomestayBooking.Models;
 using HomestayBooking.Models.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace HomestayBooking.Repositories
 {
-    public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : class, BaseEntity
     {
         protected readonly AppDbContext _appDbContext;
         public BaseRepository(AppDbContext appDbContext)
         {
-            _appDbContext = appDbContext;  
+            _appDbContext = appDbContext;
         }
         public Task<bool> AddRanges(List<T> ranges)
         {
@@ -22,9 +23,23 @@ namespace HomestayBooking.Repositories
             await _appDbContext.SaveChangesAsync();
         }
 
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var item = await _appDbContext.Set<T>().FindAsync(id);
+            if (item == null)
+                return false;
+
+            item.IsDeleted = true;
+            var result = await Update(id, item);
+            Console.WriteLine("Deleted item: " + result );  
+            return true;
+        }
+
+
         public async Task<List<T>> GetAll()
         {
-            return await _appDbContext.Set<T>().ToListAsync();  
+            var items =  await _appDbContext.Set<T>().ToListAsync();
+            return items.Where(i => i.IsDeleted == false).ToList();
         }
 
         public async Task<T> GetById(int id)

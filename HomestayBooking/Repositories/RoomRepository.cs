@@ -10,11 +10,18 @@ namespace HomestayBooking.Repositories
         {
         }
 
+        public async Task<bool> DeleteRoom(int roomId)
+        {
+            return await DeleteAsync(roomId);
+        }
+
         public async Task<List<Room>> GetAllWithRoomType()
         {
             return await _appDbContext.Rooms
+                .Where(r => !r.IsDeleted) 
                 .Include(r => r.RoomType)
                 .ToListAsync();
         }
+
     }
 }
