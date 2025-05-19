@@ -345,7 +345,9 @@
 															<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
 															<div class="dropdown-menu dropdown-menu-right">
 																<a class="dropdown-item" href="/Admin/EditRoom/@room.RoomID"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-																<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+																<a class="dropdown-item delete-room-btn" href="#" data-room-id="@room.RoomID" data-toggle="modal" data-target="#delete_asset">
+																	<i class="fas fa-trash-alt m-r-5"></i> Delete
+																</a>
 															</div>
 														</div>
 													</td>
@@ -363,14 +365,18 @@
 			<div id="delete_asset" class="modal fade delete-modal" role="dialog">
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
-						<div class="modal-body text-center">
-							<img src="~/assets/img/sent.png" alt="" width="50" height="46">
-							<h3 class="delete_class">Are you sure want to delete this Asset?</h3>
-							<div class="m-t-20">
-								<a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-								<button type="submit" class="btn btn-danger">Delete</button>
+						<form method="post" asp-action="DeleteRoom" asp-controller="Admin">
+							<input type="hidden" id="deleteRoomId" name="id" />
+							<div class="modal-body text-center">
+								<img src="~/assets/img/sent.png" alt="" width="50" height="46">
+								<h3 class="delete_class">Are you sure you want to delete this room?</h3>
+								<div class="m-t-20">
+									<a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</div>
 							</div>
-						</div>
+						</form>
+
 					</div>
 				</div>
 			</div>
@@ -379,6 +385,7 @@
 	</div>
 	<!-- /Main Wrapper -->
 	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script data-cfasync="false" src="~/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="~/assets/js/jquery-3.6.0.min.js" type="d84f0b2c8e85591eb1989331-text/javascript"></script>
 	<!-- Bootstrap Core JS -->
@@ -394,6 +401,14 @@
 	<script src="~/assets/js/script.js" type="d84f0b2c8e85591eb1989331-text/javascript"></script>
 	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d84f0b2c8e85591eb1989331-|49" defer></script>
 	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9303071f4c9703d7","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+	<script>
+		$(document).on("click", ".delete-room-btn", function () {
+			const roomId = $(this).data("room-id");
+			console.log("Selected room ID: ", roomId);
+			$("#deleteRoomId").val(roomId);
+		});
+	</script>
+
 </body>
 
 

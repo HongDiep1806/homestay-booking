@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using HomestayBooking.Models.DAL;
 using HomestayBooking.Repositories;
 using HomestayBooking.Service;
+using HomestayBooking.Mappings;
+using HomestayBooking.Models;
 
 namespace HomestayBooking
 {
@@ -13,16 +15,15 @@ namespace HomestayBooking
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // 🗂 AutoMapper
+            //  AutoMapper
             builder.Services.AddAutoMapper(typeof(RoomProfile));
             builder.Services.AddAutoMapper(typeof(UserProfile));
 
 
-            // 🔌 Database context
             builder.Services.AddDbContext<AppDbContext>(options =>
               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // 🔐 Identity Configuration (AppUser + IdentityRole)
+            //  Identity Configuration (AppUser + IdentityRole)
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
@@ -33,18 +34,15 @@ namespace HomestayBooking
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
-            // 🍪 Cookie lifespan for RememberMe (optional)
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.ExpireTimeSpan = TimeSpan.FromDays(14);
                 options.SlidingExpiration = true;
             });
 
-            // 💉 Dependency Injection
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
             builder.Services.AddScoped<IRoomService, RoomService>();
 
-            // 🧱 MVC & Blazor (if used)
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
@@ -59,7 +57,6 @@ namespace HomestayBooking
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -71,7 +68,6 @@ namespace HomestayBooking
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // 🔁 Route config
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
