@@ -31,9 +31,9 @@ namespace HomestayBooking.Service
             }
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            return await _roomRepository.DeleteRoom(id);
         }
 
         public async Task<List<RoomDto>> GetAll()

@@ -232,6 +232,17 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            var result = await _roomService.Delete(id);
+            if (!result)
+            {
+                TempData["Error"] = "Failed to delete room.";
+            }
+            return RedirectToAction("AllRoom");
+        }
+
 
     }
 }
