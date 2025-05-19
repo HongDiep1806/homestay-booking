@@ -1,6 +1,6 @@
 ﻿namespace HomestayBooking.Models
 {
-    public class Booking
+    public class Booking: BaseEntity
     {
         public int BookingID { get; set; }
         public int RoomQuantity { get; set; }
@@ -11,5 +11,6 @@
         public AppUser Customer { get; set; }   
         public string? StaffId { get; set; }     
         public AppUser? Staff { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }
