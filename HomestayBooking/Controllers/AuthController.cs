@@ -99,7 +99,6 @@ namespace HomestayBooking.Controllers
             user.Address = "Chưa cập nhật";
 
             user.IsActive = true;
-            //user.IsStaff = false;
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
