@@ -62,7 +62,7 @@ namespace HomestayBooking.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterDto dto)
+        public async Task<IActionResult> RegisterAdmin(RegisterDto dto)
         {
 
             var errors = new List<string>();
@@ -81,24 +81,25 @@ namespace HomestayBooking.Controllers
             user.Address = "Chưa cập nhật";
 
             user.IsActive = true;
-
+            //user.IsStaff = false;
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
-                Console.WriteLine("tao thanh cong");
+                await _userManager.AddToRoleAsync(user, "Admin");// Role
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Login", "Auth");
             }
+
             foreach (var error in result.Errors)
             {
-               errors.Add(error.Description);
+                errors.Add(error.Description);
                 Console.WriteLine(error.Description);
             }
-            if(errors.Count > 0)
+            if (errors.Count > 0)
             {
                 return View();
             }
-          
+
             Console.WriteLine($"FullName: {user.FullName}, Email: {user.Email}, UserName: {user.UserName}");
 
             return View(dto);

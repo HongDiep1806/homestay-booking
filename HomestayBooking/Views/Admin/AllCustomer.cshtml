@@ -1,4 +1,4 @@
-﻿
+﻿@model List<HomestayBooking.DTOs.UserDto.UserDto>
 @{
 }
 <!DOCTYPE html>
@@ -31,9 +31,9 @@
 	<link rel="stylesheet" href="~/assets/css/style.css">
 
 	<!--[if lt IE 9]>
-			<script src="~/assets/js/html5shiv.min.js"></script>
-			<script src="~/assets/js/respond.min.js"></script>
-		<![endif]-->
+	<script src="~/assets/js/html5shiv.min.js"></script>
+	<script src="~/assets/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
@@ -85,7 +85,7 @@
 										<div class="media">
 											<span class="avatar avatar-sm">
 												<img class="avatar-img rounded-circle" alt="User Image"
-													 src="~/assets/img/profiles/avatar-02.jpg">
+												src="~/assets/img/profiles/avatar-02.jpg">
 											</span>
 											<div class="media-body">
 												<p class="noti-details">
@@ -104,7 +104,7 @@
 										<div class="media">
 											<span class="avatar avatar-sm">
 												<img class="avatar-img rounded-circle" alt="User Image"
-													 src="~/assets/img/profiles/avatar-11.jpg">
+												src="~/assets/img/profiles/avatar-11.jpg">
 											</span>
 											<div class="media-body">
 												<p class="noti-details">
@@ -125,7 +125,7 @@
 										<div class="media">
 											<span class="avatar avatar-sm">
 												<img class="avatar-img rounded-circle" alt="User Image"
-													 src="~/assets/img/profiles/avatar-17.jpg">
+												src="~/assets/img/profiles/avatar-17.jpg">
 											</span>
 											<div class="media-body">
 												<p class="noti-details">
@@ -147,7 +147,7 @@
 										<div class="media">
 											<span class="avatar avatar-sm">
 												<img class="avatar-img rounded-circle" alt="User Image"
-													 src="~/assets/img/profiles/avatar-13.jpg">
+												src="~/assets/img/profiles/avatar-13.jpg">
 											</span>
 											<div class="media-body">
 												<p class="noti-details">
@@ -179,14 +179,14 @@
 					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 						<span class="user-img">
 							<img class="rounded-circle" src="~/assets/img/profiles/avatar-01.jpg"
-								 width="31" alt="Dexter Smith">
+							width="31" alt="Dexter Smith">
 						</span>
 					</a>
 					<div class="dropdown-menu">
 						<div class="user-header">
 							<div class="avatar avatar-sm">
 								<img src="~/assets/img/profiles/avatar-01.jpg" alt="User Image"
-									 class="avatar-img rounded-circle">
+								class="avatar-img rounded-circle">
 							</div>
 							<div class="user-text">
 								<h6>Dexter Smith</h6>
@@ -307,250 +307,49 @@
 
 						<div class="card card-table">
 							<!-- <div class="card-header">
-									<h4 class="card-title">List of Users</h4>
-								</div> -->
+							<h4 class="card-title">List of Users</h4>
+							</div> -->
 							<div class="card-body booking_card">
 								<div class="table-responsive">
 									<table class="datatable table table-stripped table table-hover table-center mb-0">
 										<thead>
 											<tr>
-												<th>Booking ID</th>
-												<th>Name</th>
-												<th>Room Type</th>
-												<th>Total Numbers</th>
-												<th>Date</th>
-												<th>Time</th>
-												<th>Arrival Date</th>
-												<th>Depature Date</th>
-												<th>Email ID</th>
-												<th>Ph.Number</th>
+												<th>Full Name</th>
+												<th>Identity Card</th>
+												<th>Gender</th>
+												<th>Date of Birth</th>
+												<th>Address</th>
 												<th>Status</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>BKG-0001</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-03.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">Tommy Bernal <span>#0001</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>10</td>
-												<td>21-03-2020</td>
-												<td>11.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8acb7b5b5a1babdaab6b9b498bda0b9b5a8b4bdf6bbb7b5">[email&#160;protected]</a></td>
-												<td>631-254-6480</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+											@foreach (var customer in Model)
+											{
+												<tr>
+													<td>@customer.FullName</td>
+													<td>@customer.IdentityCard</td>
+													<td>@customer.Gender</td>
+													<td>@customer.DOB</td>
+													<td>@customer.Address</td>
+													<td>
+														<div class="actions">
+															<span class="badge badge-@(customer.IsActive ? "success" : "danger")">
+																@(customer.IsActive ? "Active" : "Blocked")
+															</span>
 														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0002</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-04.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">Richard Brobst <span>#0002</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>8</td>
-												<td>21-03-2020</td>
-												<td>09.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="addfc4cec5ccdfc9cfdfc2cfded9edc8d5ccc0ddc1c883cec2c0">[email&#160;protected]</a></td>
-												<td>830-468-1042</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Inactive
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+													</td>
+													<td class="text-right">
+														<div class="dropdown dropdown-action">
+															<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+															<div class="dropdown-menu dropdown-menu-right">
+																<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+																<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+															</div>
 														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0003</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-05.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">Ellen Thill <span>#0003</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>10</td>
-												<td>21-03-2020</td>
-												<td>08.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c4cdcdc4cfd5c9c8cdcde1c4d9c0ccd1cdc48fc2cecc">[email&#160;protected]</a></td>
-												<td>508-335-5531</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0004</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-06.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">Corina Kelsey <span>#0004</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>15</td>
-												<td>21-03-2020</td>
-												<td>12.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e7d716c77707f757b726d7b675e7b667f736e727b307d7173">[email&#160;protected]</a></td>
-												<td>262-260-1170</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0005</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-07.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">Carolyn Lane <span>#0005</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>12</td>
-												<td>21-03-2020</td>
-												<td>06.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0d6e6c7f62617463616c63684d68756c607d6168236e6260">[email&#160;protected]</a></td>
-												<td>570-458-0070</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0006</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-08.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">David Alvarez <span>#0006</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>7</td>
-												<td>21-03-2020</td>
-												<td>10.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6a2a7b0afa2a7aab0a7b4a3bc86a3bea7abb6aaa3e8a5a9ab">[email&#160;protected]</a></td>
-												<td>212-414-9510</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Inactive
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
+													</td>
+												</tr>
+											}
 										</tbody>
 									</table>
 								</div>
