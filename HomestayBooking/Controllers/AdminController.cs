@@ -1,5 +1,8 @@
-﻿using HomestayBooking.Models;
+﻿using System.Threading.Tasks;
+using HomestayBooking.DTOs.UserDto;
+using HomestayBooking.Models;
 using HomestayBooking.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +14,16 @@ namespace HomestayBooking.Controllers
     {
         private readonly IRoomTypeService _roomTypeService;
         private readonly IRoomService _roomService;
-        public AdminController(IRoomTypeService roomTypeService, IRoomService roomService)
+        private readonly IUserService _userService;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        public AdminController(IRoomTypeService roomTypeService, IRoomService roomService, IUserService userService, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _roomTypeService = roomTypeService;
             _roomService = roomService;
+            _userService = userService;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -36,15 +45,41 @@ namespace HomestayBooking.Controllers
             return View();
         }
 
-        public IActionResult AllCustomer()
+        public async Task<IActionResult> AllCustomer()
         {
-            return View();
+            var customers = await _userService.GetAllCustomers();
+            return View(customers);
         }
 
+        [HttpGet]
         public IActionResult AddCustomer()
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCustomer(UserDto dto)
+        {
+                dto.Password = "Customer123";
+                var user = new AppUser
+                {
+                    FullName = dto.FullName,
+                    IdentityCard = dto.IdentityCard,
+                    Gender = dto.Gender,
+                    DOB = dto.DOB,
+                    Address = dto.Address,
+                    Email = dto.Email,
+                    UserName = dto.Email,
+                    IsActive = true
+                };
+
+                var result = await _userManager.CreateAsync(user, dto.Password);
+                if (!result.Succeeded) return RedirectToAction("AddCustomer", "Admin");
+
+                await _userManager.AddToRoleAsync(user, "Customer");
+                return RedirectToAction("AllCustomer", "Admin");
+        }
+
 
         public IActionResult EditCustomer()
         {
@@ -61,7 +96,7 @@ namespace HomestayBooking.Controllers
         public async Task<IActionResult> AddRoom()
         {
             var roomTypes = await _roomTypeService.GetAll();
-            ViewBag.RoomTypes = roomTypes;    
+            ViewBag.RoomTypes = roomTypes;
             return View();
         }
 
