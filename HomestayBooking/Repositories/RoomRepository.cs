@@ -23,5 +23,24 @@ namespace HomestayBooking.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Room>> GetAvailableRooms(DateTime checkIn, DateTime checkOut)
+        {
+            var bookedRoomIds = await _appDbContext.Booking_Rooms
+                .Where(br =>
+                    br.Booking.Status == "Confirmed" &&
+                    (checkIn < br.Booking.CheckIn && checkOut > br.Booking.CheckIn))
+                .Select(br => br.RoomID)
+                .Distinct()
+                .ToListAsync();
+
+            return await _appDbContext.Rooms
+                .Include(r => r.RoomType)
+                .Where(r =>
+                    !bookedRoomIds.Contains(r.RoomID) &&
+                    r.RoomStatus == true &&
+                    !r.IsDeleted)
+                .ToListAsync();
+        }
+
     }
 }

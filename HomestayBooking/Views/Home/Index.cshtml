@@ -207,56 +207,67 @@
     <div class="booking-wrapper">
         <div class="container">
             <div class="booking-inner clearfix">
-                <form asp-controller="Booking" asp-action="Create" method="post" class="form1 clearfix">
-                    @Html.AntiForgeryToken()
-
-                    <div class="col-md-12">
-                        <label>Check In</label>
-                        <input asp-for="CheckIn" type="date" class="form-control" />
-                        <span asp-validation-for="CheckIn" class="text-danger"></span>
+                <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms.html" class="form1 clearfix">
+                    <div class="col1 c1">
+                        <div class="input1_wrapper">
+                            <label>Check in</label>
+                            <div class="input1_inner">
+                                <input type="text" class="form-control input datepicker" placeholder="Check in">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <label>Check Out</label>
-                        <input asp-for="CheckOut" type="date" class="form-control" />
-                        <span asp-validation-for="CheckOut" class="text-danger"></span>
+                    <div class="col1 c2">
+                        <div class="input1_wrapper">
+                            <label>Check out</label>
+                            <div class="input1_inner">
+                                <input type="text" class="form-control input datepicker" placeholder="Check out">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label>Adults</label>
-                        <input asp-for="Adults" type="number" class="form-control" min="1" />
+                    <div class="col2 c3">
+                        <div class="select1_wrapper">
+                            <label>Adults</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">1 Adult</option>
+                                    <option value="2">2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label>Children</label>
-                        <input asp-for="Children" type="number" class="form-control" min="0" />
+                    <div class="col2 c4">
+                        <div class="select1_wrapper">
+                            <label>Children</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">Children</option>
+                                    <option value="1">1 Child</option>
+                                    <option value="2">2 Children</option>
+                                    <option value="3">3 Children</option>
+                                    <option value="4">4 Children</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <label>Chọn phòng</label>
-                        @if (Model.AvailableRooms != null)
-                        {
-                            foreach (var room in Model.AvailableRooms)
-                            {
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"
-                                           name="SelectedRoomIds"
-                                           value="@room.RoomID"
-                                           id="room_@room.RoomID" />
-                                    <label class="form-check-label" for="room_@room.RoomID">
-                                        @room.RoomCode - @room.RoomType.TypeName
-                                    </label>
-                                </div>
-                            }
-                        }
-                        <span asp-validation-for="SelectedRoomIds" class="text-danger"></span>
+                    <div class="col2 c5">
+                        <div class="select1_wrapper">
+                            <label>Rooms</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">1 Room</option>
+                                    <option value="2">2 Rooms</option>
+                                    <option value="3">3 Rooms</option>
+                                    <option value="4">4 Rooms</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-12 mt-3">
-                        <button type="submit" class="btn btn-primary">Đặt phòng</button>
+                    <div class="col3 c6">
+                        <button type="submit" class="btn-form1-submit">Check Now</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -788,57 +799,19 @@
                                 <h4>Hotel Booking Form</h4>
                             </div>
                             <div class="booking-inner clearfix">
-                                <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms2.html" class="form1 clearfix">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check in</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check in">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check out</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check out">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Adults</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Adults</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Children</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Children</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
-                                        </div>
-                                    </div>
+                                @* Booking Form (Check Availability) *@
+                                <form asp-controller="Home" asp-action="Rooms" method="post" class="form1 clearfix">
+                                    @Html.AntiForgeryToken()
+
+                                    <input asp-for="CheckIn" type="date" class="form-control" />
+                                    <input asp-for="CheckOut" type="date" class="form-control" />
+                                    <input asp-for="Adults" type="number" min="1" class="form-control" />
+                                    <input asp-for="Children" type="number" min="0" class="form-control" />
+
+                                    <button type="submit" class="btn-form1-submit">Check Availability</button>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>

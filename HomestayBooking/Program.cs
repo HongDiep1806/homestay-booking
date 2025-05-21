@@ -48,6 +48,8 @@ namespace HomestayBooking
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
             builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
             //
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
