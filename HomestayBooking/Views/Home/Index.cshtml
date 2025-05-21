@@ -1,8 +1,11 @@
 ﻿@{
+
 }
+@model CreateBookingDto
+@using HomestayBooking.DTOs.BookingDto
 @using HomestayBooking.Models
 @using Microsoft.AspNetCore.Identity
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@* @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers *@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
@@ -204,67 +207,56 @@
     <div class="booking-wrapper">
         <div class="container">
             <div class="booking-inner clearfix">
-                <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms.html" class="form1 clearfix">
-                    <div class="col1 c1">
-                        <div class="input1_wrapper">
-                            <label>Check in</label>
-                            <div class="input1_inner">
-                                <input type="text" class="form-control input datepicker" placeholder="Check in">
-                            </div>
-                        </div>
+                <form asp-controller="Booking" asp-action="Create" method="post" class="form1 clearfix">
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-12">
+                        <label>Check In</label>
+                        <input asp-for="CheckIn" type="date" class="form-control" />
+                        <span asp-validation-for="CheckIn" class="text-danger"></span>
                     </div>
-                    <div class="col1 c2">
-                        <div class="input1_wrapper">
-                            <label>Check out</label>
-                            <div class="input1_inner">
-                                <input type="text" class="form-control input datepicker" placeholder="Check out">
-                            </div>
-                        </div>
+
+                    <div class="col-md-12">
+                        <label>Check Out</label>
+                        <input asp-for="CheckOut" type="date" class="form-control" />
+                        <span asp-validation-for="CheckOut" class="text-danger"></span>
                     </div>
-                    <div class="col2 c3">
-                        <div class="select1_wrapper">
-                            <label>Adults</label>
-                            <div class="select1_inner">
-                                <select class="select2 select" style="width: 100%">
-                                    <option value="1">1 Adult</option>
-                                    <option value="2">2 Adults</option>
-                                    <option value="3">3 Adults</option>
-                                    <option value="4">4 Adults</option>
-                                </select>
-                            </div>
-                        </div>
+
+                    <div class="col-md-6">
+                        <label>Adults</label>
+                        <input asp-for="Adults" type="number" class="form-control" min="1" />
                     </div>
-                    <div class="col2 c4">
-                        <div class="select1_wrapper">
-                            <label>Children</label>
-                            <div class="select1_inner">
-                                <select class="select2 select" style="width: 100%">
-                                    <option value="1">Children</option>
-                                    <option value="1">1 Child</option>
-                                    <option value="2">2 Children</option>
-                                    <option value="3">3 Children</option>
-                                    <option value="4">4 Children</option>
-                                </select>
-                            </div>
-                        </div>
+
+                    <div class="col-md-6">
+                        <label>Children</label>
+                        <input asp-for="Children" type="number" class="form-control" min="0" />
                     </div>
-                    <div class="col2 c5">
-                        <div class="select1_wrapper">
-                            <label>Rooms</label>
-                            <div class="select1_inner">
-                                <select class="select2 select" style="width: 100%">
-                                    <option value="1">1 Room</option>
-                                    <option value="2">2 Rooms</option>
-                                    <option value="3">3 Rooms</option>
-                                    <option value="4">4 Rooms</option>
-                                </select>
-                            </div>
-                        </div>
+
+                    <div class="col-md-12">
+                        <label>Chọn phòng</label>
+                        @if (Model.AvailableRooms != null)
+                        {
+                            foreach (var room in Model.AvailableRooms)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                           name="SelectedRoomIds"
+                                           value="@room.RoomID"
+                                           id="room_@room.RoomID" />
+                                    <label class="form-check-label" for="room_@room.RoomID">
+                                        @room.RoomCode - @room.RoomType.TypeName
+                                    </label>
+                                </div>
+                            }
+                        }
+                        <span asp-validation-for="SelectedRoomIds" class="text-danger"></span>
                     </div>
-                    <div class="col3 c6">
-                        <button type="submit" class="btn-form1-submit">Check Now</button>
+
+                    <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-primary">Đặt phòng</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

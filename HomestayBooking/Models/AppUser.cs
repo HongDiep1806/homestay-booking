@@ -10,7 +10,7 @@ namespace HomestayBooking.Models
         public string Gender { get; set; }
         public DateOnly DOB { get; set; }
         public string Address { get; set; }
-        public bool IsStaff { get; set; }
+        //public bool IsStaff { get; set; }
         public bool? IsActive { get; set; }
         public ICollection<Booking> Bookings { get; set; }
         public bool IsDeleted { get; set; } = false;

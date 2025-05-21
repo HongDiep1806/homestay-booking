@@ -41,6 +41,7 @@ namespace HomestayBooking.Service
             return _mapper.Map<List<RoomDto>>(await _roomRepository.GetAllWithRoomType());
         }
 
+
         public async Task<Room> GetById(int id)
         {
             var room = await _roomRepository.GetById(id);

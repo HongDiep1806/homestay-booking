@@ -42,12 +42,30 @@ namespace HomestayBooking.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                // Kiểm tra role
+                if (await _userManager.IsInRoleAsync(user, "Admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else if (await _userManager.IsInRoleAsync(user, "Customer"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (await _userManager.IsInRoleAsync(user, "Staff"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                // Nếu không thuộc role nào, logout và báo lỗi
+                await _signInManager.SignOutAsync();
+                ModelState.AddModelError(string.Empty, "Bạn không được cấp quyền để đăng nhập.");
+                return View(dto);
             }
 
             ModelState.AddModelError(string.Empty, "Đăng nhập thất bại. Kiểm tra email hoặc mật khẩu.");
             return View(dto);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -62,7 +80,7 @@ namespace HomestayBooking.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterDto dto)
+        public async Task<IActionResult> RegisterAdmin(RegisterDto dto)
         {
 
             var errors = new List<string>();
@@ -81,17 +99,15 @@ namespace HomestayBooking.Controllers
             user.Address = "Chưa cập nhật";
 
             user.IsActive = true;
-            user.IsStaff = false;
-            user.IsActive = true;
-            user.IsStaff = false;
-
+            //user.IsStaff = false;
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
-                Console.WriteLine("tao thanh cong");
+                await _userManager.AddToRoleAsync(user, "Admin");// Role
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Login", "Auth");
             }
+
             foreach (var error in result.Errors)
             {
                errors.Add(error.Description);
