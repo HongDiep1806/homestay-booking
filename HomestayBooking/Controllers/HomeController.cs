@@ -15,15 +15,17 @@ namespace HomestayBooking.Controllers
         private readonly IRoomService _roomService;
         private readonly IBookingService _bookingService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IRoomTypeService _roomTypeService;
         private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger, IRoomService roomService, IBookingService bookingService, UserManager<AppUser> userManager, IMapper mapper)
+        public HomeController(ILogger<HomeController> logger, IRoomTypeService roomTypeService, IRoomService roomService, IBookingService bookingService, UserManager<AppUser> userManager, IMapper mapper)
         {
             _logger = logger;
             _roomService = roomService;
             _bookingService = bookingService;
             _userManager = userManager;
             _mapper = mapper;
+            _roomTypeService = roomTypeService;
         }
 
         public IActionResult Index()
@@ -56,22 +58,17 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public IActionResult Rooms()
+        public async Task<IActionResult> Rooms()
         {
-            TempData.Keep("AvailableRoomTypes"); // giữ lại để F5 vẫn còn dùng
-
-            if (TempData["AvailableRoomTypes"] != null)
+            if (TempData["AvailableRoomTypeIds"] != null)
             {
-                var json = TempData["AvailableRoomTypes"] as string;
-                var availableRoomTypes = JsonConvert.DeserializeObject<List<RoomType>>(json);
-                Console.WriteLine(">>>>>> Có room type: " + availableRoomTypes.Count);
-                return View(availableRoomTypes);
+                var ids = JsonConvert.DeserializeObject<List<int>>(TempData["AvailableRoomTypeIds"].ToString());
+                var roomTypes = await _roomTypeService.GetByIds(ids);
+                return View(roomTypes); // View nhận List<RoomType>
             }
 
-            Console.WriteLine(">>>>>> Không có TempData");
-            return View(new List<RoomType>());
+            return RedirectToAction("Index");
         }
-
 
 
         public IActionResult Restaurant()
@@ -100,29 +97,23 @@ namespace HomestayBooking.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CheckAvailability(CreateBookingDto dto)
+        public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
         {
-            if (!ModelState.IsValid)
-                return View("Index", dto); // hoặc return về cùng view hiện tại nếu có lỗi
-
-            // Gọi service để lấy danh sách phòng trống theo điều kiện
             var availableRooms = await _roomService.GetAvailableRoomsAsync(dto.CheckIn, dto.CheckOut, dto.Adults, dto.Children);
 
-            // Lấy danh sách các loại phòng từ các phòng còn trống
-            var availableRoomTypes = availableRooms
-                .GroupBy(r => r.RoomTypeID)
-                .Select(g => g.First().RoomType)
+            var roomTypeIds = availableRooms
+                .Select(r => r.RoomTypeID)
+                .Distinct()
                 .ToList();
-            if(availableRoomTypes.Count == 0)
+
+            if (!roomTypeIds.Any())
             {
-               Console.WriteLine("Không có phòng nào trống trong khoảng thời gian đã chọn.");   
-                return View("Index", dto);
+                TempData["Message"] = "Không có phòng nào trống.";
+                return RedirectToAction("Index");
             }
 
-            // Lưu vào TempData hoặc chuyển qua ViewModel
-            TempData["AvailableRoomTypes"] = JsonConvert.SerializeObject(availableRoomTypes);
-
-            return RedirectToAction("Rooms", "Home");
+            TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
+            return RedirectToAction("Rooms");
         }
 
 

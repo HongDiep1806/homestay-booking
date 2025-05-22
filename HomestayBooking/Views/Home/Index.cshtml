@@ -800,7 +800,7 @@
                             </div>
                             <div class="booking-inner clearfix">
                                 @* Booking Form (Check Availability) *@
-                                <form asp-controller="Home" asp-action="Rooms" method="post" class="form1 clearfix">
+                                <form asp-controller="Home" asp-action="CheckAvailability" method="post" class="form1 clearfix">
                                     @Html.AntiForgeryToken()
 
                                     <input asp-for="CheckIn" type="date" class="form-control" />

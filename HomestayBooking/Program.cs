@@ -50,10 +50,15 @@ namespace HomestayBooking
             builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
             //
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddSession(); // Bật session
+
 
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -66,6 +71,8 @@ namespace HomestayBooking
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession(); // Kích hoạt session middleware
+
 
             app.UseAuthentication();
             app.UseAuthorization();
