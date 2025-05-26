@@ -21,7 +21,12 @@ namespace HomestayBooking
 
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging();
+            });
+
+
 
             //  Identity Configuration (AppUser + IdentityRole)
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>

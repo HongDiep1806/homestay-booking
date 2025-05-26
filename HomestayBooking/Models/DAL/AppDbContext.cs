@@ -28,5 +28,6 @@ namespace HomestayBooking.Models.DAL
                 .HasForeignKey(b => b.StaffId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }

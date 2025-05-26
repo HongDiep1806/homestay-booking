@@ -2,6 +2,7 @@
 {
     public class UserDto
     {
+        public string Id { get; set; }
         public string FullName { get; set; }
         public string IdentityCard { get; set; }
         public string Gender { get; set; }
