@@ -6,5 +6,6 @@ namespace HomestayBooking.Service
     {
         Task<List<RoomType>> GetAll();
         Task<List<RoomType>> GetByIds(List<int> ids);
+        Task<RoomType> GetById(int id); 
     }
 }

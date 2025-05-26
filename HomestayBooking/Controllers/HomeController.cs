@@ -32,8 +32,8 @@ namespace HomestayBooking.Controllers
         {
             var model = new CreateBookingDto
             {
-                CheckIn = DateTime.Today.AddDays(1),
-                CheckOut = DateTime.Today.AddDays(2),
+                CheckIn = DateTime.Today.AddDays(1).Date.AddHours(12), 
+                CheckOut = DateTime.Today.AddDays(2).Date.AddHours(12),
                 AvailableRooms = new List<Room>()
             };
 
@@ -91,10 +91,17 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public IActionResult RoomDetails()
+        //public IActionResult RoomDetails()
+        //{
+        //    return View();
+        //}
+        public async Task<IActionResult> RoomDetails(int id)
         {
-            return View();
+            var roomType = await _roomTypeService.GetById(id);
+
+            return View(roomType);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
@@ -115,6 +122,14 @@ namespace HomestayBooking.Controllers
             TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
             return RedirectToAction("Rooms");
         }
+        [HttpPost]
+        public IActionResult CreateBooking(CreateBookingDto dto)
+        {
+            // Lưu booking vào database
+            // Redirect hoặc return success message
+            return RedirectToAction("Index");
+        }
+
 
 
     }
