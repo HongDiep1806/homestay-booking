@@ -1,21 +1,43 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using AutoMapper;
+using HomestayBooking.DTOs.BookingDto;
 using HomestayBooking.Models;
+using HomestayBooking.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace HomestayBooking.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRoomService _roomService;
+        private readonly IBookingService _bookingService;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IRoomTypeService _roomTypeService;
+        private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IRoomTypeService roomTypeService, IRoomService roomService, IBookingService bookingService, UserManager<AppUser> userManager, IMapper mapper)
         {
             _logger = logger;
+            _roomService = roomService;
+            _bookingService = bookingService;
+            _userManager = userManager;
+            _mapper = mapper;
+            _roomTypeService = roomTypeService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new CreateBookingDto
+            {
+                CheckIn = DateTime.Today.AddDays(1).Date.AddHours(12), 
+                CheckOut = DateTime.Today.AddDays(2).Date.AddHours(12),
+                AvailableRooms = new List<Room>()
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -36,10 +58,19 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public IActionResult Rooms()
+        public async Task<IActionResult> Rooms()
         {
-            return View();
+            if (TempData["AvailableRoomTypeIds"] != null)
+            {
+                var ids = JsonConvert.DeserializeObject<List<int>>(TempData["AvailableRoomTypeIds"].ToString());
+                var roomTypes = await _roomTypeService.GetByIds(ids);
+                return View(roomTypes); // View nhận List<RoomType>
+            }
+
+            return RedirectToAction("Index");
         }
+
+
         public IActionResult Restaurant()
         {
             return View();
@@ -60,6 +91,46 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
+        //public IActionResult RoomDetails()
+        //{
+        //    return View();
+        //}
+        public async Task<IActionResult> RoomDetails(int id)
+        {
+            var roomType = await _roomTypeService.GetById(id);
+
+            return View(roomType);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
+        {
+            var availableRooms = await _roomService.GetAvailableRoomsAsync(dto.CheckIn, dto.CheckOut, dto.Adults, dto.Children);
+
+            var roomTypeIds = availableRooms
+                .Select(r => r.RoomTypeID)
+                .Distinct()
+                .ToList();
+
+            if (!roomTypeIds.Any())
+            {
+                TempData["Message"] = "Không có phòng nào trống.";
+                return RedirectToAction("Index");
+            }
+
+            TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
+            return RedirectToAction("Rooms");
+        }
+        [HttpPost]
+        public IActionResult CreateBooking(CreateBookingDto dto)
+        {
+            // Lưu booking vào database
+            // Redirect hoặc return success message
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomestayBooking.Models.DAL
 {
-    public class AppDbContext : IdentityDbContext<AppUser> 
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -27,6 +27,12 @@ namespace HomestayBooking.Models.DAL
                 .WithMany()
                 .HasForeignKey(b => b.StaffId)
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Room>()
+    .HasOne(r => r.RoomType)
+    .WithMany(rt => rt.Rooms)
+    .HasForeignKey(r => r.RoomTypeID)
+    .OnDelete(DeleteBehavior.Restrict);
+
         }
 
     }

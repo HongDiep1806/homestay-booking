@@ -6,5 +6,6 @@ namespace HomestayBooking.Repositories
     {
         Task<List<Room>> GetAllWithRoomType();
         Task<bool> DeleteRoom(int roomId);
+        Task<List<Room>> GetAvailableRooms(DateTime checkIn, DateTime checkOut);
     }
 }

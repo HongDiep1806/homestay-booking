@@ -42,12 +42,30 @@ namespace HomestayBooking.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                // Kiểm tra role
+                if (await _userManager.IsInRoleAsync(user, "Admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else if (await _userManager.IsInRoleAsync(user, "Customer"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (await _userManager.IsInRoleAsync(user, "Staff"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                // Nếu không thuộc role nào, logout và báo lỗi
+                await _signInManager.SignOutAsync();
+                ModelState.AddModelError(string.Empty, "Bạn không được cấp quyền để đăng nhập.");
+                return View(dto);
             }
 
             ModelState.AddModelError(string.Empty, "Đăng nhập thất bại. Kiểm tra email hoặc mật khẩu.");
             return View(dto);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -81,7 +99,6 @@ namespace HomestayBooking.Controllers
             user.Address = "Chưa cập nhật";
 
             user.IsActive = true;
-            //user.IsStaff = false;
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
@@ -92,14 +109,14 @@ namespace HomestayBooking.Controllers
 
             foreach (var error in result.Errors)
             {
-                errors.Add(error.Description);
+               errors.Add(error.Description);
                 Console.WriteLine(error.Description);
             }
-            if (errors.Count > 0)
+            if(errors.Count > 0)
             {
                 return View();
             }
-
+          
             Console.WriteLine($"FullName: {user.FullName}, Email: {user.Email}, UserName: {user.UserName}");
 
             return View(dto);
