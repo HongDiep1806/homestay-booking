@@ -34,5 +34,6 @@ namespace HomestayBooking.Models.DAL
     .OnDelete(DeleteBehavior.Restrict);
 
         }
+
     }
 }

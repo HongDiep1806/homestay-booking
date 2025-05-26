@@ -343,8 +343,10 @@
 														<div class="dropdown dropdown-action">
 															<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
 															<div class="dropdown-menu dropdown-menu-right">
-																<a class="dropdown-item" href="edit-customer.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-																<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+																<a class="dropdown-item" asp-action="EditCustomer" asp-controller="Admin" asp-route-email="@customer.Email">
+																	<i class="fas fa-pencil-alt m-r-5"></i> Edit
+																</a>
+																<a class="dropdown-item delete-customer-btn" href="#" data-customer-id="@customer.Id" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
 															</div>
 														</div>
 													</td>
@@ -362,6 +364,8 @@
 			<div id="delete_asset" class="modal fade delete-modal" role="dialog">
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
+						<form method="post" asp-action="DeleteCustomer" asp-controller="Admin">
+							<input type="hidden" id="deleteCustomerId" name="id" />
 						<div class="modal-body text-center">
 							<img src="~/assets/img/sent.png" alt="" width="50" height="46">
 							<h3 class="delete_class">Are you sure want to delete this Asset?</h3>
@@ -370,6 +374,7 @@
 								<button type="submit" class="btn btn-danger">Delete</button>
 							</div>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -378,6 +383,7 @@
 	</div>
 	<!-- /Main Wrapper -->
 	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script data-cfasync="false" src="~/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="~/assets/js/jquery-3.6.0.min.js" type="4b61fd394c7e5ca1808c7841-text/javascript"></script>
 	<!-- Bootstrap Core JS -->
@@ -395,6 +401,13 @@
 	<script src="~/assets/js/script.js" type="4b61fd394c7e5ca1808c7841-text/javascript"></script>
 	<script src="~/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4b61fd394c7e5ca1808c7841-|49" defer></script>
 	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9303071a7a3b0663","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+	<script>
+		$(document).on("click", ".delete-customer-btn", function () {
+			const customerId = $(this).data("customer-id");
+			console.log("Selected customer ID: ", customerId);
+			$("#deleteCustomerId").val(customerId);
+		});
+	</script>
 </body>
 
 

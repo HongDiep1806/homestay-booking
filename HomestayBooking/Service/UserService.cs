@@ -16,7 +16,7 @@ namespace HomestayBooking.Service
             _mapper = mapper;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(string id)
         {
             return await _userRepository.DeleteUser(id);
         }
@@ -25,24 +25,25 @@ namespace HomestayBooking.Service
         {
             return _mapper.Map<List<UserDto>>(await _userRepository.GetAllCustomers());
         }
-
-        public async Task<AppUser> GetById(int id)
+        public async Task<List<UserDto>> GetAllStaffs()
         {
-            var user = await _userRepository.GetById(id);
+            return _mapper.Map<List<UserDto>>(await _userRepository.GetAllStaffs());
+        }
+
+        public async Task<AppUser> GetByEmail(string email)
+        {
+            var user = await _userRepository.GetByEmail(email);
             if (user == null)
-            {
                 throw new Exception("User not found");
-            }
             return user;
         }
 
-        public async Task<bool> Update(int id, AppUser user)
+        public async Task<bool> UpdateByEmail(string email, AppUser user)
         {
-            var existingUser = await _userRepository.GetById(id);
+            var existingUser = await _userRepository.GetByEmail(email);
             if (existingUser == null)
-            {
                 return false;
-            }
+
             existingUser.FullName = user.FullName;
             existingUser.IdentityCard = user.IdentityCard;
             existingUser.Gender = user.Gender;
@@ -52,12 +53,12 @@ namespace HomestayBooking.Service
 
             try
             {
-                await _userRepository.Update(id, existingUser);
+                await _userRepository.Update(existingUser);
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error in UserService.Update: " + ex.Message);
+                Console.WriteLine("Error in UserService.UpdateByEmail: " + ex.Message);
                 return false;
             }
         }
