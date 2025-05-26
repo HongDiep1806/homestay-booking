@@ -11,5 +11,6 @@ namespace HomestayBooking.Service
         Task<bool> Update(int id, Room room);
         Task<bool> Delete(int id);
         Task<Room> GetById(int id);
+        Task<List<RoomDto>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int adults, int children);
     }
 }

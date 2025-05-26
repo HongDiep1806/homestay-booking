@@ -2,6 +2,7 @@
 using HomestayBooking.DTOs.RoomDto;
 using HomestayBooking.Models;
 using HomestayBooking.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomestayBooking.Service
 {
@@ -9,12 +10,14 @@ namespace HomestayBooking.Service
     public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
+        private readonly IRoomTypeRepository _roomTypeRepository;   
         private readonly IMapper _mapper;
 
-        public RoomService(IRoomRepository roomRepository, IMapper mapper)
+        public RoomService(IRoomRepository roomRepository, IMapper mapper, IRoomTypeRepository roomTypeRepository)
         {
             _roomRepository = roomRepository;
             _mapper = mapper;
+            _roomTypeRepository = roomTypeRepository;
         }
 
         public async Task<bool> Create(Room room)
@@ -40,6 +43,14 @@ namespace HomestayBooking.Service
         {
             return _mapper.Map<List<RoomDto>>(await _roomRepository.GetAllWithRoomType());
         }
+
+        public async Task<List<RoomDto>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int adults, int children)
+        {
+            var availableRooms = await _roomRepository.GetAvailableRooms(checkIn, checkOut);
+
+            return _mapper.Map<List<RoomDto>>(availableRooms);
+        }
+
 
         public async Task<Room> GetById(int id)
         {

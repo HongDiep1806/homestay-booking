@@ -6,8 +6,9 @@ namespace HomestayBooking.Service
     public interface IUserService
     {
         Task<List<UserDto>> GetAllCustomers();
-        Task<bool> Update(int id, AppUser user);
-        Task<bool> Delete(int id);
-        Task<AppUser> GetById(int id);
+        Task<List<UserDto>> GetAllStaffs();
+        Task<bool> UpdateByEmail(string email, AppUser user);
+        Task<bool> Delete(string id);
+        Task<AppUser> GetByEmail(string email);
     }
 }

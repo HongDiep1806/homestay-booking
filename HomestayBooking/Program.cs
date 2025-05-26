@@ -21,7 +21,12 @@ namespace HomestayBooking
 
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging();
+            });
+
+
 
             //  Identity Configuration (AppUser + IdentityRole)
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -48,12 +53,17 @@ namespace HomestayBooking
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
             builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             //
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddSession(); // Bật session
+
 
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -66,6 +76,8 @@ namespace HomestayBooking
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession(); // Kích hoạt session middleware
+
 
             app.UseAuthentication();
             app.UseAuthorization();
