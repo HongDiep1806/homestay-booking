@@ -12,5 +12,8 @@
         public string? StaffId { get; set; }     
         public AppUser? Staff { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
+
     }
 }

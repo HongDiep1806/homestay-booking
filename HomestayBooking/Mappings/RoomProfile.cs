@@ -10,6 +10,9 @@ namespace HomestayBooking.Mappings
         {
             CreateMap<Room, RoomDto>()
                 .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType.Name));
+            CreateMap<RoomDto, Room>()
+                .ForMember(dest => dest.RoomType, opt => opt.Ignore());
+
         }
     }
 }

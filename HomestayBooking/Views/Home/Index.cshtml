@@ -1,8 +1,11 @@
 ﻿@{
+
 }
+@model CreateBookingDto
+@using HomestayBooking.DTOs.BookingDto
 @using HomestayBooking.Models
 @using Microsoft.AspNetCore.Identity
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@* @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers *@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
@@ -796,57 +799,71 @@
                                 <h4>Hotel Booking Form</h4>
                             </div>
                             <div class="booking-inner clearfix">
-                                <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms2.html" class="form1 clearfix">
+                                @* Booking Form (Check Availability) *@
+                                <form asp-controller="Home" asp-action="CheckAvailability" method="post" class="form1 clearfix">
+                                    @Html.AntiForgeryToken()
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check in</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check in">
+
+                                    <div class="col-md-12">
+                                        <div class="input1_wrapper">
+                                            <label>Check in</label>
+                                            <div class="input1_inner">
+                                                    <input asp-for="CheckIn" asp-format="{0:MM/dd/yyyy}" type="text" class="form-control datepicker" />
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check out</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check out">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Adults</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Adults</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Children</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Children</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="input1_wrapper">
+                                            <label>Check out</label>
+                                            <div class="input1_inner">
+                                                    <input asp-for="CheckOut" asp-format="{0:MM/dd/yyy}" type="text" class="form-control datepicker" />
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="select1_wrapper">
+                                            <label>Adults</label>
+                                            <div class="select1_inner">
+                                                    <select asp-for="Adults" class="select2 select" style="width: 100%">
+                                                    <option value="1">1 Adult</option>
+                                                    <option value="2">2 Adults</option>
+                                                    <option value="3">3 Adults</option>
+                                                    <option value="4">4 Adults</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="select1_wrapper">
+                                            <label>Children</label>
+                                            <div class="select1_inner">
+                                                    <select asp-for="Children" class="select2 select" style="width: 100%">
+                                                    <option value="0">0 Children</option>
+                                                    <option value="1">1 Child</option>
+                                                    <option value="2">2 Children</option>
+                                                    <option value="3">3 Children</option>
+                                                    <option value="4">4 Children</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
+                                    </div>
+                                    </div>
+
+
+
+
+                                    @* <input asp-for="CheckIn" type="date" class="form-control" /> *@
+                                    @* <input asp-for="CheckOut" type="date" class="form-control" /> *@
+                                    @* <input asp-for="Adults" type="number" min="1" class="form-control" /> *@
+                                    @* <input asp-for="Children" type="number" min="0" class="form-control" /> *@
+
+                                    @* <button type="submit" class="btn-form1-submit">Check Availability</button> *@
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
@@ -948,6 +965,9 @@
         </div>
     </footer>
     <!-- jQuery -->
+    <script src="~/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/jquery-3.6.0.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
     <script src="@Url.Content("~/js/client/jquery-3.6.3.min.js")"></script>
     <script src="@Url.Content("~/js/client/jquery-migrate-3.0.0.min.js")"></script>
     <script src="@Url.Content("~/js/client/modernizr-2.6.2.min.js")"></script>
@@ -966,6 +986,15 @@
     <script src="@Url.Content("~/js/client/datepicker.js")"></script>
     <script src="@Url.Content("~/js/client/smooth-scroll.min.js")"></script>
     <script src="@Url.Content("~/js/client/custom.js")"></script>
+    <script>
+                // Trong custom.js hoặc dưới cùng file razor
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "mm/dd/yy" // Hoặc "dd/mm/yy" tùy ý
+            });
+        });
+
+    </script>
 </body>
 
 </html>

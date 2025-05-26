@@ -15,5 +15,19 @@ namespace HomestayBooking.Service
         {
             return await _roomTypeRepository.GetAll();
         }
+
+        public async Task<RoomType> GetById(int id)
+        {
+            return await _roomTypeRepository.GetById(id);
+        }
+
+        public async Task<List<RoomType>> GetByIds(List<int> ids)
+        {
+            var allRoomTypes = await _roomTypeRepository.GetAll();
+            return allRoomTypes
+                .Where(rt => ids.Contains(rt.RoomTypeID) && !rt.IsDeleted)
+                .ToList();
+        }
+
     }
 }
