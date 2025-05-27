@@ -32,9 +32,8 @@ namespace HomestayBooking.Controllers
         {
             var model = new CreateBookingDto
             {
-                CheckIn = DateTime.Today.AddDays(1).Date.AddHours(12), 
-                CheckOut = DateTime.Today.AddDays(2).Date.AddHours(12),
-                AvailableRooms = new List<Room>()
+                CheckInDate = DateTime.Today.AddDays(1).Date.AddHours(12), 
+                CheckOutDate = DateTime.Today.AddDays(2).Date.AddHours(12),
             };
 
             return View(model);
@@ -123,11 +122,15 @@ namespace HomestayBooking.Controllers
             return RedirectToAction("Rooms");
         }
         [HttpPost]
-        public IActionResult CreateBooking(CreateBookingDto dto)
+        public async Task<IActionResult> CreateBooking(CreateBookingDto dto)
         {
-            // Lưu booking vào database
-            // Redirect hoặc return success message
-            return RedirectToAction("Index");
+           var result = await _bookingService.CreateBooking(dto);
+            if (result)
+            {
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index", new { error = "Đặt phòng không thành công. Vui lòng thử lại." });  
         }
 
 
