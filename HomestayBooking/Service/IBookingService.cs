@@ -1,9 +1,10 @@
-﻿using HomestayBooking.Models;
+﻿using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.Models;
 
 namespace HomestayBooking.Service
 {
     public interface IBookingService
     {
-        Task CreateBooking(Booking booking);
+        Task<bool> CreateBooking(CreateBookingDto dto);
     }
 }
