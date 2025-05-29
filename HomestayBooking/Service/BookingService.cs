@@ -1,4 +1,5 @@
-﻿using HomestayBooking.Models;
+﻿using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.Models;
 using HomestayBooking.Repositories;
 
 namespace HomestayBooking.Service
@@ -11,9 +12,9 @@ namespace HomestayBooking.Service
         {
             _bookingRepository = bookingRepository;
         }
-        public async Task CreateBooking(Booking booking)
+        public async Task<bool> CreateBooking(CreateBookingDto dto)
         {
-            await _bookingRepository.CreateBooking(booking);
+            return await _bookingRepository.CreateBooking(dto);
         }
     }
 }
