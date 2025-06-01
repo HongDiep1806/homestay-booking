@@ -18,6 +18,8 @@ namespace HomestayBooking.Mappings
             CreateMap<UserDto, AppUser>()
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => (bool?)src.IsActive));
 
+            CreateMap<AppUser, UserDto>().ReverseMap();
+
             CreateMap<AppUser, UserDto>().ReverseMap()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
         }
