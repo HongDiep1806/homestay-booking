@@ -371,9 +371,64 @@ namespace HomestayBooking.Controllers
             return View();
         }
 
-        public IActionResult Profile()
+        [HttpGet]
+        public async Task<IActionResult> Profile()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var dto = new UserDto
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                IdentityCard = user.IdentityCard,
+                DOB = user.DOB,
+                Address = user.Address,
+                Gender = user.Gender
+            };
+            return View(dto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(UserDto dto)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.FullName = dto.FullName;
+            user.IdentityCard = dto.IdentityCard;
+            user.Address = dto.Address;
+            user.DOB = dto.DOB;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to update profile.";
+                return View("Profile", dto);
+            }
+            TempData["Success"] = "Profile updated successfully.";
+            return RedirectToAction("Profile");
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to change password.";
+                return View("ChangePassword");
+            }
+            TempData["Success"] = "Password changed successfully.";
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Auth");
         }
 
         public IActionResult EditProfile()
