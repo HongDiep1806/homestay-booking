@@ -74,19 +74,31 @@ namespace HomestayBooking.Repositories
             return true;
         }
 
-        public async Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity)
+        public async Task<List<int>> GetAvailableRoomTypeIdsAsync(
+    DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity)
         {
             int totalGuests = adults + childrens;
+            Console.WriteLine("checkin date input : " + checkIn);
+            Console.WriteLine("checkout date input : " + checkOut);
 
-            // Lấy ID các phòng đã được đặt trong khoảng ngày
-            var bookedRoomIds = await _appDbContext.Booking_Rooms
-                .Where(br =>
-                    br.Booking.Status != BookingStatus.Cancelled &&
-                    !(br.Booking.CheckOut <= checkIn || br.Booking.CheckIn >= checkOut))
-                .Select(br => br.RoomID)
-                .ToListAsync();
+            // Lấy các RoomID đã được đặt trong khoảng ngày checkIn–checkOut
+            var bookedRoomIds = await (from br in _appDbContext.Booking_Rooms
+                                       join b in _appDbContext.Bookings on br.BookingID equals b.BookingID
+                                       where
+                                           (b.Status == BookingStatus.Pending || b.Status == BookingStatus.Confirmed) &&
+                                           b.CheckOut > checkIn && b.CheckIn < checkOut
+                                       select br.RoomID)
+                           .Distinct()
+                           .ToListAsync();
 
-            // Lấy tất cả các RoomType đáp ứng số khách
+
+
+            Console.WriteLine("=== Booked Room IDs ===");
+            foreach (var roomId in bookedRoomIds)
+                Console.WriteLine($"RoomID booked: {roomId}");
+
+
+            // Lấy các RoomType đủ sức chứa khách
             var roomTypes = await _appDbContext.RoomTypes
                 .Where(rt => rt.Capacity >= totalGuests)
                 .ToListAsync();
@@ -95,12 +107,14 @@ namespace HomestayBooking.Repositories
 
             foreach (var rt in roomTypes)
             {
-                // Đếm số phòng thuộc loại này, chưa bị book và chưa bị xóa
                 int availableRoomCount = await _appDbContext.Rooms
-                    .Where(r => r.RoomTypeID == rt.RoomTypeID &&
-                                !bookedRoomIds.Contains(r.RoomID) &&
-                                !r.IsDeleted)
-                    .CountAsync();
+    .Where(r => r.RoomTypeID == rt.RoomTypeID &&
+                !bookedRoomIds.Contains(r.RoomID) &&
+                !r.IsDeleted)
+    .CountAsync();
+
+
+                Console.WriteLine($"RoomTypeID: {rt.RoomTypeID}, Available Rooms: {availableRoomCount}");
 
                 if (availableRoomCount >= roomQuantity)
                 {
@@ -110,7 +124,6 @@ namespace HomestayBooking.Repositories
 
             return roomTypeIdsWithEnoughRooms;
         }
-
 
     }
 }

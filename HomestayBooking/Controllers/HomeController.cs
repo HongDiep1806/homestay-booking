@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using AutoMapper;
 using HomestayBooking.DTOs.BookingDto;
 using HomestayBooking.Models;
@@ -30,10 +31,12 @@ namespace HomestayBooking.Controllers
 
         public IActionResult Index()
         {
-            var model = new CreateBookingDto
+            var model = new CheckingAvailableRoomDto
             {
-                CheckInDate = DateTime.Today.AddDays(1).Date.AddHours(12), 
-                CheckOutDate = DateTime.Today.AddDays(2).Date.AddHours(12),
+                CheckIn = DateTime.Today.AddDays(1).Date.AddHours(12), 
+                CheckOut = DateTime.Today.AddDays(2).Date.AddHours(12),
+                Adults = 1,
+                Children = 0,
             };
 
             return View(model);
@@ -57,16 +60,23 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Rooms()
+        public async Task<IActionResult> Rooms(string idsJson, string checkIn, string checkOut, int roomQuantity)
         {
-            if (TempData["AvailableRoomTypeIds"] != null)
+            if (string.IsNullOrEmpty(idsJson) || string.IsNullOrEmpty(checkIn) || string.IsNullOrEmpty(checkOut))
             {
-                var ids = JsonConvert.DeserializeObject<List<int>>(TempData["AvailableRoomTypeIds"].ToString());
-                var roomTypes = await _roomTypeService.GetByIds(ids);
-                return View(roomTypes); // View nhận List<RoomType>
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
+            var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+            ViewBag.CheckIn = parsedCheckIn;
+            ViewBag.CheckOut = parsedCheckOut;
+            ViewBag.RoomQuantity = roomQuantity;
+
+            var roomTypes = await _roomTypeService.GetByIds(ids);
+            return View(roomTypes);
         }
 
 
@@ -119,13 +129,16 @@ namespace HomestayBooking.Controllers
                 return RedirectToAction("Index");
             }
 
-            TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
-            TempData["RoomQuantity"] = dto.RoomQuantity;
-            TempData["CheckIn"] = dto.CheckIn.ToString("yyyy-MM-dd");
-            TempData["CheckOut"] = dto.CheckOut.ToString("yyyy-MM-dd");
-
-            return RedirectToAction("Rooms");
+            // Chuyển sang Rooms kèm theo các thông tin cần thiết
+            return RedirectToAction("Rooms", new
+            {
+                idsJson = JsonConvert.SerializeObject(roomTypeIds),
+                checkIn = dto.CheckIn.ToString("yyyy-MM-dd"),
+                checkOut = dto.CheckOut.ToString("yyyy-MM-dd"),
+                roomQuantity = dto.RoomQuantity
+            });
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto dto)

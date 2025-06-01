@@ -1,7 +1,7 @@
 ﻿@{
 
 }
-@model CreateBookingDto
+@model CheckingAvailableRoomDto
 @using HomestayBooking.DTOs.BookingDto
 @using HomestayBooking.Models
 @using Microsoft.AspNetCore.Identity
@@ -800,68 +800,35 @@
                             </div>
                             <div class="booking-inner clearfix">
                                 @* Booking Form (Check Availability) *@
-                                <form asp-controller="Home" asp-action="CheckAvailability" method="post" class="form1 clearfix">
-                                    @Html.AntiForgeryToken()
-                                    <div class="row">
-
-                                    <div class="col-md-12">
-                                        <div class="input1_wrapper">
-                                                <label class="form-label">Check in</label>
-                                            <div class="input1_inner">
-                                                    <input asp-for="CheckInDate" asp-format="{0:MM/dd/yyyy}" type="text" class="form-control datepicker" />
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="input1_wrapper">
-                                                <label class="form-label">Check out</label>
-                                            <div class="input1_inner">
-                                                    <input asp-for="CheckOutDate" asp-format="{0:MM/dd/yyy}" type="text" class="form-control datepicker" />
-                                                </div>
-                                        </div>
+                                <form asp-action="CheckAvailability" method="post" class="row g-3">
+                                    <div class="col-md-6">
+                                        <label asp-for="CheckIn" class="form-label">Check In</label>
+                                        <input asp-for="CheckIn" class="form-control" type="date" />
+                                        <span asp-validation-for="CheckIn" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="select1_wrapper">
-                                                <label class="form-label">Adults</label>
-                                            <div class="select1_inner">
-                                                    <select asp-for="Adults" class="select2 select" style="width: 100%">
-                                                    <option value="1">1 Adult</option>
-                                                    <option value="2">2 Adults</option>
-                                                    <option value="3">3 Adults</option>
-                                                    <option value="4">4 Adults</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <label asp-for="CheckOut" class="form-label">Check Out</label>
+                                        <input asp-for="CheckOut" class="form-control" type="date" />
+                                        <span asp-validation-for="CheckOut" class="text-danger"></span>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="select1_wrapper">
-                                                <label class="form-label">Children</label>
-                                            <div class="select1_inner">
-                                                    <select asp-for="Children" class="select2 select" style="width: 100%">
-                                                    <option value="0">0 Children</option>
-                                                    <option value="1">1 Child</option>
-                                                    <option value="2">2 Children</option>
-                                                    <option value="3">3 Children</option>
-                                                    <option value="4">4 Children</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label class="form-label">Quantity</label>
-                                                <div class="input1_inner no-icon">
-                                                    <input type="number" name="RoomQuantity" min="1" value="1" class="form-control" required />
-                                                </div>
-                                            </div>
-                                     </div>
 
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
+                                    <div class="col-md-4">
+                                        <label asp-for="Adults" class="form-label">Adults</label>
+                                        <input asp-for="Adults" class="form-control" type="number" min="1" />
                                     </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="Children" class="form-label">Children</label>
+                                        <input asp-for="Children" class="form-control" type="number" min="0" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="RoomQuantity" class="form-label">Rooms</label>
+                                        <input asp-for="RoomQuantity" class="form-control" type="number" min="1" />
+                                    </div>
+
+                                    <div class="col-12 text-end">
+                                        <button type="submit" class="btn btn-primary">Check Availability</button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
