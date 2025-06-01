@@ -34,15 +34,18 @@ namespace HomestayBooking.Repositories
             if (roomType == null)
                 throw new ArgumentException("Loại phòng không tồn tại.");
 
-            var availableRooms = await GetAvailableRoomsAsync(
-                dto.CheckInDate,
-                dto.CheckOutDate,
-                dto.Children,
-                dto.Adults
-            );
+            var availableRooms = await _appDbContext.Rooms
+                .Where(r =>
+                    r.RoomTypeID == dto.RoomTypeID &&
+                    !r.IsDeleted &&
+                    !_appDbContext.Booking_Rooms.Any(br =>
+                        br.RoomID == r.RoomID &&
+                        br.Booking.Status != BookingStatus.Cancelled &&
+                        !(br.Booking.CheckOut <= dto.CheckInDate || br.Booking.CheckIn >= dto.CheckOutDate)
+                    ))
+                .ToListAsync();
 
-            if (availableRooms.Count < dto.RoomQuantity)
-                throw new InvalidOperationException("Không đủ phòng trống.");
+            // Không cần check đủ hay không nữa vì UI đã lọc trước
 
             var totalNights = (dto.CheckOutDate - dto.CheckInDate).Days;
 
@@ -58,7 +61,8 @@ namespace HomestayBooking.Repositories
                 TotalPrice = roomType.Price * dto.RoomQuantity * totalNights
             };
 
-            foreach (var room in availableRooms)
+            var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
+            foreach (var room in roomsToAssign)
             {
                 booking.Booking_Rooms.Add(new Booking_Room
                 {
@@ -67,31 +71,46 @@ namespace HomestayBooking.Repositories
             }
 
             await CreateBooking(booking);
-
             return true;
         }
 
-        public async Task<List<Room>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int adults, int childrens)
+        public async Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity)
         {
-            int totalGuests = childrens + adults;
+            int totalGuests = adults + childrens;
+
+            // Lấy ID các phòng đã được đặt trong khoảng ngày
             var bookedRoomIds = await _appDbContext.Booking_Rooms
                 .Where(br =>
                     br.Booking.Status != BookingStatus.Cancelled &&
                     !(br.Booking.CheckOut <= checkIn || br.Booking.CheckIn >= checkOut))
                 .Select(br => br.RoomID)
-                .Distinct()
                 .ToListAsync();
-            var validRoomTypeIds = await _appDbContext.RoomTypes.Where(r => r.Capacity >= totalGuests)
-                .Select(r => r.RoomTypeID).ToListAsync();
-            var availableRooms = await _appDbContext.Rooms
-                    .Include(r => r.RoomType)
-                    .Where(r => !bookedRoomIds.Contains(r.RoomID) &&
-                    validRoomTypeIds.Contains(r.RoomTypeID) &&
-                    !r.IsDeleted)
-                    .ToListAsync();
 
-            return availableRooms;
+            // Lấy tất cả các RoomType đáp ứng số khách
+            var roomTypes = await _appDbContext.RoomTypes
+                .Where(rt => rt.Capacity >= totalGuests)
+                .ToListAsync();
+
+            var roomTypeIdsWithEnoughRooms = new List<int>();
+
+            foreach (var rt in roomTypes)
+            {
+                // Đếm số phòng thuộc loại này, chưa bị book và chưa bị xóa
+                int availableRoomCount = await _appDbContext.Rooms
+                    .Where(r => r.RoomTypeID == rt.RoomTypeID &&
+                                !bookedRoomIds.Contains(r.RoomID) &&
+                                !r.IsDeleted)
+                    .CountAsync();
+
+                if (availableRoomCount >= roomQuantity)
+                {
+                    roomTypeIdsWithEnoughRooms.Add(rt.RoomTypeID);
+                }
+            }
+
+            return roomTypeIdsWithEnoughRooms;
         }
+
 
     }
 }

@@ -105,22 +105,28 @@ namespace HomestayBooking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
         {
-            var availableRooms = await _roomService.GetAvailableRoomsAsync(dto.CheckIn, dto.CheckOut, dto.Adults, dto.Children);
-
-            var roomTypeIds = availableRooms
-                .Select(r => r.RoomTypeID)
-                .Distinct()
-                .ToList();
+            var roomTypeIds = await _bookingService.GetAvailableRoomTypeIdsAsync(
+                dto.CheckIn,
+                dto.CheckOut,
+                dto.Adults,
+                dto.Children,
+                dto.RoomQuantity
+            );
 
             if (!roomTypeIds.Any())
             {
-                TempData["Message"] = "Không có phòng nào trống.";
+                TempData["Message"] = "Không có loại phòng nào có đủ phòng trống.";
                 return RedirectToAction("Index");
             }
 
             TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
+            TempData["RoomQuantity"] = dto.RoomQuantity;
+            TempData["CheckIn"] = dto.CheckIn.ToString("yyyy-MM-dd");
+            TempData["CheckOut"] = dto.CheckOut.ToString("yyyy-MM-dd");
+
             return RedirectToAction("Rooms");
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto dto)
         {
