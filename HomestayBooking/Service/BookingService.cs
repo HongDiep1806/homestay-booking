@@ -16,5 +16,10 @@ namespace HomestayBooking.Service
         {
             return await _bookingRepository.CreateBooking(dto);
         }
+
+        public async Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int children, int roomQuantity)
+        {
+            return await _bookingRepository.GetAvailableRoomTypeIdsAsync(checkIn, checkOut, adults, children, roomQuantity);
+        }
     }
 }
