@@ -34,15 +34,18 @@ namespace HomestayBooking.Repositories
             if (roomType == null)
                 throw new ArgumentException("Loại phòng không tồn tại.");
 
-            var availableRooms = await GetAvailableRoomsAsync(
-                dto.CheckInDate,
-                dto.CheckOutDate,
-                dto.Children,
-                dto.Adults
-            );
+            var availableRooms = await _appDbContext.Rooms
+                .Where(r =>
+                    r.RoomTypeID == dto.RoomTypeID &&
+                    !r.IsDeleted &&
+                    !_appDbContext.Booking_Rooms.Any(br =>
+                        br.RoomID == r.RoomID &&
+                        br.Booking.Status != BookingStatus.Cancelled &&
+                        !(br.Booking.CheckOut <= dto.CheckInDate || br.Booking.CheckIn >= dto.CheckOutDate)
+                    ))
+                .ToListAsync();
 
-            if (availableRooms.Count < dto.RoomQuantity)
-                throw new InvalidOperationException("Không đủ phòng trống.");
+            // Không cần check đủ hay không nữa vì UI đã lọc trước
 
             var totalNights = (dto.CheckOutDate - dto.CheckInDate).Days;
 
@@ -58,7 +61,8 @@ namespace HomestayBooking.Repositories
                 TotalPrice = roomType.Price * dto.RoomQuantity * totalNights
             };
 
-            foreach (var room in availableRooms)
+            var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
+            foreach (var room in roomsToAssign)
             {
                 booking.Booking_Rooms.Add(new Booking_Room
                 {
@@ -67,30 +71,58 @@ namespace HomestayBooking.Repositories
             }
 
             await CreateBooking(booking);
-
             return true;
         }
 
-        public async Task<List<Room>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int adults, int childrens)
+        public async Task<List<int>> GetAvailableRoomTypeIdsAsync(
+    DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity)
         {
-            int totalGuests = childrens + adults;
-            var bookedRoomIds = await _appDbContext.Booking_Rooms
-                .Where(br =>
-                    br.Booking.Status != BookingStatus.Cancelled &&
-                    !(br.Booking.CheckOut <= checkIn || br.Booking.CheckIn >= checkOut))
-                .Select(br => br.RoomID)
-                .Distinct()
-                .ToListAsync();
-            var validRoomTypeIds = await _appDbContext.RoomTypes.Where(r => r.Capacity >= totalGuests)
-                .Select(r => r.RoomTypeID).ToListAsync();
-            var availableRooms = await _appDbContext.Rooms
-                    .Include(r => r.RoomType)
-                    .Where(r => !bookedRoomIds.Contains(r.RoomID) &&
-                    validRoomTypeIds.Contains(r.RoomTypeID) &&
-                    !r.IsDeleted)
-                    .ToListAsync();
+            int totalGuests = adults + childrens;
+            Console.WriteLine("checkin date input : " + checkIn);
+            Console.WriteLine("checkout date input : " + checkOut);
 
-            return availableRooms;
+            // Lấy các RoomID đã được đặt trong khoảng ngày checkIn–checkOut
+            var bookedRoomIds = await (from br in _appDbContext.Booking_Rooms
+                                       join b in _appDbContext.Bookings on br.BookingID equals b.BookingID
+                                       where
+                                           (b.Status == BookingStatus.Pending || b.Status == BookingStatus.Confirmed) &&
+                                           b.CheckOut > checkIn && b.CheckIn < checkOut
+                                       select br.RoomID)
+                           .Distinct()
+                           .ToListAsync();
+
+
+
+            Console.WriteLine("=== Booked Room IDs ===");
+            foreach (var roomId in bookedRoomIds)
+                Console.WriteLine($"RoomID booked: {roomId}");
+
+
+            // Lấy các RoomType đủ sức chứa khách
+            var roomTypes = await _appDbContext.RoomTypes
+                .Where(rt => rt.Capacity >= totalGuests)
+                .ToListAsync();
+
+            var roomTypeIdsWithEnoughRooms = new List<int>();
+
+            foreach (var rt in roomTypes)
+            {
+                int availableRoomCount = await _appDbContext.Rooms
+    .Where(r => r.RoomTypeID == rt.RoomTypeID &&
+                !bookedRoomIds.Contains(r.RoomID) &&
+                !r.IsDeleted)
+    .CountAsync();
+
+
+                Console.WriteLine($"RoomTypeID: {rt.RoomTypeID}, Available Rooms: {availableRoomCount}");
+
+                if (availableRoomCount >= roomQuantity)
+                {
+                    roomTypeIdsWithEnoughRooms.Add(rt.RoomTypeID);
+                }
+            }
+
+            return roomTypeIdsWithEnoughRooms;
         }
 
     }
