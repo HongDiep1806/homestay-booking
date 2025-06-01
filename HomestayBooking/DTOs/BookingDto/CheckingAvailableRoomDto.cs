@@ -11,5 +11,7 @@ namespace HomestayBooking.DTOs.BookingDto
         public DateTime CheckOut { get; set; }
         public int Adults { get; set; }
         public int Children { get; set; }
+        public int RoomQuantity { get; set; } 
+
     }
 }

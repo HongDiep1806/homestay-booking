@@ -1,11 +1,14 @@
-﻿using HomestayBooking.Models;
+﻿using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HomestayBooking.Repositories
 {
     public interface IBookingRepository: IBaseRepository<Booking>
     {
         Task CreateBooking(Booking booking);
-        Task<List<Room>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int adults, int children);
+        Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity);
+        Task<bool> CreateBooking(CreateBookingDto dto);
 
     }
 }

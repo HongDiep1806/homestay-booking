@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using AutoMapper;
 using HomestayBooking.DTOs.BookingDto;
 using HomestayBooking.Models;
@@ -30,11 +31,12 @@ namespace HomestayBooking.Controllers
 
         public IActionResult Index()
         {
-            var model = new CreateBookingDto
+            var model = new CheckingAvailableRoomDto
             {
                 CheckIn = DateTime.Today.AddDays(1).Date.AddHours(12), 
                 CheckOut = DateTime.Today.AddDays(2).Date.AddHours(12),
-                AvailableRooms = new List<Room>()
+                Adults = 1,
+                Children = 0,
             };
 
             return View(model);
@@ -58,16 +60,23 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Rooms()
+        public async Task<IActionResult> Rooms(string idsJson, string checkIn, string checkOut, int roomQuantity)
         {
-            if (TempData["AvailableRoomTypeIds"] != null)
+            if (string.IsNullOrEmpty(idsJson) || string.IsNullOrEmpty(checkIn) || string.IsNullOrEmpty(checkOut))
             {
-                var ids = JsonConvert.DeserializeObject<List<int>>(TempData["AvailableRoomTypeIds"].ToString());
-                var roomTypes = await _roomTypeService.GetByIds(ids);
-                return View(roomTypes); // View nhận List<RoomType>
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
+            var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+            ViewBag.CheckIn = parsedCheckIn;
+            ViewBag.CheckOut = parsedCheckOut;
+            ViewBag.RoomQuantity = roomQuantity;
+
+            var roomTypes = await _roomTypeService.GetByIds(ids);
+            return View(roomTypes);
         }
 
 
@@ -106,28 +115,41 @@ namespace HomestayBooking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
         {
-            var availableRooms = await _roomService.GetAvailableRoomsAsync(dto.CheckIn, dto.CheckOut, dto.Adults, dto.Children);
-
-            var roomTypeIds = availableRooms
-                .Select(r => r.RoomTypeID)
-                .Distinct()
-                .ToList();
+            var roomTypeIds = await _bookingService.GetAvailableRoomTypeIdsAsync(
+                dto.CheckIn,
+                dto.CheckOut,
+                dto.Adults,
+                dto.Children,
+                dto.RoomQuantity
+            );
 
             if (!roomTypeIds.Any())
             {
-                TempData["Message"] = "Không có phòng nào trống.";
+                TempData["Message"] = "Không có loại phòng nào có đủ phòng trống.";
                 return RedirectToAction("Index");
             }
 
-            TempData["AvailableRoomTypeIds"] = JsonConvert.SerializeObject(roomTypeIds);
-            return RedirectToAction("Rooms");
+            // Chuyển sang Rooms kèm theo các thông tin cần thiết
+            return RedirectToAction("Rooms", new
+            {
+                idsJson = JsonConvert.SerializeObject(roomTypeIds),
+                checkIn = dto.CheckIn.ToString("yyyy-MM-dd"),
+                checkOut = dto.CheckOut.ToString("yyyy-MM-dd"),
+                roomQuantity = dto.RoomQuantity
+            });
         }
+
+
         [HttpPost]
-        public IActionResult CreateBooking(CreateBookingDto dto)
+        public async Task<IActionResult> CreateBooking(CreateBookingDto dto)
         {
-            // Lưu booking vào database
-            // Redirect hoặc return success message
-            return RedirectToAction("Index");
+           var result = await _bookingService.CreateBooking(dto);
+            if (result)
+            {
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index", new { error = "Đặt phòng không thành công. Vui lòng thử lại." });  
         }
 
 

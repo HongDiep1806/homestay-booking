@@ -3578,9 +3578,9 @@ button.mfp-arrow {
     padding: 0;
     position: relative;
 }
-.form1 label {
+/*.form1 label {
     display: none;
-}
+}*/
 .form1 .col1 {
     float: left;
     width: 20%;

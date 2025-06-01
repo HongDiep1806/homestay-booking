@@ -1,9 +1,11 @@
-﻿using HomestayBooking.Models;
+﻿using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.Models;
 
 namespace HomestayBooking.Service
 {
     public interface IBookingService
     {
-        Task CreateBooking(Booking booking);
+        Task<bool> CreateBooking(CreateBookingDto dto);
+        Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int children, int roomQuantity);
     }
 }

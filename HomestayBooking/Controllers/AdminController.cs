@@ -267,9 +267,58 @@ namespace HomestayBooking.Controllers
             return RedirectToAction("AllStaff", "Admin");
         }
 
-        public IActionResult EditStaff()
+        [HttpGet]
+        public async Task<IActionResult> EditStaff(string email)
         {
-            return View();
+            var user = await _userService.GetByEmail(email);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var dto = new UserDto
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                IdentityCard = user.IdentityCard,
+                Gender = user.Gender,
+                DOB = user.DOB,
+                Address = user.Address,
+                IsActive = user.IsActive
+            };
+
+            return View(dto);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditStaff(UserDto dto)
+        {
+
+            var existingUser = await _userService.GetByEmail(dto.Email);
+            if (existingUser == null)
+            {
+                TempData["Error"] = "User not found.";
+                return View(dto);
+            }
+
+            existingUser.FullName = dto.FullName;
+            existingUser.IdentityCard = dto.IdentityCard;
+            existingUser.Gender = dto.Gender;
+            existingUser.DOB = dto.DOB;
+            existingUser.Address = dto.Address;
+            existingUser.IsActive = dto.IsActive;
+
+            var result = await _userService.UpdateByEmail(dto.Email, existingUser);
+
+            if (!result)
+            {
+                TempData["Error"] = "Failed to update customer.";
+                return View(dto);
+            }
+
+            TempData["Success"] = "Customer updated successfully.";
+            return RedirectToAction("AllStaff");
         }
 
         public IActionResult Invoice()
@@ -322,9 +371,64 @@ namespace HomestayBooking.Controllers
             return View();
         }
 
-        public IActionResult Profile()
+        [HttpGet]
+        public async Task<IActionResult> Profile()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var dto = new UserDto
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                IdentityCard = user.IdentityCard,
+                DOB = user.DOB,
+                Address = user.Address,
+                Gender = user.Gender
+            };
+            return View(dto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(UserDto dto)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.FullName = dto.FullName;
+            user.IdentityCard = dto.IdentityCard;
+            user.Address = dto.Address;
+            user.DOB = dto.DOB;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to update profile.";
+                return View("Profile", dto);
+            }
+            TempData["Success"] = "Profile updated successfully.";
+            return RedirectToAction("Profile");
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to change password.";
+                return View("ChangePassword");
+            }
+            TempData["Success"] = "Password changed successfully.";
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Auth");
         }
 
         public IActionResult EditProfile()
@@ -361,6 +465,17 @@ namespace HomestayBooking.Controllers
                 TempData["Error"] = "Failed to delete room.";
             }
             return RedirectToAction("AllCustomer");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteStaff(string id)
+        {
+            var result = await _userService.Delete(id);
+            if (!result)
+            {
+                TempData["Error"] = "Failed to delete room.";
+            }
+            return RedirectToAction("AllStaff");
         }
     }
 }

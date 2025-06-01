@@ -1,4 +1,6 @@
-﻿using HomestayBooking.Models;
+﻿using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HomestayBooking.Repositories
 {
