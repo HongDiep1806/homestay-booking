@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomestayBooking.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250521062906_DeleteColumn")]
-    partial class DeleteColumn
+    [Migration("20250602084124_initAgain26")]
+    partial class initAgain26
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,7 @@ namespace HomestayBooking.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
@@ -129,6 +129,12 @@ namespace HomestayBooking.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("CheckIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOut")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -139,12 +145,14 @@ namespace HomestayBooking.Migrations
                     b.Property<int>("RoomQuantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("RoomTypeID")
+                        .HasColumnType("int");
+
                     b.Property<string>("StaffId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
@@ -154,6 +162,8 @@ namespace HomestayBooking.Migrations
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("RoomTypeID");
 
                     b.HasIndex("StaffId");
 
@@ -223,6 +233,9 @@ namespace HomestayBooking.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomTypeID"));
 
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -236,9 +249,6 @@ namespace HomestayBooking.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
-
-                    b.Property<int>("RoomQuantity")
-                        .HasColumnType("int");
 
                     b.HasKey("RoomTypeID");
 
@@ -390,6 +400,12 @@ namespace HomestayBooking.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("HomestayBooking.Models.RoomType", "RoomType")
+                        .WithMany()
+                        .HasForeignKey("RoomTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HomestayBooking.Models.AppUser", "Staff")
                         .WithMany()
                         .HasForeignKey("StaffId")
@@ -397,13 +413,15 @@ namespace HomestayBooking.Migrations
 
                     b.Navigation("Customer");
 
+                    b.Navigation("RoomType");
+
                     b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("HomestayBooking.Models.Booking_Room", b =>
                 {
                     b.HasOne("HomestayBooking.Models.Booking", "Booking")
-                        .WithMany()
+                        .WithMany("Booking_Rooms")
                         .HasForeignKey("BookingID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -424,7 +442,7 @@ namespace HomestayBooking.Migrations
                     b.HasOne("HomestayBooking.Models.RoomType", "RoomType")
                         .WithMany("Rooms")
                         .HasForeignKey("RoomTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("RoomType");
@@ -484,6 +502,11 @@ namespace HomestayBooking.Migrations
             modelBuilder.Entity("HomestayBooking.Models.AppUser", b =>
                 {
                     b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("HomestayBooking.Models.Booking", b =>
+                {
+                    b.Navigation("Booking_Rooms");
                 });
 
             modelBuilder.Entity("HomestayBooking.Models.RoomType", b =>

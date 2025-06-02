@@ -1,5 +1,6 @@
 ﻿using HomestayBooking.Models;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HomestayBooking.Models
 {
@@ -11,6 +12,7 @@ namespace HomestayBooking.Models
         public DateOnly DOB { get; set; }
         public string Address { get; set; }
         public bool IsActive { get; set; } = true;
+        [InverseProperty("Customer")]
         public ICollection<Booking> Bookings { get; set; }
         public bool IsDeleted { get; set; } = false;
     }

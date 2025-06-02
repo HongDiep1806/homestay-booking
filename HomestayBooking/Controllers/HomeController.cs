@@ -149,17 +149,25 @@ namespace HomestayBooking.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBooking(CreateBookingDto dto)
         {
-           var result = await _bookingService.CreateBooking(dto);
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Index", new { error = "Bạn cần đăng nhập để đặt phòng." });
+            }
+
+            dto.UserId = user.Id; // 👈 Gán ID người dùng đang đăng nhập
+
+            var result = await _bookingService.CreateBooking(dto);
             if (result)
             {
                 return RedirectToAction("Index");
-
             }
-            return RedirectToAction("Index", new { error = "Đặt phòng không thành công. Vui lòng thử lại." });  
-        }
 
+            return RedirectToAction("Index", new { error = "Đặt phòng không thành công. Vui lòng thử lại." });
+        }
 
 
     }
