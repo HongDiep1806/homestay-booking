@@ -112,8 +112,7 @@ namespace HomestayBooking.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CheckAvailability(CheckingAvailableRoomDto dto)
+        public async Task<IActionResult> CheckAvailability([FromBody] CheckingAvailableRoomDto dto)
         {
             var roomTypeIds = await _bookingService.GetAvailableRoomTypeIdsAsync(
                 dto.CheckIn,
@@ -125,19 +124,28 @@ namespace HomestayBooking.Controllers
 
             if (!roomTypeIds.Any())
             {
-                TempData["Message"] = "Không có loại phòng nào có đủ phòng trống.";
-                return RedirectToAction("Index");
+                return Json(new
+                {
+                    success = false,
+                    message = "Không còn phòng trống phù hợp với yêu cầu của bạn !"
+                });
             }
 
-            // Chuyển sang Rooms kèm theo các thông tin cần thiết
-            return RedirectToAction("Rooms", new
+            var redirectUrl = Url.Action("Rooms", new
             {
                 idsJson = JsonConvert.SerializeObject(roomTypeIds),
                 checkIn = dto.CheckIn.ToString("yyyy-MM-dd"),
                 checkOut = dto.CheckOut.ToString("yyyy-MM-dd"),
                 roomQuantity = dto.RoomQuantity
             });
+
+            return Json(new
+            {
+                success = true,
+                redirectUrl
+            });
         }
+
 
 
         [HttpPost]
