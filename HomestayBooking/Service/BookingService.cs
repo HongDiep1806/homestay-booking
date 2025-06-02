@@ -21,5 +21,13 @@ namespace HomestayBooking.Service
         {
             return await _bookingRepository.GetAvailableRoomTypeIdsAsync(checkIn, checkOut, adults, children, roomQuantity);
         }
+        public async Task<List<Booking>> GetBookingAsync()
+        {
+            return await _bookingRepository.GetAllBooking();
+        }
+        public async Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto)
+        {
+            return await _bookingRepository.CreateBookingByStaffAsync(dto);
+        }
     }
 }

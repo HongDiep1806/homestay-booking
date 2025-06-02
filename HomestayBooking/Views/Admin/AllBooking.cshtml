@@ -1,4 +1,4 @@
-﻿
+﻿@model List<HomestayBooking.Models.Booking>
 @{
 }
 <!DOCTYPE html>
@@ -185,242 +185,58 @@
 										<thead>
 											<tr>
 												<th>Booking ID</th>
-												<th>Name</th>
+												<th>Customer</th>
+												<th>Room Quantity</th>
+												<th>Booking Date</th>
+												<th>Checkin</th>
+												<th>Checkout</th>
+												<th>Staff</th>
 												<th>Room Type</th>
-												<th>Total Numbers</th>
-												<th>Date</th>
-												<th>Time</th>
-												<th>Arrival Date</th>
-												<th>Depature Date</th>
-												<th>Email ID</th>
-												<th>Ph.Number</th>
+												<th>Total Price</th>
 												<th>Status</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>BKG-0001</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="/Admin/Profile" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-03.jpg"
-																 alt="User Image">
-														</a>
-														<a href="/Admin/Profile">Tommy Bernal <span>#0001</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>10</td>
-												<td>21-03-2020</td>
-												<td>11.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2753484a4a5e45425549464b67425f464a574b420944484a">[email&#160;protected]</a></td>
-												<td>631-254-6480</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+											@foreach (var booking in Model)
+											{
+												<tr>
+													<td>@booking.BookingID</td>
+													<td>@booking.Customer.FullName</td>
+													<td>@booking.RoomQuantity</td>
+													<td>@booking.BookingDate</td>
+													<td>@booking.CheckIn</td>
+													<td>@booking.CheckOut</td>
+													<td>@booking.Staff?.FullName</td>
+													<td>@booking.RoomType.Name</td>
+													<td>@booking.TotalPrice</td>
+													<td>
+														@switch (booking.Status)
+														{
+															case HomestayBooking.Models.BookingStatus.Pending:
+																<span class="badge badge-warning">Pending</span>
+																break;
+															case HomestayBooking.Models.BookingStatus.Confirmed:
+																<span class="badge badge-info">Confirmed</span>
+																break;
+															case HomestayBooking.Models.BookingStatus.Cancelled:
+																<span class="badge badge-danger">Cancelled</span>
+																break;
+															case HomestayBooking.Models.BookingStatus.Completed:
+																<span class="badge badge-success">Completed</span>
+																break;
+														}
+													</td>
+													<td class="text-right">
+														<div class="dropdown dropdown-action">
+															<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+															<div class="dropdown-menu dropdown-menu-right">
+																<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+															</div>
 														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0002</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="/Admin/Profile" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-04.jpg"
-																 alt="User Image">
-														</a>
-														<a href="/Admin/Profile">Richard Brobst <span>#0002</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>8</td>
-												<td>21-03-2020</td>
-												<td>09.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="384a515b50594a5c5a4a575a4b4c785d40595548545d165b5755">[email&#160;protected]</a></td>
-												<td>830-468-1042</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Inactive
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0003</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="/Admin/Profile" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-05.jpg"
-																 alt="User Image">
-														</a>
-														<a href="/Admin/Profile">Ellen Thill <span>#0003</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>10</td>
-												<td>21-03-2020</td>
-												<td>08.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82e7eeeee7ecf6eaebeeeec2e7fae3eff2eee7ace1edef">[email&#160;protected]</a></td>
-												<td>508-335-5531</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0004</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="/Admin/Profile" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-06.jpg"
-																 alt="User Image">
-														</a>
-														<a href="/Admin/Profile">Corina Kelsey <span>#0004</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>15</td>
-												<td>21-03-2020</td>
-												<td>12.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4a29253823242b212f26392f330a2f322b273a262f64292527">[email&#160;protected]</a></td>
-												<td>262-260-1170</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0005</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="/Admin/Profile" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-07.jpg"
-																 alt="User Image">
-														</a>
-														<a href="/Admin/Profile">Carolyn Lane <span>#0005</span></a>
-													</h2>
-												</td>
-												<td>Double</td>
-												<td>12</td>
-												<td>21-03-2020</td>
-												<td>06.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d0d2c1dcdfcadddfd2ddd6f3d6cbd2dec3dfd69dd0dcde">[email&#160;protected]</a></td>
-												<td>570-458-0070</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Active
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="edit-booking.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>BKG-0006</td>
-												<td>
-													<h2 class="table-avatar">
-														<a href="profile.html" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle"
-																 src="~/assets/img/profiles/avatar-08.jpg"
-																 alt="User Image">
-														</a>
-														<a href="profile.html">David Alvarez <span>#0006</span></a>
-													</h2>
-												</td>
-												<td>Single</td>
-												<td>7</td>
-												<td>21-03-2020</td>
-												<td>10.00 AM</td>
-												<td>22-03-2020</td>
-												<td>23-03-2020</td>
-												<td><a href="https://preadmin.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8aca9bea1aca9a4bea9baadb288adb0a9a5b8a4ade6aba7a5">[email&#160;protected]</a></td>
-												<td>212-414-9510</td>
-												<td>
-													<div class="actions">
-														<a href="#" class="btn btn-sm bg-success-light mr-2">
-															Inactive
-														</a>
-													</div>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="/Admin/EditBooking"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
+													</td>
+												</tr>
+											}
 										</tbody>
 									</table>
 								</div>
