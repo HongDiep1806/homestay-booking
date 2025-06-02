@@ -57,9 +57,11 @@ namespace HomestayBooking.Repositories
                 RoomQuantity = dto.RoomQuantity,
                 BookingDate = DateTime.Now,
                 CustomerId = userId,
+                StaffId = dto.StaffId, 
                 Status = BookingStatus.Pending,
                 TotalPrice = roomType.Price * dto.RoomQuantity * totalNights
             };
+
 
             var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
             foreach (var room in roomsToAssign)
