@@ -9,5 +9,7 @@ namespace HomestayBooking.Service
         Task<List<int>> GetAvailableRoomTypeIdsAsync(DateTime checkIn, DateTime checkOut, int adults, int children, int roomQuantity);
         Task<List<Booking>> GetBookingAsync();
         Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto);
+        Task<Booking> GetBookingByIdAsync(int bookingId);
+        Task<bool> UpdateBookingAsync(int bookingId, Booking updatedBooking);
     }
 }

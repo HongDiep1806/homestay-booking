@@ -110,10 +110,71 @@ namespace HomestayBooking.Controllers
             }
         }
 
-        public IActionResult EditBooking()
+        [HttpGet]
+        public async Task<IActionResult> EditBooking(int id)
         {
-            return View();
+            var booking = await _bookingService.GetBookingByIdAsync(id);
+            if (booking == null) return NotFound();
+
+            var customers = await _userService.GetAllCustomers();
+            var roomTypes = await _roomTypeService.GetAll();
+            var statuses = Enum.GetValues(typeof(BookingStatus))
+                .Cast<BookingStatus>()
+                .Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() });
+
+            ViewBag.Customers = new SelectList(customers, "Id", "FullName", booking.CustomerId);
+            ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name", booking.RoomTypeID);
+            ViewBag.Statuses = new SelectList(statuses, "Value", "Text", booking.Status);
+
+            return View(booking);
         }
+        [HttpPost]
+        public async Task<IActionResult> EditBooking(int id, Booking booking)
+        {
+            var existingBooking = await _bookingService.GetBookingByIdAsync(id);
+            if (existingBooking == null) return NotFound();
+
+            var errors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(booking.CustomerId))
+                errors.Add("Vui lòng chọn khách hàng.");
+            if (booking.RoomTypeID <= 0)
+                errors.Add("Vui lòng chọn loại phòng.");
+            if (booking.RoomQuantity <= 0)
+                errors.Add("Số lượng phòng không hợp lệ.");
+            if (booking.CheckIn >= booking.CheckOut)
+                errors.Add("Ngày trả phòng phải sau ngày nhận phòng.");
+
+            if (errors.Any())
+            {
+                ViewBag.Errors = errors;
+
+                var customers = await _userService.GetAllCustomers();
+                var roomTypes = await _roomTypeService.GetAll();
+                var statuses = Enum.GetValues(typeof(BookingStatus))
+                    .Cast<BookingStatus>()
+                    .Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() });
+
+                ViewBag.Customers = new SelectList(customers, "Id", "FullName", booking.CustomerId);
+                ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name", booking.RoomTypeID);
+                ViewBag.Statuses = new SelectList(statuses, "Value", "Text", booking.Status.ToString());
+
+                return View(booking);
+            }
+
+            existingBooking.CustomerId = booking.CustomerId;
+            existingBooking.RoomTypeID = booking.RoomTypeID;
+            existingBooking.RoomQuantity = booking.RoomQuantity;
+            existingBooking.CheckIn = booking.CheckIn;
+            existingBooking.CheckOut = booking.CheckOut;
+            existingBooking.Status = booking.Status;
+
+            await _bookingService.UpdateBookingAsync(id, existingBooking);
+            TempData["Success"] = "Cập nhật booking thành công!";
+            return RedirectToAction("AllBooking");
+        }
+
+
 
         public async Task<IActionResult> AllCustomer()
         {
