@@ -452,9 +452,10 @@ namespace HomestayBooking.Controllers
             return RedirectToAction("AllStaff");
         }
 
-        public IActionResult Invoice()
+        public async Task<IActionResult> Invoice()
         {
-            return View();
+            var invoices = await _bookingService.GetInvoiceAsync();
+            return View(invoices);
         }
 
         public IActionResult ForgotPassword()

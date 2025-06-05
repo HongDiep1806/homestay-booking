@@ -29,6 +29,16 @@ namespace HomestayBooking.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Booking>> GetInvoice()
+        {
+            return await _appDbContext.Bookings
+                .Where(b => !b.IsDeleted && b.Status == BookingStatus.Completed)
+                .Include(b => b.RoomType)
+                .Include(b => b.Customer)
+                .Include(b => b.Staff)
+                .ToListAsync();
+        }
+
         public async Task CreateBooking(Booking booking)
         {
             await Create(booking);

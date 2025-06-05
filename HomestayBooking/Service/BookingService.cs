@@ -25,6 +25,11 @@ namespace HomestayBooking.Service
         {
             return await _bookingRepository.GetAllBooking();
         }
+
+        public async Task<List<Booking>> GetInvoiceAsync()
+        {
+            return await _bookingRepository.GetInvoice();
+        }
         public async Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto)
         {
             return await _bookingRepository.CreateBookingByStaffAsync(dto);
