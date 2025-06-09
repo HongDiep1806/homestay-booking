@@ -1,17 +1,17 @@
 
 $(document).ready(function() {
 	// barChart();
-	lineChart();
+	//lineChart();
 	// areaChart();
 	donutChart();
-	pieChart();
+	//pieChart();
   
 	$(window).resize(function() {
 	//   window.barChart.redraw();
-	  window.lineChart.redraw();
+	 // window.lineChart.redraw();
 	//   window.areaChart.redraw();
 	  window.donutChart.redraw();
-	  window.pieChart.redraw();
+	 // window.pieChart.redraw();
 	});
   });
   

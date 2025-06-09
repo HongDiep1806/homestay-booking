@@ -28,10 +28,40 @@ namespace HomestayBooking.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var bookings = await _bookingService.GetBookingAsync(); 
+            var recentBookings = bookings
+                .OrderByDescending(b => b.BookingID)
+                .Where(b => b.Status != BookingStatus.Cancelled)
+                .Take(5)
+                .ToList();
+
+            var rooms = await _roomService.GetAll(); 
+            var availableRooms = rooms.Count(r => r.RoomStatus == true); 
+
+
+            var roomTypeRatios = bookings
+                .Where(b => b != null && b.RoomType != null) 
+                .GroupBy(b => b.RoomType.Name)
+                .Select(g => new RoomTypeRatioItem
+                {
+                    RoomTypeName = g.Key,
+                    Count = g.Count()
+                })
+                .ToList();
+
+            var model = new HotelDashboardViewModel
+            {
+                TotalBookings = bookings.Count(),
+                AvailableRooms = availableRooms,
+                RoomTypeRatios = roomTypeRatios,
+                RecentBookings = recentBookings
+            };
+
+            return View(model);
         }
+
 
         public async Task<IActionResult> AllBooking()
         {
