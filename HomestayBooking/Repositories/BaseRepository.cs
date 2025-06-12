@@ -16,12 +16,22 @@ namespace HomestayBooking.Repositories
         {
             throw new NotImplementedException();
         }
+    public async Task Create(T entity)
+{
+    try
+    {
+                Console.WriteLine($"Attempting to add {typeof(T).Name} to the database...");
+                await _appDbContext.Set<T>().AddAsync(entity);
+        var changes = await _appDbContext.SaveChangesAsync();
+        Console.WriteLine($"Successfully added {typeof(T).Name} to the database. Number of records saved: {changes}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error adding {typeof(T).Name} to the database: {ex.Message}");
+    }
+}
 
-        public async Task Create(T entity)
-        {
-            await _appDbContext.Set<T>().AddAsync(entity);
-            await _appDbContext.SaveChangesAsync();
-        }
+
 
         public async Task<bool> DeleteAsync(int id)
         {

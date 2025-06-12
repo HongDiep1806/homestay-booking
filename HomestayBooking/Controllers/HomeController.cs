@@ -63,20 +63,26 @@ namespace HomestayBooking.Controllers
         public async Task<IActionResult> Rooms(string idsJson, string checkIn, string checkOut, int roomQuantity)
         {
             if (string.IsNullOrEmpty(idsJson) || string.IsNullOrEmpty(checkIn) || string.IsNullOrEmpty(checkOut))
-            {
                 return RedirectToAction("Index");
-            }
 
             var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
             var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            ViewBag.CheckIn = parsedCheckIn;
-            ViewBag.CheckOut = parsedCheckOut;
-            ViewBag.RoomQuantity = roomQuantity;
-
             var roomTypes = await _roomTypeService.GetByIds(ids);
-            return View(roomTypes);
+
+            var viewModel = new RoomsViewModel
+            {
+                RoomTypes = roomTypes,
+                BookingInfo = new CreateBookingDto
+                {
+                    CheckInDate = parsedCheckIn,
+                    CheckOutDate = parsedCheckOut,
+                    RoomQuantity = roomQuantity
+                }
+            };
+
+            return View(viewModel);
         }
 
 
@@ -167,6 +173,59 @@ namespace HomestayBooking.Controllers
             }
 
             return RedirectToAction("Index", new { error = "Đặt phòng không thành công. Vui lòng thử lại." });
+        }
+        [HttpPost]
+        public async Task<IActionResult> ValidateAvailability([FromBody] CreateBookingDto dto)
+        {
+            Console.WriteLine("Check-in: " + dto.CheckInDate.ToString("yyyy-MM-dd HH:mm:ss"));
+            Console.WriteLine("Check-out: " + dto.CheckOutDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            if (dto.CheckOutDate.Date <= dto.CheckInDate.Date)
+            {
+                return Json(new { success = false, message = "Ngày trả phòng phải sau ngày nhận phòng." });
+            }
+
+            var isAvailable = await _bookingService.CheckAvailability(dto);
+            if (isAvailable)
+            {
+                await _bookingService.CreateBooking(dto);
+                return Json(new { success = true });
+
+            }    
+
+
+            return Json(new { success = false, message = "Không còn phòng trống." });
+        }
+        [HttpPost]
+        [HttpPost]
+        public async Task<IActionResult> ConfirmBookingWithCheck([FromBody] CreateBookingDto dto)
+        {
+            if (dto.CheckOutDate <= dto.CheckInDate)
+            {
+                return Json(new { success = false, message = "Ngày trả phòng phải sau ngày nhận phòng." });
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Bạn cần đăng nhập để đặt phòng." });
+            }
+
+            dto.UserId = user.Id;
+
+            var isAvailable = await _bookingService.CheckAvailability(dto);
+            if (!isAvailable)
+            {
+                return Json(new { success = false, message = "Không còn phòng trống cho ngày bạn chọn." });
+            }
+
+            var created = await _bookingService.CreateBooking(dto);
+            if (!created)
+            {
+                return Json(new { success = false, message = "Đặt phòng thất bại. Vui lòng thử lại." });
+            }
+
+            return Json(new { success = true });
         }
 
 

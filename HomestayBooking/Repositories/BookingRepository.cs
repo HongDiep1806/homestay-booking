@@ -4,6 +4,7 @@ using HomestayBooking.Models.DAL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
 
 namespace HomestayBooking.Repositories
@@ -17,11 +18,6 @@ namespace HomestayBooking.Repositories
         {
             _httpContextAccessor = htppContextAccessor;
             _roomTypeRepository = roomTypeRepository;
-        }
-
-        public async Task CreateBooking(Booking booking)
-        {
-            await Create(booking);
         }
 
         public async Task<bool> CreateBooking(CreateBookingDto dto)
@@ -57,11 +53,14 @@ namespace HomestayBooking.Repositories
                 RoomQuantity = dto.RoomQuantity,
                 BookingDate = DateTime.Now,
                 CustomerId = userId,
-                StaffId = dto.StaffId, 
+                StaffId = dto.StaffId,
                 Status = BookingStatus.Pending,
-                TotalPrice = roomType.Price * dto.RoomQuantity * totalNights
+                TotalPrice = roomType.Price * dto.RoomQuantity * totalNights,
+                Booking_Rooms = new List<Booking_Room>()
             };
 
+            // Log the booking object to check if it’s being created correctly
+            Console.WriteLine(JsonConvert.SerializeObject(booking));
 
             var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
             foreach (var room in roomsToAssign)
@@ -72,7 +71,7 @@ namespace HomestayBooking.Repositories
                 });
             }
 
-            await CreateBooking(booking);
+            await Create(booking);
             return true;
         }
 
@@ -126,7 +125,23 @@ namespace HomestayBooking.Repositories
 
             return roomTypeIdsWithEnoughRooms;
         }
+        public async Task<bool> CheckAvailability(CreateBookingDto dto)
+        {
+            var availableRooms = await _appDbContext.Rooms
+                .Where(r =>
+                    r.RoomTypeID == dto.RoomTypeID &&
+                    !r.IsDeleted &&
+                    !_appDbContext.Booking_Rooms.Any(br =>
+                        br.RoomID == r.RoomID &&
+                        br.Booking.Status != BookingStatus.Cancelled &&
+                        !(br.Booking.CheckOut <= dto.CheckInDate || br.Booking.CheckIn >= dto.CheckOutDate)
+                    ))
+                .CountAsync();
 
+            return availableRooms >= dto.RoomQuantity;
+        }
+
+  
     }
 }
 
