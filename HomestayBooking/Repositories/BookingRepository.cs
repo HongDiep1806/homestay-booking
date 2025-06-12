@@ -20,6 +20,31 @@ namespace HomestayBooking.Repositories
             _roomTypeRepository = roomTypeRepository;
         }
 
+        public async Task<List<Booking>> GetAllBooking()
+        {
+            return await _appDbContext.Bookings
+                .Where(b => !b.IsDeleted)
+                .Include(b => b.RoomType)
+                .Include(b => b.Customer)
+                .Include(b => b.Staff)
+                .ToListAsync();
+        }
+
+        public async Task<List<Booking>> GetInvoice()
+        {
+            return await _appDbContext.Bookings
+                .Where(b => !b.IsDeleted && b.Status == BookingStatus.Completed)
+                .Include(b => b.RoomType)
+                .Include(b => b.Customer)
+                .Include(b => b.Staff)
+                .ToListAsync();
+        }
+
+        public async Task CreateBooking(Booking booking)
+        {
+            await Create(booking);
+        }
+
         public async Task<bool> CreateBooking(CreateBookingDto dto)
         {
             var userId = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -59,8 +84,6 @@ namespace HomestayBooking.Repositories
                 Booking_Rooms = new List<Booking_Room>()
             };
 
-            // Log the booking object to check if it’s being created correctly
-            Console.WriteLine(JsonConvert.SerializeObject(booking));
 
             var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
             foreach (var room in roomsToAssign)
@@ -74,6 +97,64 @@ namespace HomestayBooking.Repositories
             await Create(booking);
             return true;
         }
+
+        public async Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto)
+        {
+            var staffId = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(staffId))
+                throw new UnauthorizedAccessException("Bạn chưa đăng nhập.");
+
+            var roomType = await _roomTypeRepository.GetById(dto.RoomTypeID);
+            if (roomType == null)
+                throw new ArgumentException("Loại phòng không tồn tại.");
+            var availableRoomTypeIds = await GetAvailableRoomTypeIdsAsync(dto.CheckInDate, dto.CheckOutDate, 1, 0, dto.RoomQuantity);
+            if (availableRoomTypeIds == null || !availableRoomTypeIds.Any())
+            {
+                throw new InvalidOperationException("Hết phòng rồi bé ơi.");
+            }
+
+            var availableRooms = await _appDbContext.Rooms
+                .Where(r =>
+                    r.RoomTypeID == dto.RoomTypeID &&
+                    !r.IsDeleted &&
+                    !_appDbContext.Booking_Rooms.Any(br =>
+                        br.RoomID == r.RoomID &&
+                        br.Booking.Status != BookingStatus.Cancelled &&
+                        !(br.Booking.CheckOut <= dto.CheckInDate || br.Booking.CheckIn >= dto.CheckOutDate)
+                    ))
+                .ToListAsync();
+
+            if (availableRooms.Count < dto.RoomQuantity)
+                throw new InvalidOperationException("Không đủ phòng trống.");
+
+            var totalNights = (dto.CheckOutDate - dto.CheckInDate).Days;
+
+            var booking = new Booking
+            {
+                RoomTypeID = dto.RoomTypeID,
+                CheckIn = dto.CheckInDate,
+                CheckOut = dto.CheckOutDate,
+                RoomQuantity = dto.RoomQuantity,
+                BookingDate = DateTime.Now,
+                CustomerId = dto.CustomerId,
+                StaffId = staffId,
+                Status = BookingStatus.Pending,
+                TotalPrice = roomType.Price * dto.RoomQuantity * totalNights
+            };
+
+            var roomsToAssign = availableRooms.Take(dto.RoomQuantity).ToList();
+            foreach (var room in roomsToAssign)
+            {
+                booking.Booking_Rooms.Add(new Booking_Room
+                {
+                    RoomID = room.RoomID
+                });
+            }
+
+            await Create(booking);
+            return true;
+        }
+
 
         public async Task<List<int>> GetAvailableRoomTypeIdsAsync(
     DateTime checkIn, DateTime checkOut, int adults, int childrens, int roomQuantity)
@@ -141,7 +222,7 @@ namespace HomestayBooking.Repositories
             return availableRooms >= dto.RoomQuantity;
         }
 
-  
+
     }
 }
 
