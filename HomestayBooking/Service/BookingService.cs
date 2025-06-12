@@ -12,6 +12,12 @@ namespace HomestayBooking.Service
         {
             _bookingRepository = bookingRepository;
         }
+
+        public async Task<bool> CheckAvailability(CreateBookingDto dto)
+        {
+            return await _bookingRepository.CheckAvailability(dto);
+        }
+
         public async Task<bool> CreateBooking(CreateBookingDto dto)
         {
             return await _bookingRepository.CreateBooking(dto);

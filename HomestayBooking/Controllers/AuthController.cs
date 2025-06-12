@@ -102,7 +102,7 @@ namespace HomestayBooking.Controllers
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "Admin");// Role
+                await _userManager.AddToRoleAsync(user, "Admin");
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Login", "Auth");
             }

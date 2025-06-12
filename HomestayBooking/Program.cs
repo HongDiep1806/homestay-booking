@@ -47,6 +47,7 @@ namespace HomestayBooking
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
             builder.Services.AddScoped<IRoomService, RoomService>();
 
+            builder.Services.AddHttpContextAccessor(); 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();

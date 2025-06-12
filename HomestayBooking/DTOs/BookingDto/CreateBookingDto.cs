@@ -21,6 +21,9 @@ namespace HomestayBooking.DTOs.BookingDto
 
         [Range(0, 10)]
         public int Children { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        public string StaffId { get; set; } = null;
     }
 
 }
