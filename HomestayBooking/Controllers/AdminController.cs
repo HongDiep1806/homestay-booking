@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using HomestayBooking.DTOs.BookingDto;
 using HomestayBooking.DTOs.UserDto;
 using HomestayBooking.Models;
 using HomestayBooking.Service;
@@ -15,35 +16,195 @@ namespace HomestayBooking.Controllers
         private readonly IRoomTypeService _roomTypeService;
         private readonly IRoomService _roomService;
         private readonly IUserService _userService;
+        private readonly IBookingService _bookingService;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
-        public AdminController(IRoomTypeService roomTypeService, IRoomService roomService, IUserService userService, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public AdminController(IRoomTypeService roomTypeService, IRoomService roomService, IUserService userService, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IBookingService bookingService)
         {
             _roomTypeService = roomTypeService;
             _roomService = roomService;
             _userService = userService;
+            _bookingService = bookingService;
             _signInManager = signInManager;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var bookings = await _bookingService.GetBookingAsync(); 
+            var recentBookings = bookings
+                .OrderByDescending(b => b.BookingID)
+                .Where(b => b.Status != BookingStatus.Cancelled)
+                .Take(5)
+                .ToList();
+
+            var rooms = await _roomService.GetAll(); 
+            var availableRooms = rooms.Count(r => r.RoomStatus == true); 
+
+
+            var roomTypeRatios = bookings
+                .Where(b => b != null && b.RoomType != null) 
+                .GroupBy(b => b.RoomType.Name)
+                .Select(g => new RoomTypeRatioItem
+                {
+                    RoomTypeName = g.Key,
+                    Count = g.Count()
+                })
+                .ToList();
+
+            var model = new HotelDashboardViewModel
+            {
+                TotalBookings = bookings.Count(),
+                AvailableRooms = availableRooms,
+                RoomTypeRatios = roomTypeRatios,
+                RecentBookings = recentBookings
+            };
+
+            return View(model);
         }
 
-        public IActionResult AllBooking()
+
+        public async Task<IActionResult> AllBooking()
         {
-            return View();
+            var bookings = await _bookingService.GetBookingAsync();
+            return View(bookings);
+        }
+        [HttpGet]
+        public async Task<IActionResult> AddBooking()
+        {
+            try
+            {
+                var customers = await _userService.GetAllCustomers();
+                var roomTypes = await _roomTypeService.GetAll();
+
+                ViewBag.Customers = new SelectList(customers, "Id", "FullName");
+                ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name");
+
+                var dto = new CreateBookingByStaffDto
+                {
+                    CheckInDate = DateTime.Today,
+                    CheckOutDate = DateTime.Today.AddDays(1)
+                };
+
+                return View(dto);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Lỗi khi tải dữ liệu đặt phòng: " + ex.Message;
+                return RedirectToAction("AllBooking");
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddBooking(CreateBookingByStaffDto dto)
+        {
+            var errors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(dto.CustomerId))
+                errors.Add("Vui lòng chọn khách hàng.");
+            if (dto.RoomTypeID <= 0)
+                errors.Add("Vui lòng chọn loại phòng.");
+            if (dto.CheckInDate == default || dto.CheckOutDate == default)
+                errors.Add("Vui lòng nhập ngày nhận và trả phòng.");
+            if (dto.CheckInDate >= dto.CheckOutDate)
+                errors.Add("Ngày trả phòng phải sau ngày nhận phòng.");
+            if (dto.RoomQuantity <= 0)
+                errors.Add("Số lượng phòng phải lớn hơn 0.");
+
+            if (errors.Any())
+            {
+                var customers = await _userService.GetAllCustomers();
+                var roomTypes = await _roomTypeService.GetAll();
+
+                ViewBag.Customers = new SelectList(customers, "Id", "FullName");
+                ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name");
+                ViewBag.Errors = errors;
+
+                return View(dto);
+            }
+
+            try
+            {
+                await _bookingService.CreateBookingByStaffAsync(dto);
+                TempData["Success"] = "Thêm booking thành công!";
+                return RedirectToAction("AllBooking");
+            }
+            catch (Exception ex)
+            {
+                var customers = await _userService.GetAllCustomers();
+                var roomTypes = await _roomTypeService.GetAll();
+
+                ViewBag.Customers = new SelectList(customers, "Id", "FullName");
+                ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name");
+
+                TempData["Error"] = "Đã xảy ra lỗi khi thêm booking: " + ex.Message;
+                return View(dto);
+            }
         }
 
-        public IActionResult AddBooking()
+        [HttpGet]
+        public async Task<IActionResult> EditBooking(int id)
         {
-            return View();
+            var booking = await _bookingService.GetBookingByIdAsync(id);
+            if (booking == null) return NotFound();
+
+            var customers = await _userService.GetAllCustomers();
+            var roomTypes = await _roomTypeService.GetAll();
+            var statuses = Enum.GetValues(typeof(BookingStatus))
+                .Cast<BookingStatus>()
+                .Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() });
+
+            ViewBag.Customers = new SelectList(customers, "Id", "FullName", booking.CustomerId);
+            ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name", booking.RoomTypeID);
+            ViewBag.Statuses = new SelectList(statuses, "Value", "Text", booking.Status);
+
+            return View(booking);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditBooking(int id, Booking booking)
+        {
+            var existingBooking = await _bookingService.GetBookingByIdAsync(id);
+            if (existingBooking == null) return NotFound();
+
+            var errors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(booking.CustomerId))
+                errors.Add("Vui lòng chọn khách hàng.");
+            if (booking.RoomTypeID <= 0)
+                errors.Add("Vui lòng chọn loại phòng.");
+            if (booking.RoomQuantity <= 0)
+                errors.Add("Số lượng phòng không hợp lệ.");
+            if (booking.CheckIn >= booking.CheckOut)
+                errors.Add("Ngày trả phòng phải sau ngày nhận phòng.");
+
+            if (errors.Any())
+            {
+                ViewBag.Errors = errors;
+
+                var customers = await _userService.GetAllCustomers();
+                var roomTypes = await _roomTypeService.GetAll();
+                var statuses = Enum.GetValues(typeof(BookingStatus))
+                    .Cast<BookingStatus>()
+                    .Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() });
+
+                ViewBag.Customers = new SelectList(customers, "Id", "FullName", booking.CustomerId);
+                ViewBag.RoomTypes = new SelectList(roomTypes, "RoomTypeID", "Name", booking.RoomTypeID);
+                ViewBag.Statuses = new SelectList(statuses, "Value", "Text", booking.Status.ToString());
+
+                return View(booking);
+            }
+
+            existingBooking.CustomerId = booking.CustomerId;
+            existingBooking.RoomTypeID = booking.RoomTypeID;
+            existingBooking.RoomQuantity = booking.RoomQuantity;
+            existingBooking.CheckIn = booking.CheckIn;
+            existingBooking.CheckOut = booking.CheckOut;
+            existingBooking.Status = booking.Status;
+
+            await _bookingService.UpdateBookingAsync(id, existingBooking);
+            TempData["Success"] = "Cập nhật booking thành công!";
+            return RedirectToAction("AllBooking");
         }
 
-        public IActionResult EditBooking()
-        {
-            return View();
-        }
+
 
         public async Task<IActionResult> AllCustomer()
         {
@@ -60,24 +221,24 @@ namespace HomestayBooking.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCustomer(UserDto dto)
         {
-                dto.Password = "Customer123";
-                var user = new AppUser
-                {
-                    FullName = dto.FullName,
-                    IdentityCard = dto.IdentityCard,
-                    Gender = dto.Gender,
-                    DOB = dto.DOB,
-                    Address = dto.Address,
-                    Email = dto.Email,
-                    UserName = dto.Email,
-                    IsActive = dto.IsActive,
-                };
+            dto.Password = "Customer123";
+            var user = new AppUser
+            {
+                FullName = dto.FullName,
+                IdentityCard = dto.IdentityCard,
+                Gender = dto.Gender,
+                DOB = dto.DOB,
+                Address = dto.Address,
+                Email = dto.Email,
+                UserName = dto.Email,
+                IsActive = dto.IsActive,
+            };
 
-                var result = await _userManager.CreateAsync(user, dto.Password);
-                if (!result.Succeeded) return RedirectToAction("AddCustomer", "Admin");
+            var result = await _userManager.CreateAsync(user, dto.Password);
+            if (!result.Succeeded) return RedirectToAction("AddCustomer", "Admin");
 
-                await _userManager.AddToRoleAsync(user, "Customer");
-                return RedirectToAction("AllCustomer", "Admin");
+            await _userManager.AddToRoleAsync(user, "Customer");
+            return RedirectToAction("AllCustomer", "Admin");
         }
 
         [HttpGet]
@@ -108,7 +269,7 @@ namespace HomestayBooking.Controllers
         public async Task<IActionResult> EditCustomer(UserDto dto)
         {
 
-            var existingUser = await _userService.GetByEmail(dto.Email); 
+            var existingUser = await _userService.GetByEmail(dto.Email);
             if (existingUser == null)
             {
                 TempData["Error"] = "User not found.";
@@ -122,7 +283,7 @@ namespace HomestayBooking.Controllers
             existingUser.Address = dto.Address;
             existingUser.IsActive = dto.IsActive;
 
-            var result = await _userService.UpdateByEmail(dto.Email, existingUser); 
+            var result = await _userService.UpdateByEmail(dto.Email, existingUser);
 
             if (!result)
             {
@@ -321,44 +482,10 @@ namespace HomestayBooking.Controllers
             return RedirectToAction("AllStaff");
         }
 
-        public IActionResult Invoice()
+        public async Task<IActionResult> Invoice()
         {
-            return View();
-        }
-
-        public IActionResult CreateInvoice()
-        {
-            return View();
-        }
-
-        public IActionResult InvoiceReport()
-        {
-            return View();
-        }
-
-        public IActionResult AllBlog()
-        {
-            return View();
-        }
-
-        public IActionResult AddBlog()
-        {
-            return View();
-        }
-
-        public IActionResult EditBlog()
-        {
-            return View();
-        }
-
-        public IActionResult BlogDetail()
-        {
-            return View();
-        }
-
-        public IActionResult ChangePassword()
-        {
-            return View();
+            var invoices = await _bookingService.GetInvoiceAsync();
+            return View(invoices);
         }
 
         public IActionResult ForgotPassword()
@@ -429,11 +556,6 @@ namespace HomestayBooking.Controllers
             TempData["Success"] = "Password changed successfully.";
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Auth");
-        }
-
-        public IActionResult EditProfile()
-        {
-            return View();
         }
 
         public IActionResult Error404()
