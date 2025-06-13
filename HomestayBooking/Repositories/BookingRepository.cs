@@ -13,11 +13,13 @@ namespace HomestayBooking.Repositories
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IRoomTypeRepository _roomTypeRepository;
+        private readonly UserManager<AppUser> _userManager;
 
-        public BookingRepository(AppDbContext context, IHttpContextAccessor htppContextAccessor, IRoomTypeRepository roomTypeRepository) : base(context)
+        public BookingRepository(AppDbContext context, IHttpContextAccessor htppContextAccessor, IRoomTypeRepository roomTypeRepository, UserManager<AppUser> userManager) : base(context)
         {
             _httpContextAccessor = htppContextAccessor;
             _roomTypeRepository = roomTypeRepository;
+            _userManager = userManager;
         }
 
         public async Task<List<Booking>> GetAllBooking()
@@ -222,6 +224,14 @@ namespace HomestayBooking.Repositories
             return availableRooms >= dto.RoomQuantity;
         }
 
+        public async Task<List<Booking>> GetMyBookingsAsync(string userId)
+        {
+            return await _appDbContext.Bookings
+                .Include(b => b.RoomType)
+                .Where(b => b.CustomerId == userId && !b.IsDeleted)
+                .OrderByDescending(b => b.BookingDate)
+                .ToListAsync();
+        }
 
     }
 }

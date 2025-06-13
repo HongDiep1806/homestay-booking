@@ -60,5 +60,11 @@ namespace HomestayBooking.Service
             await _bookingRepository.Update(bookingId, existingBooking);
             return true;
         }
+
+        public async Task<List<Booking>> GetUserBookingsAsync(string userId)
+        {
+            return await _bookingRepository.GetMyBookingsAsync(userId);
+        }
+
     }
 }

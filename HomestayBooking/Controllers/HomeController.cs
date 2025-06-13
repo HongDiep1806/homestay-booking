@@ -1,15 +1,20 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
+using System.Security.Claims;
 using AutoMapper;
 using HomestayBooking.DTOs.BookingDto;
+using HomestayBooking.DTOs.UserDto;
 using HomestayBooking.Models;
 using HomestayBooking.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace HomestayBooking.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -60,30 +65,72 @@ namespace HomestayBooking.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Rooms(string idsJson, string checkIn, string checkOut, int roomQuantity)
+        //public async Task<IActionResult> Rooms(string idsJson, string checkIn, string checkOut, int roomQuantity)
+        //{
+        //    if (string.IsNullOrEmpty(idsJson) || string.IsNullOrEmpty(checkIn) || string.IsNullOrEmpty(checkOut))
+        //    {
+        //        TempData["Error"] = "Thiếu dữ liệu: idsJson, checkIn hoặc checkOut đang null.";
+        //        return RedirectToAction("Index");
+        //    }
+
+
+        //    var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
+        //    var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        //    var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+        //    var roomTypes = await _roomTypeService.GetByIds(ids);
+
+        //    var viewModel = new RoomsViewModel
+        //    {
+        //        RoomTypes = roomTypes,
+        //        BookingInfo = new CreateBookingDto
+        //        {
+        //            CheckInDate = parsedCheckIn,
+        //            CheckOutDate = parsedCheckOut,
+        //            RoomQuantity = roomQuantity
+        //        }
+        //    };
+
+        //    return View(viewModel);
+        //}
+        public async Task<IActionResult> Rooms(string? idsJson, string? checkIn, string? checkOut, int? roomQuantity)
         {
-            if (string.IsNullOrEmpty(idsJson) || string.IsNullOrEmpty(checkIn) || string.IsNullOrEmpty(checkOut))
-                return RedirectToAction("Index");
+            List<RoomType> roomTypes;
 
-            var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
-            var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            if (!string.IsNullOrEmpty(idsJson) && !string.IsNullOrEmpty(checkIn) && !string.IsNullOrEmpty(checkOut) && roomQuantity.HasValue)
+            {
+                // Gọi từ form "Check availability"
+                var ids = JsonConvert.DeserializeObject<List<int>>(idsJson);
+                roomTypes = await _roomTypeService.GetByIds(ids);
 
-            var roomTypes = await _roomTypeService.GetByIds(ids);
+                var parsedCheckIn = DateTime.ParseExact(checkIn, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var parsedCheckOut = DateTime.ParseExact(checkOut, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            var viewModel = new RoomsViewModel
+                var viewModel = new RoomsViewModel
+                {
+                    RoomTypes = roomTypes,
+                    BookingInfo = new CreateBookingDto
+                    {
+                        CheckInDate = parsedCheckIn,
+                        CheckOutDate = parsedCheckOut,
+                        RoomQuantity = roomQuantity.Value
+                    }
+                };
+
+                return View(viewModel);
+            }
+
+            // Truy cập từ navbar hoặc đường dẫn trực tiếp → hiển thị tất cả
+            roomTypes = await _roomTypeService.GetAll();
+            var defaultViewModel = new RoomsViewModel
             {
                 RoomTypes = roomTypes,
-                BookingInfo = new CreateBookingDto
-                {
-                    CheckInDate = parsedCheckIn,
-                    CheckOutDate = parsedCheckOut,
-                    RoomQuantity = roomQuantity
-                }
+                BookingInfo = new CreateBookingDto() // rỗng để tránh null
             };
 
-            return View(viewModel);
+            return View(defaultViewModel);
         }
+
 
 
         public IActionResult Restaurant()
@@ -227,7 +274,54 @@ namespace HomestayBooking.Controllers
 
             return Json(new { success = true });
         }
+        [Authorize]
+        public async Task<IActionResult> MyBookings()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var bookings = await _bookingService.GetUserBookingsAsync(userId);
+            return View(bookings);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var dto = new UserDto
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                IdentityCard = user.IdentityCard,
+                DOB = user.DOB,
+                Address = user.Address,
+                Gender = user.Gender
+            };
+            return View(dto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(UserDto dto)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.FullName = dto.FullName;
+            user.IdentityCard = dto.IdentityCard;
+            user.Address = dto.Address;
+            user.DOB = dto.DOB;
 
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to update profile.";
+                return View("Profile", dto);
+            }
+            TempData["Success"] = "Profile updated successfully.";
+            return RedirectToAction("Profile");
+        }
 
     }
 }

@@ -1,0 +1,163 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@model HomestayBooking.DTOs.UserDto.UserDto
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>My Profile - The Cappa Luxury Hotel</title>
+    <link rel="shortcut icon" href="~/img/client/favicon.png" />
+    <link rel="stylesheet" href="~/css/client/plugins.css" />
+    <link rel="stylesheet" href="~/css/client/style.css" />
+</head>
+<body>
+
+    <!-- Navbar -->
+    @* Copy full navbar từ Index.cshtml hoặc dùng section render nếu có layout *@
+    <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ms-auto">
+
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="/Home/Index">Home</a>
+
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link " href="/Home/Rooms">Rooms & Suites</a>
+
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
+        <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="/Home/News">News </a>
+
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+
+
+    </ul>
+    <ul class="navbar-nav ms-auto">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                var user = await UserManager.GetUserAsync(User);
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ti-user"></i>
+                        <span class="username">@user.FullName</span> <!-- XÓA style -->
+                        <i class="ti-angle-down small"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                        <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
+                        <li>
+                            <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                </li>
+            }
+    </ul>
+
+
+</div>
+
+    <!-- Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="~/img/client/slider/3.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center caption mt-90">
+                    <h5>Welcome</h5>
+                    <h1>My Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h4 class="mb-4">Update Profile</h4>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">@TempData["Success"]</div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+
+            <form asp-action="UpdateProfile" method="post">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" name="FullName" value="@Model.FullName" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Email</label>
+                        <input type="email" class="form-control" value="@Model.Email" readonly />
+                        <input type="hidden" name="Email" value="@Model.Email" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Identity Card</label>
+                        <input type="text" class="form-control" name="IdentityCard" value="@Model.IdentityCard" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Gender</label>
+                        <select class="form-control" name="Gender">
+                            <option value="Male" selected="@(Model.Gender == "Male")">Male</option>
+                            <option value="Female" selected="@(Model.Gender == "Female")">Female</option>
+                            <option value="Other" selected="@(Model.Gender == "Other")">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Date of Birth</label>
+                        <input type="date" class="form-control" name="DOB" value="@(Model.DOB.ToString("yyyy-MM-dd"))" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="Address" value="@Model.Address" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <!-- Scripts -->
+    
+    <script src="@Url.Content("~/js/client/jquery-3.6.3.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery-migrate-3.0.0.min.js")"></script>
+    <script src="@Url.Content("~/js/client/modernizr-2.6.2.min.js")"></script>
+    <script src="@Url.Content("~/js/client/imagesloaded.pkgd.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.isotope.v3.0.2.js")"></script>
+    <script src="@Url.Content("~/js/client/pace.js")"></script>
+    <script src="@Url.Content("~/js/client/popper.min.js")"></script>
+    <script src="@Url.Content("~/js/client/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/client/scrollIt.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.waypoints.min.js")"></script>
+    <script src="@Url.Content("~/js/client/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.stellar.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.magnific-popup.js")"></script>
+    <script src="@Url.Content("~/js/client/YouTubePopUp.js")"></script>
+    <script src="@Url.Content("~/js/client/select2.js")"></script>
+    <script src="@Url.Content("~/js/client/datepicker.js")"></script>
+    <script src="@Url.Content("~/js/client/smooth-scroll.min.js")"></script>
+    <script src="@Url.Content("~/js/client/custom.js")"></script>
+</body>
+</html>

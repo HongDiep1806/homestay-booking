@@ -77,16 +77,6 @@
                     <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Explore<i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Home/Service" class="dropdown-item"><span>Services</span></a></li>
-                            <li><a href="/Home/Facility" class="dropdown-item"><span>Facilities</span></a></li>
-                            <li><a href="/Home/Team" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="/Home/Pricing" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="/Home/Faq" class="dropdown-item"><span>F.A.Qs</span></a></li>                           
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
                         <a class="nav-link" href="/Home/News">News </a>
 
                     </li>
@@ -95,34 +85,33 @@
 
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    var user = await UserManager.GetUserAsync(User);
-                    <div class="d-flex align-items-center ms-auto">
-                        <div class="nav-item dropdown">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var user = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="ti-user"></i>
-                                <span style="color:#fff">@user.FullName</span>
+                                <span class="username">@user.FullName</span> <!-- XÓA style -->
                                 <i class="ti-angle-down small"></i>
                             </a>
+
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
                                 <li>
                                     <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
                                         <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
                                     </form>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="d-flex align-items-center ms-auto">
-                        <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
-                        @* <a class="nav-link" href="/Auth/Register"><i class="ti-pencil-alt me-1"></i> Register</a> *@
-                    </div>
-                }
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        </li>
+                    }
                 </ul>
 
             </div>

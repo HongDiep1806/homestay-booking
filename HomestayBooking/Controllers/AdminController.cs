@@ -3,6 +3,7 @@ using HomestayBooking.DTOs.BookingDto;
 using HomestayBooking.DTOs.UserDto;
 using HomestayBooking.Models;
 using HomestayBooking.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HomestayBooking.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IRoomTypeService _roomTypeService;
