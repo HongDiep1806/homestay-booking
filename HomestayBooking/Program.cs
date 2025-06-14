@@ -60,6 +60,11 @@ namespace HomestayBooking
             //
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddSession(); // Bật session
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Auth/AccessDenied";
+            });
+
 
 
             var app = builder.Build();

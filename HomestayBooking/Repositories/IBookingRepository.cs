@@ -13,6 +13,7 @@ namespace HomestayBooking.Repositories
         Task<List<Booking>> GetInvoice();
         Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto);
         Task<bool> CheckAvailability(CreateBookingDto dto);
+        Task<List<Booking>> GetMyBookingsAsync(string userId);
 
 
     }

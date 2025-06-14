@@ -1,6 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -44,6 +45,8 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
+
+
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/Home/Index">Home</a>
 
@@ -56,30 +59,44 @@
                     <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services</span></a></li>
-                            <li><a href="facilities.html" class="dropdown-item"><span>Facilities</span></a></li>
-                            <li><a href="gallery.html" class="dropdown-item"><span>Gallery</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="careers.html" class="dropdown-item"><span>Careers</span></a></li>
-                            <li><a href="faq.html" class="dropdown-item"><span>F.A.Qs</span></a></li>
-                            <li class="dropdown-submenu dropdown">
-                                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Other Pages <i class="ti-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                    <li><a href="coming-soon.html" class="dropdown-item"><span>Coming Soon</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
                         <a class="nav-link" href="/Home/News">News </a>
 
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+
+
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var user = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti-user"></i>
+                                <span class="username">@user.FullName</span> <!-- XÓA style -->
+                                <i class="ti-angle-down small"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/Home/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        </li>
+                    }
+                </ul>
+
+
             </div>
         </div>
     </nav>

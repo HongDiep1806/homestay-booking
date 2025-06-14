@@ -14,5 +14,7 @@ namespace HomestayBooking.Service
         Task<bool> CreateBookingByStaffAsync(CreateBookingByStaffDto dto);
         Task<Booking> GetBookingByIdAsync(int bookingId);
         Task<bool> UpdateBookingAsync(int bookingId, Booking updatedBooking);
+        Task<List<Booking>> GetUserBookingsAsync(string userId);
+
     }
 }

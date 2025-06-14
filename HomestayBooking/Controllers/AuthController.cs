@@ -109,18 +109,23 @@ namespace HomestayBooking.Controllers
 
             foreach (var error in result.Errors)
             {
-               errors.Add(error.Description);
+                errors.Add(error.Description);
                 Console.WriteLine(error.Description);
             }
-            if(errors.Count > 0)
+            if (errors.Count > 0)
             {
                 return View();
             }
-          
+
             Console.WriteLine($"FullName: {user.FullName}, Email: {user.Email}, UserName: {user.UserName}");
 
             return View(dto);
         }
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
 
+        }
     }
 }

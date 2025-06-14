@@ -1,0 +1,211 @@
+﻿@model IEnumerable<HomestayBooking.Models.Booking>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>The Cappa Luxury Hotel</title>
+
+    <link rel="shortcut icon" href="@Url.Content("~/img/client/favicon.png")" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="@Url.Content("~/css/client/plugins.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/client/style.css")" />
+
+</head>
+<style>
+    .navbar .nav-link {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .navbar .dropdown-menu {
+        font-family: 'Barlow', sans-serif;
+    }
+</style>
+<body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a class="logo" href="index.html"> <img src="@Url.Content("~/img/client/logo.png")" class="logo-img" alt=""> </a>
+                <!-- <a class="logo" href="index.html"> <h2>THE CAPPA <span>Luxury Hotel</span></h2> </a> -->
+            </div>
+            <!-- Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/Home/Index">Home</a>
+
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/Home/Rooms">Rooms & Suites</a>
+
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/Home/News">News </a>
+
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var user = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti-user"></i>
+                                <span class="username">@user.FullName</span> <!-- XÓA style -->
+                                <i class="ti-angle-down small"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/Home/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        </li>
+                    }
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    
+    <header class="header slider-fade">
+        <div class="owl-carousel owl-theme">
+            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+            <div class="text-center item bg-img" data-overlay-dark="1" data-background="@Url.Content("~/img/client/slider/2.jpg")">
+                <div class="v-middle caption"> 
+                    <div class="container">
+                         <div class="row"> 
+                             <div class="col-md-10 offset-md-1"> 
+                                 <span> 
+                                     <i class="star-rating"></i> 
+                                    <i class="star-rating"></i> 
+                                     <i class="star-rating"></i> 
+                                     <i class="star-rating"></i> 
+                                     <i class="star-rating"></i> 
+                                </span> 
+                                 <h4>Luxury Hotel & Best Resort</h4> 
+                                <h1>Booking History</h1> 
+                                 <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div> 
+                             </div> 
+                         </div> 
+                    </div> 
+                </div> 
+            </div>
+
+    </header>
+
+    <!-- Main content -->
+    <section class="section-padding bg-cream">
+        <div class="container">
+            <div class="section-subtitle">Your Reservations</div>
+            <div class="section-title">My Bookings</div>
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info mt-4">You have no bookings yet.</div>
+            }
+            else
+            {
+                <div class="list-group shadow-sm">
+                    @foreach (var booking in Model)
+                    {
+                        <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap py-3">
+                            <div class="me-3">
+                                <h6 class="mb-1">@booking.RoomType.Name</h6>
+                                <small class="text-muted">
+                                    Check in: @booking.CheckIn - Check out: @booking.CheckOut |
+                                    @booking.RoomQuantity room(s)
+                                </small>
+                                <h5>Total price: $@booking.TotalPrice</h5>
+                            </div>
+                            <span class="badge @(booking.Status == BookingStatus.Confirmed ? "bg-success" : booking.Status == BookingStatus.Pending ? "bg-warning text-dark" : "bg-secondary")">
+                                @booking.Status
+                            </span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-4">
+        <div class="container">
+            <small>© 2025 The Cappa Luxury Hotel. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="~/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/jquery-3.6.0.min.js" type="546b1a996ad6c1389e6258f7-text/javascript"></script>
+
+    <script src="@Url.Content("~/js/client/jquery-3.6.3.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery-migrate-3.0.0.min.js")"></script>
+    <script src="@Url.Content("~/js/client/modernizr-2.6.2.min.js")"></script>
+    <script src="@Url.Content("~/js/client/imagesloaded.pkgd.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.isotope.v3.0.2.js")"></script>
+    <script src="@Url.Content("~/js/client/pace.js")"></script>
+    <script src="@Url.Content("~/js/client/popper.min.js")"></script>
+    <script src="@Url.Content("~/js/client/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/client/scrollIt.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.waypoints.min.js")"></script>
+    <script src="@Url.Content("~/js/client/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.stellar.min.js")"></script>
+    <script src="@Url.Content("~/js/client/jquery.magnific-popup.js")"></script>
+    <script src="@Url.Content("~/js/client/YouTubePopUp.js")"></script>
+    <script src="@Url.Content("~/js/client/select2.js")"></script>
+    <script src="@Url.Content("~/js/client/datepicker.js")"></script>
+    <script src="@Url.Content("~/js/client/smooth-scroll.min.js")"></script>
+    <script src="@Url.Content("~/js/client/custom.js")"></script>
+    <style>
+        .input1_inner.no-icon::after {
+            display: none !important;
+        }
+
+    </style>
+</body>
+</html>
