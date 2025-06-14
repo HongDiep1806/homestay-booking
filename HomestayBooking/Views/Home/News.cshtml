@@ -1,6 +1,7 @@
-﻿
-@{
-}
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,42 +44,58 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
+
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/Home/Index">Home </a>
-                       
+                        <a class="nav-link" href="/Home/Index">Home</a>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/Home/Rooms" ></a>
-                       
+                        <a class="nav-link " href="/Home/Rooms">Rooms & Suites</a>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services</span></a></li>
-                            <li><a href="facilities.html" class="dropdown-item"><span>Facilities</span></a></li>
-                            <li><a href="gallery.html" class="dropdown-item"><span>Gallery</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="careers.html" class="dropdown-item"><span>Careers</span></a></li>
-                            <li><a href="faq.html" class="dropdown-item"><span>F.A.Qs</span></a></li>
-                            <li class="dropdown-submenu dropdown">
-                                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Other Pages <i class="ti-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                    <li><a href="coming-soon.html" class="dropdown-item"><span>Coming Soon</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active" href="/Home/News"  >News </a>
-                        
+                        <a class="nav-link active" href="/Home/News">News </a>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+
+
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var user = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti-user"></i>
+                                <span class="username">@user.FullName</span> <!-- XÓA style -->
+                                <i class="ti-angle-down small"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/Home/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        </li>
+                    }
+                </ul>
+
+
             </div>
         </div>
     </nav>
@@ -111,7 +128,7 @@
                                     <a href="news.html"><span class="tag">Restaurant</span></a>
                                     <h5><a href="post.html">Historic restaurant renovated</a></h5>
                                     <p>Hotel potenti fringilla pretium ipsum non blandit. Vivamus eget nisi non mi iaculis iaculis imperie quiseros sevin elentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis enesta mauris suscipit mis nec est aliquam, a tincidunt eros iacu suscipit risus eu ullamcorper fauibu.</p>
-                                    <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div>
+                                    @* <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div> *@
                                 </div>
                             </div>
                         </div>
@@ -127,7 +144,7 @@
                                     <a href="news.html"><span class="tag">Spa Center</span></a>
                                     <h5><a href="post.html">Benefits of Spa Treatments</a></h5>
                                     <p>Hotel potenti fringilla pretium ipsum non blandit. Vivamus eget nisi non mi iaculis iaculis imperie quiseros sevin elentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis enesta mauris suscipit mis nec est aliquam, a tincidunt eros iacu suscipit risus eu ullamcorper fauibu.</p>
-                                    <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div>
+                                    @* <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div> *@
                                 </div>
                             </div>
                         </div>
@@ -143,20 +160,20 @@
                                     <a href="news.html"><span class="tag">Hotel Design</span></a>
                                     <h5><a href="post.html">Retro Lighting Design in The Hotels</a></h5>
                                     <p>Hotel potenti fringilla pretium ipsum non blandit. Vivamus eget nisi non mi iaculis iaculis imperie quiseros sevin elentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis enesta mauris suscipit mis nec est aliquam, a tincidunt eros iacu suscipit risus eu ullamcorper fauibu.</p>
-                                    <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div>
+                                    @* <div class="butn-dark"> <a href="post.html"><span>Read More</span></a> </div> *@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <!-- Pagination -->
-                            <ul class="news-pagination-wrap align-center mb-30 mt-30">
-                                <li><a href="blog2.html#"><i class="ti-angle-left"></i></a></li>
-                                <li><a href="blog2.html#">1</a></li>
-                                <li><a href="blog2.html#" class="active">2</a></li>
-                                <li><a href="blog2.html#">3</a></li>
-                                <li><a href="blog2.html#"><i class="ti-angle-right"></i></a></li>
-                            </ul>
-                        </div>
+                        @* <div class="col-md-12"> *@
+                        @*     <!-- Pagination --> *@
+                        @*     <ul class="news-pagination-wrap align-center mb-30 mt-30"> *@
+                        @*         <li><a href="blog2.html#"><i class="ti-angle-left"></i></a></li> *@
+                        @*         <li><a href="blog2.html#">1</a></li> *@
+                        @*         <li><a href="blog2.html#" class="active">2</a></li> *@
+                        @*         <li><a href="blog2.html#">3</a></li> *@
+                        @*         <li><a href="blog2.html#"><i class="ti-angle-right"></i></a></li> *@
+                        @*     </ul> *@
+                        @* </div> *@
                     </div>
                 </div>
                 <div class="col-md-4">

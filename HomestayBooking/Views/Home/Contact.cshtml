@@ -1,6 +1,7 @@
-﻿
-@{
-}
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -42,42 +43,58 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
+
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/Home/Index" >Home </a>
-                       
+                        <a class="nav-link" href="/Home/Index">Home</a>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="/Home/Rooms" >Rooms & Suites </a>
-                        
+                        <a class="nav-link " href="/Home/Rooms">Rooms & Suites</a>
+
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Restaurant">Restaurant</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Home/Spa">Spa</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services</span></a></li>
-                            <li><a href="facilities.html" class="dropdown-item"><span>Facilities</span></a></li>
-                            <li><a href="gallery.html" class="dropdown-item"><span>Gallery</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="careers.html" class="dropdown-item"><span>Careers</span></a></li>
-                            <li><a href="faq.html" class="dropdown-item"><span>F.A.Qs</span></a></li>
-                            <li class="dropdown-submenu dropdown">
-                                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Other Pages <i class="ti-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                    <li><a href="coming-soon.html" class="dropdown-item"><span>Coming Soon</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/Home/News">News </a>
 
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="/Home/Contact">Contact</a></li>
+
+
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var user = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti-user"></i>
+                                <span class="username">@user.FullName</span> <!-- XÓA style -->
+                                <i class="ti-angle-down small"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/Home/Profile"><i class="ti-id-badge me-2"></i>My profile</a></li>
+                                <li><a class="dropdown-item" href="/Home/MyBookings"><i class="ti-agenda me-2"></i>My bookings</a></li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                        <button type="submit" class="dropdown-item"><i class="ti-power-off me-2"></i>Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login"><i class="ti-user me-1"></i> Login</a>
+                        </li>
+                    }
+                </ul>
+
+
             </div>
         </div>
     </nav>
@@ -119,38 +136,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 mb-30 offset-md-1">
-                    <h3>Get in touch</h3>
-                    <form method="post" class="contact__form" action="https://duruthemes.com/demo/html/cappa/demo1-light/mail.php">
-                        <!-- form message -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
-                            </div>
-                        </div>
-                        <!-- form elements -->
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input name="name" type="text" placeholder="Your Name *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input name="email" type="email" placeholder="Your Email *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input name="phone" type="text" placeholder="Your Number *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input name="subject" type="text" placeholder="Subject *" required>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" class="butn-dark2"><span>Send Message</span></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @* <div class="col-md-5 mb-30 offset-md-1"> *@
+                @*     <h3>Get in touch</h3> *@
+                @*     <form method="post" class="contact__form" action="https://duruthemes.com/demo/html/cappa/demo1-light/mail.php"> *@
+                @*         <!-- form message --> *@
+                @*         <div class="row"> *@
+                @*             <div class="col-12"> *@
+                @*                 <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div> *@
+                @*             </div> *@
+                @*         </div> *@
+                @*         <!-- form elements --> *@
+                @*         <div class="row"> *@
+                @*             <div class="col-md-6 form-group"> *@
+                @*                 <input name="name" type="text" placeholder="Your Name *" required> *@
+                @*             </div> *@
+                @*             <div class="col-md-6 form-group"> *@
+                @*                 <input name="email" type="email" placeholder="Your Email *" required> *@
+                @*             </div> *@
+                @*             <div class="col-md-6 form-group"> *@
+                @*                 <input name="phone" type="text" placeholder="Your Number *" required> *@
+                @*             </div> *@
+                @*             <div class="col-md-6 form-group"> *@
+                @*                 <input name="subject" type="text" placeholder="Subject *" required> *@
+                @*             </div> *@
+                @*             <div class="col-md-12 form-group"> *@
+                @*                 <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea> *@
+                @*             </div> *@
+                @*             <div class="col-md-12"> *@
+                @*                 <button type="submit" class="butn-dark2"><span>Send Message</span></button> *@
+                @*             </div> *@
+                @*         </div> *@
+                @*     </form> *@
+                @* </div> *@
             </div>
             <!-- Map Section -->
             <div class="row">
@@ -178,67 +195,67 @@
                         <p><i class="ti-check"></i><small>Call us, it's toll-free.</small></p>
                     </div>
                     <!-- Booking From -->
-                    <div class="col-md-5 offset-md-2">
-                        <div class="booking-box">
-                            <div class="head-box">
-                                <h6>Rooms & Suites</h6>
-                                <h4>Hotel Booking Form</h4>
-                            </div>
-                            <div class="booking-inner clearfix">
-                                <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms2.html" class="form1 clearfix">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check in</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check in">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="input1_wrapper">
-                                                <label>Check out</label>
-                                                <div class="input1_inner">
-                                                    <input type="text" class="form-control input datepicker" placeholder="Check out">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Adults</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Adults</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="select1_wrapper">
-                                                <label>Children</label>
-                                                <div class="select1_inner">
-                                                    <select class="select2 select" style="width: 100%">
-                                                        <option value="0">Children</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    @* <div class="col-md-5 offset-md-2"> *@
+                    @*     <div class="booking-box"> *@
+                    @*         <div class="head-box"> *@
+                    @*             <h6>Rooms & Suites</h6> *@
+                    @*             <h4>Hotel Booking Form</h4> *@
+                    @*         </div> *@
+                    @*         <div class="booking-inner clearfix"> *@
+                    @*             <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms2.html" class="form1 clearfix"> *@
+                    @*                 <div class="row"> *@
+                    @*                     <div class="col-md-12"> *@
+                    @*                         <div class="input1_wrapper"> *@
+                    @*                             <label>Check in</label> *@
+                    @*                             <div class="input1_inner"> *@
+                    @*                                 <input type="text" class="form-control input datepicker" placeholder="Check in"> *@
+                    @*                             </div> *@
+                    @*                         </div> *@
+                    @*                     </div> *@
+                    @*                     <div class="col-md-12"> *@
+                    @*                         <div class="input1_wrapper"> *@
+                    @*                             <label>Check out</label> *@
+                    @*                             <div class="input1_inner"> *@
+                    @*                                 <input type="text" class="form-control input datepicker" placeholder="Check out"> *@
+                    @*                             </div> *@
+                    @*                         </div> *@
+                    @*                     </div> *@
+                    @*                     <div class="col-md-6"> *@
+                    @*                         <div class="select1_wrapper"> *@
+                    @*                             <label>Adults</label> *@
+                    @*                             <div class="select1_inner"> *@
+                    @*                                 <select class="select2 select" style="width: 100%"> *@
+                    @*                                     <option value="0">Adults</option> *@
+                    @*                                     <option value="1">1</option> *@
+                    @*                                     <option value="2">2</option> *@
+                    @*                                     <option value="3">3</option> *@
+                    @*                                     <option value="4">4</option> *@
+                    @*                                 </select> *@
+                    @*                             </div> *@
+                    @*                         </div> *@
+                    @*                     </div> *@
+                    @*                     <div class="col-md-6"> *@
+                    @*                         <div class="select1_wrapper"> *@
+                    @*                             <label>Children</label> *@
+                    @*                             <div class="select1_inner"> *@
+                    @*                                 <select class="select2 select" style="width: 100%"> *@
+                    @*                                     <option value="0">Children</option> *@
+                    @*                                     <option value="1">1</option> *@
+                    @*                                     <option value="2">2</option> *@
+                    @*                                     <option value="3">3</option> *@
+                    @*                                     <option value="4">4</option> *@
+                    @*                                 </select> *@
+                    @*                             </div> *@
+                    @*                         </div> *@
+                    @*                     </div> *@
+                    @*                     <div class="col-md-12"> *@
+                    @*                         <button type="submit" class="btn-form1-submit mt-15">Check Availability</button> *@
+                    @*                     </div> *@
+                    @*                 </div> *@
+                    @*             </form> *@
+                    @*         </div> *@
+                    @*     </div> *@
+                    @* </div> *@
                 </div>
             </div>
         </div>
