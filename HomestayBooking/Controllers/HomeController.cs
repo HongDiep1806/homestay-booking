@@ -23,8 +23,10 @@ namespace HomestayBooking.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IRoomTypeService _roomTypeService;
         private readonly IMapper _mapper;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger, IRoomTypeService roomTypeService, IRoomService roomService, IBookingService bookingService, UserManager<AppUser> userManager, IMapper mapper)
+
+        public HomeController(ILogger<HomeController> logger, IRoomTypeService roomTypeService, IRoomService roomService, IBookingService bookingService, UserManager<AppUser> userManager, IMapper mapper, SignInManager<AppUser> signInManager)
         {
             _logger = logger;
             _roomService = roomService;
@@ -32,6 +34,7 @@ namespace HomestayBooking.Controllers
             _userManager = userManager;
             _mapper = mapper;
             _roomTypeService = roomTypeService;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
@@ -312,16 +315,38 @@ namespace HomestayBooking.Controllers
             user.IdentityCard = dto.IdentityCard;
             user.Address = dto.Address;
             user.DOB = dto.DOB;
+            user.Gender = dto.Gender;
 
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                TempData["Error"] = "Failed to update profile.";
+                TempData["Error"] = "Failed to update.";
                 return View("Profile", dto);
             }
-            TempData["Success"] = "Profile updated successfully.";
+            TempData["Success"] = "Updated successfully.";
             return RedirectToAction("Profile");
         }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Failed to change password.";
+                return View("ChangePassword");
+            }
+            TempData["Success"] = "Password changed successfully.";
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Auth");
+        }
+
+
+
 
     }
 }
