@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HomestayBooking.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Staff")]
     public class AdminController : Controller
     {
         private readonly IRoomTypeService _roomTypeService;

@@ -80,7 +80,7 @@ namespace HomestayBooking.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAdmin(RegisterDto dto)
+        public async Task<IActionResult> Register(RegisterDto dto)
         {
 
             var errors = new List<string>();
@@ -102,7 +102,7 @@ namespace HomestayBooking.Controllers
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "Admin");
+                await _userManager.AddToRoleAsync(user, "Customer");
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Login", "Auth");
             }

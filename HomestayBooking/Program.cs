@@ -62,8 +62,12 @@ namespace HomestayBooking
             builder.Services.AddSession(); // Bật session
             builder.Services.ConfigureApplicationCookie(options =>
             {
+                options.LoginPath = "/Auth/Login"; 
                 options.AccessDeniedPath = "/Auth/AccessDenied";
+                options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                options.SlidingExpiration = true;
             });
+
 
 
 
